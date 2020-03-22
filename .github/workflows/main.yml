@@ -9,9 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: docker/build-push-action@v1
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        repository: blitzundbogen/culturestreams
-        tags: latest
+    - uses: actions/setup-node@v1
+    - name: npm install and npm run build
+      run: |
+        npm install
+        npm run build
