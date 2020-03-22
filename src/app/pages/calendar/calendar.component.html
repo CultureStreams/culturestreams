@@ -1,0 +1,49 @@
+<h2>Veranstaltungs Kalender</h2>
+
+<div class="filter">
+
+    <div class="example-container">
+        <mat-form-field>
+            <mat-label>Datum wählen</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        <mat-form-field>
+            <mat-label>Host</mat-label>
+            <mat-select multiple>
+              <mat-option value="option">Künstlerin XY</mat-option>
+              <mat-option value="option">Museum Beispiel</mat-option>
+              <mat-option value="option">Autor YZ</mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          <mat-form-field>
+            <mat-label>Kategorie</mat-label>
+            <mat-select multiple>
+              <!--mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option-->
+              <mat-option value="option">Sport</mat-option>
+              <mat-option value="option">Musik</mat-option>
+              <mat-option value="option">Rundgang</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-button class="filterButton">filtern</button>
+    </div>
+
+
+</div>
+
+<div class="calendar-container" *ngIf="events">
+    <div *ngFor="let day of week">
+        <mat-card class="date">
+            <mat-card-title>{{day | date}}</mat-card-title>
+            <div *ngFor="let event of events" >
+                <div *ngIf="day.getDate() == event.parsedDate.getDate()">
+                    <app-event-item [event]="event" (click)="navigateToEvent(event)"></app-event-item>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>
+
+

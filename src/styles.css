@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+h2 {
+    color: #4D1938;
+    margin: 30px;
+}
+
+mat-toolbar {
+    font-family: 'Homemade Apple', cursive;
+    /*background-color: #CFB86E !important;*/
+}
+
+

@@ -1,0 +1,19 @@
+.filter {
+    padding-left: 30px;
+}
+
+h2 {
+    margin: 30px;
+}
+
+mat-form-field {
+    margin: 20px;
+}
+
+.filterButton {
+    background-color: #D78888;
+}
+
+.calendar-container {
+    margin:30px;
+}

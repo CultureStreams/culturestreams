@@ -1,0 +1,56 @@
+[
+    {
+        "title": "United we stream",
+        "id": "1",
+        "startTime": "14.5",
+        "endTime": "16.5",
+        "date": "2020-03-25T18:25:43.511Z",
+        "permanentAvailable": "true",
+        "link": "'https://www.unitedwestream.berlin/'",
+        "shortDescription": "our wunderfull livestream: Die Berliner Clubkultur steht vor der größten Herausforderung ihrer Geschichte. ",
+        "description": "'Die Berliner Clubkultur steht vor der größten Herausforderung ihrer Geschichte. Am Freitag, dem 13. März wurde das gesamte Berliner Nachtleben behördlich stillgelegt, um die Ausbreitung des Coronavirus zu unterbinden. Damit sind mehr als 9.000 Mitarbeiter*innen, sowie zehntausende Kunstschaffende schlagartig ohne Beschäftigung und die vielen für Berlin identitätsstiftenden Orte stehen vor dem Ruin. Als Antwort darauf, dass in Berlin die Clubs geschlossen sind und auch der Rest der Welt in Quarantäne sitzt, erklärt sich Berlin solidarisch und bringt den größten digitalen Club zu Dir nach Hause. Wenn schon alleine feiern, dann richtig.",
+        "category": "Musik",
+        "subcategory": "\"Techno\"",
+        "costs": "0",
+        "host": {
+            "name": "Mira, Caleesi, iL Civetto, The Sorry Entertainer",
+            "location": "Kater Blau Berlin"
+        }
+      },
+      {
+        "title": "Kunstauftritt XY Live",
+        "id": "2",
+        "startTime": "14.5",
+        "endTime": "16.5",
+        "date": "2020-03-25T18:25:43.511Z",
+        "permanentAvailable": "true",
+        "link": "'https://www.unitedwestream.berlin/'",
+        "shortDescription": "our wunderfull livestream: Die Berliner Clubkultur steht vor der größten Herausforderung ihrer Geschichte. ",
+        "description": "'Die Berliner Clubkultur steht vor der größten Herausforderung ihrer Geschichte. Am Freitag, dem 13. März wurde das gesamte Berliner Nachtleben behördlich stillgelegt, um die Ausbreitung des Coronavirus zu unterbinden. Damit sind mehr als 9.000 Mitarbeiter*innen, sowie zehntausende Kunstschaffende schlagartig ohne Beschäftigung und die vielen für Berlin identitätsstiftenden Orte stehen vor dem Ruin. Als Antwort darauf, dass in Berlin die Clubs geschlossen sind und auch der Rest der Welt in Quarantäne sitzt, erklärt sich Berlin solidarisch und bringt den größten digitalen Club zu Dir nach Hause. Wenn schon alleine feiern, dann richtig.",
+        "category": "Musik",
+        "subcategory": "\"Techno\"",
+        "costs": "0",
+        "host": {
+            "name": "Mira, Caleesi, iL Civetto, The Sorry Entertainer",
+            "location": "Kater Blau Berlin"
+        }
+      },
+      {
+        "title": "Kunstauftritt XY Live",
+        "id": "3",
+        "startTime": "14.5",
+        "endTime": "16.5",
+        "date": "2020-03-24T18:25:43.511Z",
+        "permanentAvailable": "true",
+        "link": "'https://www.unitedwestream.berlin/'",
+        "shortDescription": "our wunderfull livestream: Die Berliner Clubkultur steht vor der größten Herausforderung ihrer Geschichte. ",
+        "description": "'Die Berliner Clubkultur steht vor der größten Herausforderung ihrer Geschichte. Am Freitag, dem 13. März wurde das gesamte Berliner Nachtleben behördlich stillgelegt, um die Ausbreitung des Coronavirus zu unterbinden. Damit sind mehr als 9.000 Mitarbeiter*innen, sowie zehntausende Kunstschaffende schlagartig ohne Beschäftigung und die vielen für Berlin identitätsstiftenden Orte stehen vor dem Ruin. Als Antwort darauf, dass in Berlin die Clubs geschlossen sind und auch der Rest der Welt in Quarantäne sitzt, erklärt sich Berlin solidarisch und bringt den größten digitalen Club zu Dir nach Hause. Wenn schon alleine feiern, dann richtig.",
+        "category": "Rundgang",
+        "subcategory": "\"Techno\"",
+        "costs": "0",
+        "host": {
+            "name": "Mira, Caleesi, iL Civetto, The Sorry Entertainer",
+            "location": "Kater Blau Berlin"
+        }
+      }
+]

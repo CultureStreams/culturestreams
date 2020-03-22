@@ -1,0 +1,13 @@
+.slid-pic {
+    width: 100%;
+    height: 2000px;
+    background-image: url('../assets/Wohnzimmerkonzert.png');
+}
+
+.img-container {
+    background-color:red;
+    /*background-image: url('../assets/Wohnzimmerkonzert.png');*/
+    display:block;
+    width: 100%;
+    height: 300px;
+}

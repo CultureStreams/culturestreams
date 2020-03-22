@@ -1,0 +1,25 @@
+.event-img {
+    width:600px;
+    margin:30px;
+    float: left;
+}
+
+.event-description-container {
+    padding: 30px;
+}
+
+.event-property {
+    width: 150px;
+    display:inline-block;
+    font-weight: 1000;
+}
+
+.property-item {
+    margin:30px;
+}
+
+.redirect-stream {
+    background-color: #D78888;
+    float:right;
+    margin-right:100px;
+}
