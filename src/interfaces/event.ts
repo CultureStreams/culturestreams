@@ -1,16 +1,21 @@
 import { Time } from '@angular/common';
+import { Host } from '@angular/core';
 
-export interface Event {
-    id: number;
-    title: string;
-    startTime: number;
-    endTime: number;
-    date: Date;
-    permanentAvailable: boolean;
-    link: string;
-    shortDescription: string;
-    description: string;
-    category: string;
-    subcategory: string;
-    costs: number;
+export class OrgaEvent {
+    id: number = 0;
+    title: string = '';
+    startTime: number = 0;
+    endTime: number = 0;
+    date: Date = new Date();
+    permanentAvailable: boolean = false;
+    link: string = '';
+    imageLink: string = '';
+    shortDescription: string = '';
+    description: string = '';
+    category: string = '';
+    subcategory: string = '';
+    costs: number = 0;
+    hostName: string = '';
+    hostLocation: string = '';
 }
+

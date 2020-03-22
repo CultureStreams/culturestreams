@@ -17,3 +17,7 @@ mat-form-field {
 .calendar-container {
     margin:30px;
 }
+
+.date {
+    margin: 30px;
+}

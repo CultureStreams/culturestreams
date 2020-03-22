@@ -1,4 +1,4 @@
-export interface Host {
-    name: string;
-    location: string;
+export class Host {
+    name: string = '';
+    location: string = '';
 }

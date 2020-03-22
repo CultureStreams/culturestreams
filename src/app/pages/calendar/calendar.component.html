@@ -3,12 +3,12 @@
 <div class="filter">
 
     <div class="example-container">
-        <mat-form-field>
+        <mat-form-field class="special-width">
             <mat-label>Datum wählen</mat-label>
-            <input matInput [matDatepicker]="picker">
+            <input (keyup)="setDate($event)" matInput [matDatepicker]="picker">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
+        </mat-form-field>
         <mat-form-field>
             <mat-label>Host</mat-label>
             <mat-select multiple>

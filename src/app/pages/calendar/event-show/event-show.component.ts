@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import event from '../../../../dummy/event.json';
+import { EventService } from 'src/services/event.service';
+import { ActivatedRoute } from "@angular/router";
+
 
 @Component({
   selector: 'app-event-show',
@@ -9,12 +11,19 @@ import event from '../../../../dummy/event.json';
 export class EventShowComponent implements OnInit {
 
   protected event;
+  protected id;
 
-  constructor() { }
+  constructor(protected eventService: EventService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.event = event;
-    //console.log(this.event);
+
+    this.route.queryParamMap.subscribe(queryParams => {
+      this.id = queryParams.get("id");
+      console.log(this.id);
+      this.event = this.eventService.getEvent(this.id);
+      console.log(this.event);
+    })
   }
 
 }

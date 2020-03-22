@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import eventsJson from '../../../dummy/arrays.json';
 import { Week } from 'src/interfaces/week';
 import { Router } from '@angular/router';
+import { EventService } from 'src/services/event.service';
 
 @Component({
   selector: 'app-calendar',
@@ -13,27 +13,49 @@ export class CalendarComponent implements OnInit {
   public events;
   public week: Date[] = new Array<Date>(); 
   private date: Date;
+  
+  private filterDate: Date;
+  private filterCategory;
+  private filterHostName;
 
-  constructor(protected router: Router) { 
-    this.date = new Date();
+  constructor(protected router: Router,
+    protected eventService: EventService) { 
+    this.filterDate = new Date();
     console.log(this.events);
   }
 
   ngOnInit() {
-    this.events = eventsJson;
-    console.log(this.events);
-    console.log(this.events);
+    //this.events = this.eventService.getEventsByDate(this.filterDate)
+    //console.log(this.events);
+    //console.log(this.events);
     this.getWeek(0);
     this.parseDates();
-    console.log(this.events);
+    //console.log(this.events);
   }
 
   protected navigateToEvent(event) {
     console.log(event.date);
     let dateN = new Date(event.date);
     console.log(dateN);
-    //this.router.navigate(['/event', eventId]);
+    this.router.navigate(['/event', event.id]);
   }
+  
+  protected setDate($event) {
+      this.filterDate = $event.target.value;
+  }
+
+  protected setHost($event) {
+    this.filterHostName = $event.target.value;
+  }
+
+  protected setCategory($event) {
+    this.filterCategory = $event.target.value;
+  }
+
+  protected filter() {
+    this.parseDates();
+  }
+
 
   protected getWeek(addWeek: number){
     let addDayVar = addWeek*7;
@@ -70,9 +92,8 @@ export class CalendarComponent implements OnInit {
   }
 
   protected parseDates() {
-    this.events = eventsJson.map(event => {
+    this.events = this.eventService.getEventsByFilterParams(this.filterDate, this.filterHostName, this.filterCategory).map(event => {
       event['parsedDate'] = new Date(event.date);
-      //event.date = new Date(event.date);
       return event;
    });
   }
