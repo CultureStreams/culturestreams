@@ -1,4 +1,4 @@
-name: culturestreams
+name: NPM code tests
 
 on:
   push:
