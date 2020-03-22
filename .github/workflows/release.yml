@@ -1,4 +1,4 @@
-name: culturestreams
+name: Docker image release
 
 on:
   push:
