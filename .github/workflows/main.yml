@@ -1,0 +1,16 @@
+name: culturestreams
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@v1
+    - name: npm install and npm run build
+      run: |
+        npm install
+        npm run build
