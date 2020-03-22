@@ -1,0 +1,19 @@
+.information {
+    padding: 50px;
+}
+
+.couch-image {
+    width: 50%;
+    float: right;
+    margin: 50px;
+}
+
+.solution {
+    font-weight: bold;
+    font-size: 1.3em;
+    padding: 20px;
+}
+
+.container {
+    text-align: center;
+}

@@ -5,4 +5,8 @@
 
 .category-preview {
     margin: 20px;
+    color: #5a6f25;
+    background-color: #eee7d2; 
+    width: 200px;
+    height: 200px;
 }

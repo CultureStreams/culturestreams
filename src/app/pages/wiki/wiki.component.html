@@ -1,1 +1,7 @@
-<p>wiki works!</p>
+<h2>Kulturkanäle</h2>
+
+<mat-card class="channel-container" *ngFor="let channel of channels">
+ <mat-card-title>{{channel.title}}</mat-card-title>
+ <mat-card-subtitle>by {{channel.provider}}</mat-card-subtitle>
+</mat-card>
+

@@ -27,22 +27,25 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { FormsModule } from '@angular/forms';
 //import { EventShowComponent } from './pages/calendar/event-show/event-show.component';
 
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoryPreviewComponent } from './pages/home/category-preview/category-preview.component';
+import { ArtistSectionComponent } from './pages/artist-section/artist-section.component';
 registerLocaleData(localeDe, 'de-DE');
 
 
 const appRoutes: Routes = [
-  { path: 'about-us', component: AboutUsComponent },
+  { path: 'about', component: AboutUsComponent },
   { path: 'event/:id', component: EventShowComponent },
   { path: 'calendar',      component: CalendarComponent },
   { path: 'add-event',      component: AddEventFormComponent },
   { path: 'wiki',      component: WikiComponent },
   { path: 'home',      component: HomeComponent },
+  { path: 'artists',      component: ArtistSectionComponent },
   { path: '', component: HomeComponent }
 ];
 
@@ -57,7 +60,8 @@ const appRoutes: Routes = [
     WikiComponent,
     EventShowComponent,
     EventItemComponent,
-    CategoryPreviewComponent
+    CategoryPreviewComponent,
+    ArtistSectionComponent
   ],
   imports: [
     BrowserModule,
@@ -81,6 +85,7 @@ const appRoutes: Routes = [
     MatAutocompleteModule,
     MatTooltipModule,
     ReactiveFormsModule,
+    FormsModule,
     NgxMaterialTimepickerModule,
     RouterModule.forRoot(
       appRoutes,

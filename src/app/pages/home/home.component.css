@@ -4,18 +4,54 @@
     background-image: url('./Mogl2.png');
 }
 
+.container {
+    text-align: center;
+    padding: 50px;
+}
+
+.headlinecul {
+    padding: 50px;
+    font-size: 6em;
+}
+
 .logo-image {
     display:inline;
-    float:left;
-    height: 400px;
+    width: 60%;
+}
+
+.explanation-text{
+    padding: 40px;
+    font-size: 1.5em;
 }
 
 button {
+    margin: 50px;
     background-color: black;
     color: white;
-    margin-top: 200px;
+}
+
+button:hover {
+    margin: 50px;
+    font-size: 1.2em !important;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
 }
 
 .container {
     display: inline-block;
+}
+
+.sofa-image {
+    width: 100%;
+}
+
+.show-go-on {
+    position: relative;
+    /*top: -450px;*/
+    bottom: 400px;
+    color: white;
+    right: -100px;
+    font-size: 4em;
+    font-style: italic;
 }

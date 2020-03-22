@@ -24,7 +24,8 @@ mat-form-field {
 }
 
 .submitButton {
-    background-color: #D78888;
+    background-color: black;
+    color: white;
     float:right;
     margin-right: 60px;
 }

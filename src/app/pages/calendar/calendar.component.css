@@ -1,5 +1,8 @@
 .filter {
     padding-left: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+    background-color: #efefef;
 }
 
 h2 {
@@ -11,7 +14,8 @@ mat-form-field {
 }
 
 .filterButton {
-    background-color: #D78888;
+    background-color:black;
+    color: white;
 }
 
 .calendar-container {

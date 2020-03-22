@@ -3,11 +3,16 @@
 
 <mat-toolbar>
   <button mat-button routerLink="/home" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon></button>
-  <button mat-button routerLink="/calendar" routerLinkActive="active">Kalender</button>
-  <button mat-button routerLink="/about" routerLinkActive="active">About Us</button>
-  <button mat-button routerLink="/wiki" routerLinkActive="active">Wiki</button>
-  <button mat-button routerLink="/add-event" routerLinkActive="active">Event hinzufügen</button>
-  <button mat-button routerLink="/imprint" routerLinkActive="active">Impressum</button>
+  <div class="tool-container">
+    <button mat-button routerLink="/calendar" routerLinkActive="active">Kalender</button>
+    <button mat-button routerLink="/wiki" routerLinkActive="active">Kultur-Kanäle</button>
+    <button mat-button routerLink="/about" routerLinkActive="active">About Us</button>
+    <button mat-button routerLink="/imprint" routerLinkActive="active">Impressum</button>
+    <button mat-button routerLink="/datenschutz" routerLinkActive="active">Datenschutz</button>
+  </div>
+  <button mat-button class="add-button" routerLink="/add-event" routerLinkActive="active">Event hinzufügen</button>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
+
+<div></div>

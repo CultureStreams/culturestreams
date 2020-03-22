@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, AbstractFormGroupDirective } from '@angular/forms';
 import { OrgaEvent } from 'src/interfaces/event';
 import { Host } from 'src/interfaces/host';
+import { EventService } from 'src/services/event.service';
 
 @Component({
   selector: 'app-add-event-form',
@@ -13,10 +14,11 @@ export class AddEventFormComponent implements OnInit {
   protected event: OrgaEvent = new OrgaEvent();
   protected password: string;
 
+
   categoryControl = new FormControl('category');
   fontSizeControl = new FormControl(16, Validators.min(10));
 
-  constructor() {
+  constructor(protected eventService : EventService) {
 
   }
 
@@ -25,6 +27,7 @@ export class AddEventFormComponent implements OnInit {
 
   protected setTitle($event) {
     this.event.title = $event.target.value;
+    console.log(this.event.title);
   }
 
   protected setCategory($event) {
@@ -37,6 +40,7 @@ export class AddEventFormComponent implements OnInit {
 
   protected setdate($event) {
     this.event.date = $event.target.value;
+    console.log(this.event.date);
   }
 
   protected setHostName($event) {
@@ -59,16 +63,12 @@ export class AddEventFormComponent implements OnInit {
     this.event.imageLink = $event.target.value;
   }
 
-  protected onChange (event: any) {
-    console.log(event.target.value);
-  }
-
   protected setLink($event) {
     this.event.link = $event.target.value;
   }
 
   protected focusoutHandler(email) {
-    
+
   }
 
   protected setStartTime($event) {
@@ -81,12 +81,19 @@ export class AddEventFormComponent implements OnInit {
     console.log(this.event);
   }
 
+  protected onChange($event) {
+    console.log('change');
+  }
+
   protected setPassword($event) {
     this.password = $event.target.value;
   }
 
   protected submit(){
     console.log(this.event);
+
+    //console.log(this.event);
+    this.eventService.addEvent(this.event, this.password);
   }
 
 }

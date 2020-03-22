@@ -1,34 +1,36 @@
-<h2>{{event.title}}</h2>
+<div class="container">
+    <h2>{{event.title}}</h2>
 
-<img class="event-img" src="../../../../assets/united-stream-img.png">
-<div class="event-description-container">
-    <div class="property-item">
-        <mat-label class="event-property">Host:</mat-label> 
-        <mat-label class="event-attribute">{{event.host.name}}</mat-label>
+    <img class="event-img" src="../../../../assets/united-stream-img.png">
+    <div class="event-description-container">
+        <div class="property-item">
+            <mat-label class="event-property">Host:</mat-label> 
+            <mat-label class="event-attribute">{{event.host.name}}</mat-label>
+        </div>
+        <div class="property-item">
+            <mat-label class="event-property">Location in Nicht-Kriesen-Zeiten:</mat-label> 
+            <mat-label class="event-attribute">{{event.host.location}}</mat-label>
+        </div>
+        <div class="property-item">
+            <mat-label class="event-property">Beginn:</mat-label> 
+            <mat-label class="event-attribute">{{event.startTime}}</mat-label>
+        </div>
+        <div class="property-item">
+            <mat-label class="event-property">Ende:</mat-label> 
+            <mat-label class="event-attribute">{{event.endTime}}</mat-label>
+        </div>
+        <div class="property-item">
+            <mat-label class="event-property">Kategorie:</mat-label> 
+            <mat-label class="event-attribute">{{event.category}} | {{event.subcategory}}</mat-label> 
+        </div>
+        <div class="property-item">
+            <mat-label class="event-property">Beschreibung:</mat-label> 
+            <mat-label class="event-attribute">{{event.description}}</mat-label> 
+        </div>
+    
+        <a href="{{event.redirect-stream}}" class="redirect-stream" mat-button>Zum Stream</a>
+    
     </div>
-    <div class="property-item">
-        <mat-label class="event-property">Location in Nicht-Kriesen-Zeiten:</mat-label> 
-        <mat-label class="event-attribute">{{event.host.location}}</mat-label>
-    </div>
-    <div class="property-item">
-        <mat-label class="event-property">Beginn:</mat-label> 
-        <mat-label class="event-attribute">{{event.startTime}}</mat-label>
-    </div>
-    <div class="property-item">
-        <mat-label class="event-property">Ende:</mat-label> 
-        <mat-label class="event-attribute">{{event.endTime}}</mat-label>
-    </div>
-    <div class="property-item">
-        <mat-label class="event-property">Kategorie:</mat-label> 
-        <mat-label class="event-attribute">{{event.category}} | {{event.subcategory}}</mat-label> 
-    </div>
-    <div class="property-item">
-        <mat-label class="event-property">Beschreibung:</mat-label> 
-        <mat-label class="event-attribute">{{event.description}}</mat-label> 
-    </div>
-
-    <a href="{{event.redirect-stream}}" class="redirect-stream" mat-button>Zum Stream</a>
-
 </div>
    
 
