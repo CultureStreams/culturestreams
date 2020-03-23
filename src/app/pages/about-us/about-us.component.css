@@ -1,11 +1,13 @@
 .information {
-    padding: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .couch-image {
-    width: 50%;
+    width: 30%;
     float: right;
-    margin: 50px;
+    margin-left: 50px;
+    margin-bottom: -20px !important;
 }
 
 .solution {
@@ -14,6 +16,10 @@
     padding: 20px;
 }
 
-.container {
-    text-align: center;
+.headline {
+    margin-left: 50px;
+}
+
+.virusimage {
+    width: 70%;
 }

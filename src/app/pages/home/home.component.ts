@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataStore } from 'src/services/data.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(protected dataStore:DataStore) { }
 
   ngOnInit() {
+    console.log('homeinit');
+    this.dataStore.getCategories().subscribe((c) => console.log(c));
   }
+
+  
 
 }

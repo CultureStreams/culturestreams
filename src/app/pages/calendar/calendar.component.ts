@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Week } from 'src/interfaces/week';
 import { Router } from '@angular/router';
 import { EventService } from 'src/services/event.service';
+import { DataStore } from 'src/services/data.service';
 
 @Component({
   selector: 'app-calendar',
@@ -19,12 +20,14 @@ export class CalendarComponent implements OnInit {
   private filterHostName;
 
   constructor(protected router: Router,
-    protected eventService: EventService) { 
+    protected eventService: EventService,
+    protected dataStore: DataStore) { 
     this.filterDate = new Date();
     console.log(this.events);
   }
 
   ngOnInit() {
+    let categories = this.dataStore.categories;
     //this.events = this.eventService.getEventsByDate(this.filterDate)
     //console.log(this.events);
     //console.log(this.events);
