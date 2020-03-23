@@ -24,3 +24,18 @@
     margin-right: 20px;
 
 }
+
+button:hover{
+    background-color: red;
+    color: white;
+}
+
+a {
+    color: black;
+}
+
+.home {
+    width: 50px;
+    top: 4px;
+    margin-top: -5px;
+}

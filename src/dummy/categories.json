@@ -1,21 +1,21 @@
 
     [{
         "id": 1,
-        "title": "Sport"
+        "name": "Sport"
       },{
         "id": 2,
-        "title": "Museum"
+        "name": "Museum"
       },{
         "id": 3,
-        "title": "Rundgang"
+        "name": "Rundgang"
       },{
         "id": 4,
-        "title": "Konzert"
+        "name": "Konzert"
       },{
         "id": 5,
-        "title": "Spiel"
+        "name": "Spiel"
       },{
         "id": 6,
-        "title": "Test"
+        "name": "Test"
       }
     ]

@@ -35,6 +35,7 @@ import localeDe from '@angular/common/locales/de';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoryPreviewComponent } from './pages/home/category-preview/category-preview.component';
 import { ArtistSectionComponent } from './pages/artist-section/artist-section.component';
+import { ContanctComponent } from './pages/contanct/contanct.component';
 registerLocaleData(localeDe, 'de-DE');
 
 
@@ -46,6 +47,8 @@ const appRoutes: Routes = [
   { path: 'wiki',      component: WikiComponent },
   { path: 'home',      component: HomeComponent },
   { path: 'artists',      component: ArtistSectionComponent },
+  { path: 'imprint',      component: ImprintComponent },
+  { path: 'contact',      component: ContanctComponent },
   { path: '', component: HomeComponent }
 ];
 
@@ -61,7 +64,8 @@ const appRoutes: Routes = [
     EventShowComponent,
     EventItemComponent,
     CategoryPreviewComponent,
-    ArtistSectionComponent
+    ArtistSectionComponent,
+    ContanctComponent
   ],
   imports: [
     BrowserModule,

@@ -32,6 +32,7 @@ public getEventsByFilterParams(date: Date, hostId: number, categoryId: number) {
 }
 
 public getPlatforms() {
+  //this.http.get
   return platformsJson;
 }
 
