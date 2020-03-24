@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from 'src/services/event.service';
+import { DataStore } from 'src/services/data.service';
 
 @Component({
   selector: 'app-wiki',
@@ -10,12 +11,12 @@ export class WikiComponent implements OnInit {
 
   protected channels;
 
-  constructor(protected service: EventService) {
+  constructor(protected dataStore: DataStore) {
     
    }
 
   ngOnInit() {
-    this.channels = this.service.getPlatforms();
+    this.channels = this.dataStore.platforms;
     console.log(this.channels);
   }
 

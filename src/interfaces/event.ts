@@ -3,19 +3,16 @@ import { Host } from '@angular/core';
 
 export class OrgaEvent {
     id: number = 0;
-    title: string = '';
-    startTime: number = 0;
-    endTime: number = 0;
-    date: Date = new Date();
-    permanentAvailable: boolean = false;
+    name: string = '';
+    start;
+    end;
+    freeOfCharge: boolean = true;
+    availableLiveOnly: boolean = false;
     link: string = '';
-    imageLink: string = '';
-    shortDescription: string = '';
     description: string = '';
+    image: string = '';
+    datePublished: Date = new Date();
+    organizer: number;
     category: string = '';
-    subcategory: string = '';
-    costs: number = 0;
-    hostName: string = '';
-    hostLocation: string = '';
 }
 

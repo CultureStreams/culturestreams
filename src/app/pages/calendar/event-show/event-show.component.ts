@@ -17,12 +17,9 @@ export class EventShowComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-
-    this.route.queryParamMap.subscribe(queryParams => {
+    this.route.paramMap.subscribe(queryParams => {
       this.id = queryParams.get("id");
-      console.log(this.id);
-      this.event = this.eventService.getEvent(this.id);
-      console.log(this.event);
+      this.eventService.getEvent(this.id).subscribe(e => this.event = e);
     })
   }
 

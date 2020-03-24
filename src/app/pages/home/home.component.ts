@@ -12,7 +12,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     console.log('homeinit');
+    this.dataStore.loadData();
     this.dataStore.getCategories().subscribe((c) => console.log(c));
+    this.dataStore.getPlatforms().subscribe((p) => console.log(p));
   }
 
   

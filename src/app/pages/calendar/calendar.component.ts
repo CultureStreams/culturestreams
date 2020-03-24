@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import eventsJson from '../../../dummy/arrays.json';
 import { Week } from 'src/interfaces/week';
 import { Router } from '@angular/router';
 import { EventService } from 'src/services/event.service';
-import { DataStore } from 'src/services/data.service';
+import { OrgaEvent } from 'src/interfaces/event';
 
 @Component({
   selector: 'app-calendar',
@@ -11,7 +12,7 @@ import { DataStore } from 'src/services/data.service';
 })
 export class CalendarComponent implements OnInit {
 
-  public events;
+  public events: OrgaEvent[] = [];
   public week: Date[] = new Array<Date>(); 
   private date: Date;
   
@@ -20,31 +21,39 @@ export class CalendarComponent implements OnInit {
   private filterHostName;
 
   constructor(protected router: Router,
-    protected eventService: EventService,
-    protected dataStore: DataStore) { 
-    this.filterDate = new Date();
+    protected eventService: EventService) { 
+    this.date = new Date();
     console.log(this.events);
   }
 
   ngOnInit() {
-    let categories = this.dataStore.categories;
-    //this.events = this.eventService.getEventsByDate(this.filterDate)
-    //console.log(this.events);
-    //console.log(this.events);
-    this.getWeek(0);
-    this.parseDates();
-    //console.log(this.events);
+    this.getWeek(this.date);
+    this.getEvents();
+    console.log(this.events);
+  }
+
+  protected getEvents(category = 0) {
+    this.week.forEach((day) => {
+      /*this.eventService.getEventsByFilterParams(day, category)
+      .subscribe((a) => {
+          a.forEach(e => {
+            e['parsedDate'] = new Date(e.startDate);
+            this.events.push(e);
+            console.log(this.events);
+          });
+      });*/
+    });
+  }
+
+  protected getFilteredEvents() {
+    this.getWeek(this.filterDate);
+    this.getEvents();
   }
 
   protected navigateToEvent(event) {
     console.log(event.date);
     let dateN = new Date(event.date);
-    console.log(dateN);
     this.router.navigate(['/event', event.id]);
-  }
-  
-  protected setDate($event) {
-      this.filterDate = $event.target.value;
   }
 
   protected setHost($event) {
@@ -55,16 +64,11 @@ export class CalendarComponent implements OnInit {
     this.filterCategory = $event.target.value;
   }
 
-  protected filter() {
-    this.parseDates();
-  }
+  protected getWeek(day){
 
+    this.week = [];
 
-  protected getWeek(addWeek: number){
-    let addDayVar = addWeek*7;
-
-    var day = new Date();
-    day.setDate(day.getDate()+addDayVar);
+    day.setDate(day.getDate());
     this.week.push(day);
 
     var day1 = new Date();
@@ -90,16 +94,6 @@ export class CalendarComponent implements OnInit {
     var day6 = new Date();
     day6.setDate(day.getDate()+6);
     this.week.push(day6);
-    
-    console.log(this.week);
-  }
-
-  protected parseDates() {
-    this.events = this.eventService.getEventsByFilterParams(this.filterDate, this.filterHostName, this.filterCategory).map(event => {
-      event['parsedDate'] = new Date(event.date);
-      return event;
-   });
   }
   
-
 }

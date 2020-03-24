@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatInputModule} from '@angular/material/input';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatSelectModule, MatNativeDateModule } from  '@angular/material';
+import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatSelectModule, MatNativeDateModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CalendarComponent } from './pages/calendar/calendar.component';
@@ -20,14 +20,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { WikiComponent } from './pages/wiki/wiki.component';
 import { HomeComponent } from './pages/home/home.component';
 import { EventShowComponent } from './pages/calendar/event-show/event-show.component';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { EventItemComponent } from './pages/calendar/event-item/event-item.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule } from '@angular/forms';
+import { IgxTimePickerModule } from 'igniteui-angular';
 //import { EventShowComponent } from './pages/calendar/event-show/event-show.component';
 
 import { registerLocaleData } from '@angular/common';
@@ -38,17 +39,16 @@ import { ArtistSectionComponent } from './pages/artist-section/artist-section.co
 import { ContanctComponent } from './pages/contanct/contanct.component';
 registerLocaleData(localeDe, 'de-DE');
 
-
 const appRoutes: Routes = [
   { path: 'about', component: AboutUsComponent },
   { path: 'event/:id', component: EventShowComponent },
-  { path: 'calendar',      component: CalendarComponent },
-  { path: 'add-event',      component: AddEventFormComponent },
-  { path: 'wiki',      component: WikiComponent },
-  { path: 'home',      component: HomeComponent },
-  { path: 'artists',      component: ArtistSectionComponent },
-  { path: 'imprint',      component: ImprintComponent },
-  { path: 'contact',      component: ContanctComponent },
+  { path: 'calendar', component: CalendarComponent },
+  { path: 'add-event', component: AddEventFormComponent },
+  { path: 'wiki', component: WikiComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'artists', component: ArtistSectionComponent },
+  { path: 'imprint', component: ImprintComponent },
+  { path: 'contact', component: ContanctComponent },
   { path: '', component: HomeComponent }
 ];
 
@@ -90,13 +90,13 @@ const appRoutes: Routes = [
     MatTooltipModule,
     ReactiveFormsModule,
     FormsModule,
+    IgxTimePickerModule,
     NgxMaterialTimepickerModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+    RouterModule.forRoot(appRoutes, { enableTracing: true } // <-- debugging purposes only
     )
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -3,6 +3,9 @@ import { FormControl, Validators, AbstractFormGroupDirective } from '@angular/fo
 import { OrgaEvent } from 'src/interfaces/event';
 import { Host } from 'src/interfaces/host';
 import { EventService } from 'src/services/event.service';
+import { DataStore } from 'src/services/data.service';
+import { Category } from 'src/interfaces/category';
+import { Subcategory } from 'src/interfaces/subcategory';
 
 @Component({
   selector: 'app-add-event-form',
@@ -13,16 +16,25 @@ export class AddEventFormComponent implements OnInit {
 
   protected event: OrgaEvent = new OrgaEvent();
   protected password: string;
+  protected categories: Category[] = [];
+  protected subcategories: Subcategory[] = [];
+  protected startTime;
+  protected endTime;
+  protected date: Date = new Date();
 
 
   categoryControl = new FormControl('category');
   fontSizeControl = new FormControl(16, Validators.min(10));
 
-  constructor(protected eventService : EventService) {
+  constructor(protected eventService : EventService,
+              protected dataStore : DataStore) {
 
   }
 
   ngOnInit() {
+    this.dataStore.getCategories().subscribe((c) => this.categories = c);
+    this.dataStore.getSubCategories().subscribe((s) => this.subcategories = s);
+    console.log(this.categories);
   }
 
   protected setTitle($event) {
@@ -32,23 +44,19 @@ export class AddEventFormComponent implements OnInit {
 
   protected setCategory($event) {
     this.event.category = $event.target.value;
+    console.log(this.event);
   }
 
   protected setSubCategory($event) {
     this.event.subcategory = $event.target.value;
   }
 
-  protected setdate($event) {
-    this.event.date = $event.target.value;
-    console.log(this.event.date);
-  }
-
   protected setHostName($event) {
-    this.event.hostName = ($event.target.value);;
+    //this.event.hostName = ($event.target.value);;
   }
 
   protected setLocation($event) {
-    this.event.hostLocation = $event.target.value;
+    //his.event.hostLocation = $event.target.value;
   }
 
   protected setDescriptionShort($event) {
@@ -72,12 +80,12 @@ export class AddEventFormComponent implements OnInit {
   }
 
   protected setStartTime($event) {
-    this.event.startTime = $event.target.value;
+    this.event.start = $event.target.value;
     console.log(this.event);
   }
 
   protected setEndTime($event) {
-    this.event.endTime = $event.target.value;
+    this.event.end = new $event.target.value;
     console.log(this.event);
   }
 
@@ -89,11 +97,16 @@ export class AddEventFormComponent implements OnInit {
     this.password = $event.target.value;
   }
 
-  protected submit(){
-    console.log(this.event);
+  protected parseStartAndEnd() {
+    this.event.start = this.date.setTime(this.startTime);
+    console.log(Date.parse(this.startTime));
+    this.event.end = this.date.setTime(this.endTime);
+  }
 
-    //console.log(this.event);
-    this.eventService.addEvent(this.event, this.password);
+  protected submit(){
+    this.parseStartAndEnd();
+    console.log(this.event);
+    console.log(typeof this.event.start);
   }
 
 }
