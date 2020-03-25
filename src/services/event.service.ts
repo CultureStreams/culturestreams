@@ -57,7 +57,12 @@ public getEventsByFilterParams(date : Date, organizerId: number = 0, categoryId:
     if (categoryId != 0) {
       req = req + '&category=' + categoryId;
     }
+    if (categoryId == 0 && organizerId == 0) {
+      req = req + 'format=json';
+    }
+    console.log(req);
     let res = this.http.get<OrgaEvent[]>(req);
+    console.log(res);
     return res;
 }
 

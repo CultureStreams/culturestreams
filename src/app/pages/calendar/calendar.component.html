@@ -27,8 +27,8 @@
                      [formControl]="myControl"
                      [matAutocomplete]="auto">
               <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                  {{option}}
+                <mat-option *ngFor="let organizer of organizers | async" [value]="organizer.name">
+                  {{organizer.name}}
                 </mat-option>
               </mat-autocomplete>
             </mat-form-field>
@@ -46,7 +46,6 @@
 
 
 </div>
-
 <div class="calendar-container" *ngIf="events">
     <div *ngFor="let day of week">
         <mat-card class="date">

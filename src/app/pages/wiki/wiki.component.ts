@@ -16,7 +16,10 @@ export class WikiComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.dataStore.getPlatforms().subscribe((p) => this.channels = p);
+    this.dataStore.getPlatforms().subscribe((p) => {
+      this.channels = p;
+      console.log(p);
+    });
   }
 
 }

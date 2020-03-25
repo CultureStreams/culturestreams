@@ -17,6 +17,6 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     this.dataStore.loadData();
-    console.log('load');
+    //console.log('load');
   }
 }

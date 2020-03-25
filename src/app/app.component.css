@@ -4,6 +4,10 @@
     background-image: url('../assets/Wohnzimmerkonzert.png');
 }
 
+.homeButton {
+    background-color: white !important;
+}
+
 .img-container {
     background-color:red;
     /*background-image: url('../assets/Wohnzimmerkonzert.png');*/

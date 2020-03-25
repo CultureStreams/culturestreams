@@ -15,5 +15,6 @@ export class OrgaEvent {
     organizer: number = 0;
     category: number;
     subCategory: number;
+    parsedDate: Date = new Date();
 }
 

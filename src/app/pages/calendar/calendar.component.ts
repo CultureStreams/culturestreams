@@ -7,6 +7,10 @@ import { OrgaEvent } from 'src/interfaces/event';
 import { DataStore } from 'src/services/data.service';
 import { Organizer } from 'src/interfaces/host';
 import { Category } from 'src/interfaces/category';
+import { CategoryPreviewComponent } from '../home/category-preview/category-preview.component';
+import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'app-calendar',
@@ -15,9 +19,11 @@ import { Category } from 'src/interfaces/category';
 })
 export class CalendarComponent implements OnInit {
 
+  myControl = new FormControl();
   public events: OrgaEvent[] = [];
   public week: Date[] = new Array<Date>(); 
   private date: Date = new Date();
+  filteredOptions: Observable<Organizer[]>;
 
   protected organizers: Organizer[] = [];
   protected categories: Category[] = []; 
@@ -35,24 +41,58 @@ export class CalendarComponent implements OnInit {
     this.date = new Date();
     this.dataStore.getOrganizers().subscribe((o) => {
       this.organizers = o;
+      let neutralOrganizer : Organizer = new Organizer();
+      neutralOrganizer. name = '-alle Veranstalter:innen';
+      neutralOrganizer.id = 0;
+      this.organizers.push(neutralOrganizer);
+      this.organizers.sort(function(a, b){
+        var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
+        if (nameA < nameB) 
+            return -1 
+        if (nameA > nameB)
+            return 1
+        return 0; 
+      })
     })
     this.dataStore.getCategories().subscribe((c) => {
       this.categories = c;
+      let neutralCategory : Category = new Category();
+      neutralCategory.id = 0;
+      neutralCategory.name = 'alle Kategorien';
+      this.categories.push(neutralCategory);
+      this.categories.sort(function(a, b){
+        var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
+        if (nameA < nameB) 
+            return -1 
+        if (nameA > nameB)
+            return 1
+        return 0; 
+    })
       this.getEvents();
     })
   }
 
   ngOnInit() {
     this.getWeek(this.date);
+    /*this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value.name))
+      );*/
   }
 
   protected getEvents() {
     this.eventService.getEventsByFilterParams(this.date, this.selectedOrganizerId, this.selectedCategoryId).subscribe((c) => {
       c.forEach(e => {
-        e['parsedDate'] = new Date(e.start);
+        e.parsedDate = new Date(e.start);
         let organizer = this.organizers.find(x => x.id === e.organizer);
-        e['organizerName'] = organizer.name;
-        this.events.push(e);
+        if (organizer != undefined) {
+          e['organizerName'] = organizer.name;
+          this.events.push(e);
+          console.log((e));
+          console.log(e['parsedDate']);
+          console.log(this.week[1]);
+        }
       });
     });
     /*this.week.forEach((day) => {
@@ -85,6 +125,13 @@ export class CalendarComponent implements OnInit {
 
   protected setCategory($event) {
     this.filterCategory = $event.target.value;
+  }
+
+  private _filter(value: string): Organizer[] {
+    const filterValue = value.toLowerCase();
+
+    let organizer = this.organizers.filter(organizer => organizer.name = value);
+    return organizer;
   }
 
   protected getWeek(day){
