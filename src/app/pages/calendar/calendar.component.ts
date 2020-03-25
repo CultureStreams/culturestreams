@@ -68,12 +68,13 @@ export class CalendarComponent implements OnInit {
             return 1
         return 0; 
     })
-      this.getEvents();
+      //this.getEvents();
     })
   }
 
   ngOnInit() {
     this.getWeek(this.date);
+    this.getEvents();
     /*this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
