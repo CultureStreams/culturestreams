@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DataStore } from 'src/services/data.service';
+import { Organizer } from 'src/interfaces/host';
 
 @Component({
   selector: 'app-event-item',
@@ -8,11 +10,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class EventItemComponent implements OnInit {
 
   @Input() event: Event;
-
+  
+  protected organizers: Organizer[] = [];
   protected date: Date;
 
-  constructor() {
+  constructor( protected dataStore: DataStore) {
     this.date = new Date();
+    this.dataStore.getOrganizers().subscribe((o) => {
+      this.organizers = o;
+    })
    }
 
   ngOnInit() {

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, AbstractFormGroupDirective } from '@angular/forms';
 import { OrgaEvent } from 'src/interfaces/event';
-import { Host } from 'src/interfaces/host';
 import { EventService } from 'src/services/event.service';
 import { DataStore } from 'src/services/data.service';
 import { Category } from 'src/interfaces/category';
 import { Subcategory } from 'src/interfaces/subcategory';
+import { Organizer } from 'src/interfaces/host';
 
 @Component({
   selector: 'app-add-event-form',
@@ -21,6 +21,7 @@ export class AddEventFormComponent implements OnInit {
   protected startTime;
   protected endTime;
   protected date: Date = new Date();
+  protected organizer: Organizer = new Organizer();
 
 
   categoryControl = new FormControl('category');
@@ -35,11 +36,6 @@ export class AddEventFormComponent implements OnInit {
     this.dataStore.getCategories().subscribe((c) => this.categories = c);
     this.dataStore.getSubCategories().subscribe((s) => this.subcategories = s);
     console.log(this.categories);
-  }
-
-  protected setTitle($event) {
-    this.event.title = $event.target.value;
-    console.log(this.event.title);
   }
 
   protected setCategory($event) {
@@ -93,7 +89,12 @@ export class AddEventFormComponent implements OnInit {
 
     if (this.startTime && this.endTime) {
       this.parseStartAndEnd();
+      this.event.subCategory = this.event.category;
       console.log(this.event);
+      this.eventService.addOrganizer(this.organizer.name).subscribe((organizer) => {
+        this.event.organizer = organizer.id;
+        this.eventService.addEvent(this.event).subscribe(c => console.log(c));
+      });
     } else {
       console.log('error');
     }

@@ -6,6 +6,8 @@ import eventsJson from '../dummy/arrays.json';
 import {environment} from '../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpParameterCodec } from "@angular/common/http";
+import { Organizer } from 'src/interfaces/host';
+import { Category } from 'src/interfaces/category';
 
 
 
@@ -21,38 +23,54 @@ export class EventService {
   ) { }
 
 
-public addEvent(orgaEvent: OrgaEvent, password: string) {
+public addEvent(orgaEvent: OrgaEvent) : Observable<OrgaEvent>{
 
-    let res = this.http.post<OrgaEvent[]>(this.api + 'events/?format=json', orgaEvent, password);
-    return orgaEvent;
+    let res = this.http.post<OrgaEvent>(this.api + 'events/?format=json', orgaEvent);
+    return res;
 }
 
-public getEvent(eventId: number) {
-  console.log(eventId);
-  let res = this.http.get<OrgaEvent[]>(this.api + 'events/?id=' + eventId +'?format=json');
+public addOrganizer(organizerName: string) : Observable<Organizer> {
+
+  let organizer = new Organizer();
+  organizer.name = organizerName;
+
+  let res = this.http.post<Organizer>(this.api + 'organizers/?format=json', organizer);
   console.log(res);
   return res;
 }
 
-public getEventsByFilterParams(date : Date, hostName: string = '', categoryId: number = 0) : Observable<OrgaEvent[]> {
+public getEvent(eventId: number) : Observable<OrgaEvent> {
+  console.log(eventId);
+  let res = this.http.get<OrgaEvent>(this.api + 'events/?id=3');
+  console.log(res);
+  return res;
+}
 
-    console.log(date.toJSON());
+public getEventsByFilterParams(date : Date, organizerId: number = 0, categoryId: number = 0) : Observable<OrgaEvent[]> {
 
-    let req = this.api + 'events/?startDate=' + date.toJSON(); 
-    if (hostName != undefined) {
-      req = req + '&?organzer=' + encodeURI(hostName);
+    //console.log(date.toJSON());
+    console.log(organizerId);
+    let req = this.api + 'events/?';//?startDate=' + date.toJSON(); 
+    if (organizerId != 0) {
+      req = req + 'organizer=' + organizerId;
     }
-    if (categoryId != undefined && categoryId != 0) {
-      req = req + '&?category=' + categoryId;
+    if (categoryId != 0) {
+      req = req + '&category=' + categoryId;
     }
     let res = this.http.get<OrgaEvent[]>(req);
     return res;
 }
 
-public getEventsByDates(dateArray: Date[]) {
-  dateArray.forEach((date) => {
-    
-  })
+public getCategory(categoryId: number) : Observable<Category>{
+  let res = this.http.get<Category>(this.api + 'categories/?id=' + categoryId);
+  console.log(res);
+  return res;
+}
+
+public getOrganizer(organizerId: number) : Observable<Organizer>{
+  let res = this.http.get<Organizer>(this.api + 'organizers/?id=' + organizerId);
+  console.log(res);
+  return res;
 }
 
 protected getEventsByDate(date: Date) : Observable<OrgaEvent[]> {

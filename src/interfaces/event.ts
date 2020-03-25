@@ -13,6 +13,7 @@ export class OrgaEvent {
     image: string = '';
     datePublished: Date = new Date();
     organizer: number = 0;
-    category: string = '';
+    category: number;
+    subCategory: number;
 }
 

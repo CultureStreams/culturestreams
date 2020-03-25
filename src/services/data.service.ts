@@ -7,6 +7,7 @@ import { Category } from 'src/interfaces/category';
 import { Platform } from '@angular/cdk/platform';
 import platformsJson from '../dummy/platforms.json';
 import { Subcategory } from 'src/interfaces/subcategory';
+import { Organizer } from 'src/interfaces/host';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +60,16 @@ export class DataStore {
   public getPlatforms (): Observable<Platform[]> {
     let res = this.http.get<Platform[]>(this.api + 'plattforms/?format=json');
     console.log(res);
+    return res;
+  }
+
+
+  /**
+   * load all Organizers
+   * no params needed
+   */
+  public getOrganizers () : Observable<Organizer[]> {
+    let res = this.http.get<Organizer[]>(this.api + 'organizers/?format=json');
     return res;
   }
 

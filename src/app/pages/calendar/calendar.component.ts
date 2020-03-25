@@ -4,6 +4,9 @@ import { Week } from 'src/interfaces/week';
 import { Router } from '@angular/router';
 import { EventService } from 'src/services/event.service';
 import { OrgaEvent } from 'src/interfaces/event';
+import { DataStore } from 'src/services/data.service';
+import { Organizer } from 'src/interfaces/host';
+import { Category } from 'src/interfaces/category';
 
 @Component({
   selector: 'app-calendar',
@@ -14,45 +17,65 @@ export class CalendarComponent implements OnInit {
 
   public events: OrgaEvent[] = [];
   public week: Date[] = new Array<Date>(); 
-  private date: Date;
+  private date: Date = new Date();
+
+  protected organizers: Organizer[] = [];
+  protected categories: Category[] = []; 
+
+  protected selectedOrganizerId: number = 0;
+  protected selectedCategoryId: number = 0;
   
   private filterDate: Date;
   private filterCategory;
   private filterHostName;
 
   constructor(protected router: Router,
-    protected eventService: EventService) { 
+    protected eventService: EventService,
+    protected dataStore: DataStore) { 
     this.date = new Date();
-    console.log(this.events);
+    this.dataStore.getOrganizers().subscribe((o) => {
+      this.organizers = o;
+    })
+    this.dataStore.getCategories().subscribe((c) => {
+      this.categories = c;
+      this.getEvents();
+    })
   }
 
   ngOnInit() {
     this.getWeek(this.date);
-    this.getEvents();
-    console.log(this.events);
   }
 
-  protected getEvents(category = 0) {
-    this.week.forEach((day) => {
-      /*this.eventService.getEventsByFilterParams(day, category)
+  protected getEvents() {
+    this.eventService.getEventsByFilterParams(this.date, this.selectedOrganizerId, this.selectedCategoryId).subscribe((c) => {
+      c.forEach(e => {
+        e['parsedDate'] = new Date(e.start);
+        let organizer = this.organizers.find(x => x.id === e.organizer);
+        e['organizerName'] = organizer.name;
+        this.events.push(e);
+      });
+    });
+    /*this.week.forEach((day) => {
+      this.eventService.getEventsByFilterParams(day, category)
       .subscribe((a) => {
           a.forEach(e => {
-            e['parsedDate'] = new Date(e.startDate);
+            e['parsedDate'] = new Date(e.start);
             this.events.push(e);
             console.log(this.events);
           });
-      });*/
-    });
+      });
+    });*/
   }
 
   protected getFilteredEvents() {
-    this.getWeek(this.filterDate);
+    this.events = [];
+    //this.getWeek(this.filterDate);
     this.getEvents();
   }
 
   protected navigateToEvent(event) {
-    console.log(event.date);
-    let dateN = new Date(event.date);
+    let dateN = new Date(event.start);
+    //this.router.navigateByUrl('/event/' + '3');
     this.router.navigate(['/event', event.id]);
   }
 
