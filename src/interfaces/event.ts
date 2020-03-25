@@ -4,15 +4,15 @@ import { Host } from '@angular/core';
 export class OrgaEvent {
     id: number = 0;
     name: string = '';
-    start;
-    end;
+    start: Date = new Date();
+    end: Date = new Date();
     freeOfCharge: boolean = true;
     availableLiveOnly: boolean = false;
     link: string = '';
     description: string = '';
     image: string = '';
     datePublished: Date = new Date();
-    organizer: number;
+    organizer: number = 0;
     category: string = '';
 }
 

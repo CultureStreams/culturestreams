@@ -4,7 +4,7 @@
     <div class="example-container">
     <mat-form-field class="full-width">
       <mat-label>Titel</mat-label>
-      <input (keyup)="setTitle($event)" matInput>
+      <input [(ngModel)]="event.name" matInput>
     </mat-form-field>
     <br>
     <mat-form-field class="half-width">
@@ -47,24 +47,24 @@
         <input (keyup)="setHostName($event)" matInput>
     </mat-form-field>
     <br/>
-    <mat-form-field class="full-width">
+    <!--mat-form-field class="full-width">
         <mat-label>Location wenn gerade keine Kriesenzeit ist</mat-label>
         <input (keyup)="setLocation($event)" matInput>
-    </mat-form-field>
+    </mat-form-field-->
     <br/>
-    <mat-form-field class="full-width">
+    <!--mat-form-field class="full-width">
         <mat-label >Beschreibung kurz</mat-label>
         <textarea (keyup)="setDescriptionShort($event)" matInput></textarea>
-      </mat-form-field>
+      </mat-form-field-->
     <br/>
     <mat-form-field class="full-width">
-      <mat-label>Beschreibung lang</mat-label>
+      <mat-label>Beschreibung</mat-label>
       <textarea (keyup)="setDescription($event)" matInput></textarea>
     </mat-form-field>
     <br/>
     <mat-form-field class="full-width">
-          <mat-label>Bild-Url</mat-label>
-          <input (keyup)="setImageUrl($event)" matInput>
+          <mat-label>Stream-Link</mat-label>
+          <input (keyup)="setLink($event)" matInput>
     </mat-form-field>
     <br/>
     <br/>

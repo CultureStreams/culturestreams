@@ -16,7 +16,6 @@ export class EventItemComponent implements OnInit {
    }
 
   ngOnInit() {
-
     console.log(this.event);
   }
 

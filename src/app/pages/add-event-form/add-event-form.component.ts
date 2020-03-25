@@ -47,50 +47,16 @@ export class AddEventFormComponent implements OnInit {
     console.log(this.event);
   }
 
-  protected setSubCategory($event) {
-    this.event.subcategory = $event.target.value;
-  }
-
   protected setHostName($event) {
     //this.event.hostName = ($event.target.value);;
-  }
-
-  protected setLocation($event) {
-    //his.event.hostLocation = $event.target.value;
-  }
-
-  protected setDescriptionShort($event) {
-    this.event.shortDescription = $event.target.value;
   }
 
   protected setDescription($event) {
     this.event.description = $event.target.value;
   }
 
-  protected setImageUrl($event) {
-    this.event.imageLink = $event.target.value;
-  }
-
   protected setLink($event) {
     this.event.link = $event.target.value;
-  }
-
-  protected focusoutHandler(email) {
-
-  }
-
-  protected setStartTime($event) {
-    this.event.start = $event.target.value;
-    console.log(this.event);
-  }
-
-  protected setEndTime($event) {
-    this.event.end = new $event.target.value;
-    console.log(this.event);
-  }
-
-  protected onChange($event) {
-    console.log('change');
   }
 
   protected setPassword($event) {
@@ -98,15 +64,39 @@ export class AddEventFormComponent implements OnInit {
   }
 
   protected parseStartAndEnd() {
-    this.event.start = this.date.setTime(this.startTime);
-    console.log(Date.parse(this.startTime));
-    this.event.end = this.date.setTime(this.endTime);
+    let dayTime = this.startTime.slice(-2);
+    let startTimeString = this.startTime.substr(0, this.startTime.length - 3);
+    let startMinutes = startTimeString.slice(-2);
+    startTimeString = startTimeString.substr(0, this.startTime.length - 6);
+    let startHours = parseInt(startTimeString);
+    if (dayTime == 'PM') {
+      startHours = startHours + 12;
+    }
+    this.date.setHours(startHours, startMinutes, 0);
+    let startDate = this.date.setHours(startHours, startMinutes);
+    this.event.start = new Date(startDate);
+
+    let nightTime = this.endTime.slice(-2);
+    let endTimeString = this.endTime.substr(0, this.endTime.length - 3);
+    let endMinutes = endTimeString.slice(-2);
+    endTimeString = endTimeString.substr(0, this.endTime.length - 6);
+    let endHours = parseInt(endTimeString);
+    if (nightTime == 'PM') {
+      endHours = endHours + 12;
+    }
+    this.date.setHours(endHours, endMinutes, 0);
+    let endDate = this.date.setHours(endHours, endMinutes);
+    this.event.end = new Date(endDate);
   }
 
   protected submit(){
-    this.parseStartAndEnd();
-    console.log(this.event);
-    console.log(typeof this.event.start);
+
+    if (this.startTime && this.endTime) {
+      this.parseStartAndEnd();
+      console.log(this.event);
+    } else {
+      console.log('error');
+    }
   }
 
 }
