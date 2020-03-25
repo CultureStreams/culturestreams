@@ -41,7 +41,7 @@ public addOrganizer(organizerName: string) : Observable<Organizer> {
 
 public getEvent(eventId: number) : Observable<OrgaEvent> {
   console.log(eventId);
-  let res = this.http.get<OrgaEvent>(this.api + 'events/?id=3');
+  let res = this.http.get<OrgaEvent>(this.api + 'events/?id=' + eventId);
   console.log(res);
   return res;
 }

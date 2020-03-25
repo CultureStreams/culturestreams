@@ -8,6 +8,7 @@ import { Platform } from '@angular/cdk/platform';
 import platformsJson from '../dummy/platforms.json';
 import { Subcategory } from 'src/interfaces/subcategory';
 import { Organizer } from 'src/interfaces/host';
+import { OrgaPlatform } from 'src/interfaces/orga-platform';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ import { Organizer } from 'src/interfaces/host';
 export class DataStore {
 
   public categories: Category[];
-  public platforms: Platform[];
+  public platforms: OrgaPlatform[];
   protected api = environment.server;
 
   constructor(private http: HttpClient,) { }
@@ -46,7 +47,6 @@ export class DataStore {
    * no params needed
    */
   public getSubCategories (): Observable<Subcategory[]> {
-    console.log('getCategories');
     let res = this.http.get<Subcategory[]>(this.api + 'subcategories/?format=json');
     console.log(res);
     return res;
@@ -57,8 +57,8 @@ export class DataStore {
    * load all Platforms
    * no params needed
    */
-  public getPlatforms (): Observable<Platform[]> {
-    let res = this.http.get<Platform[]>(this.api + 'plattforms/?format=json');
+  public getPlatforms (): Observable<OrgaPlatform[]> {
+    let res = this.http.get<OrgaPlatform[]>(this.api + 'plattforms/?format=json');
     console.log(res);
     return res;
   }

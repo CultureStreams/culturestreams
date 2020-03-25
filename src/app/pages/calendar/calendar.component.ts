@@ -42,7 +42,7 @@ export class CalendarComponent implements OnInit {
     this.dataStore.getOrganizers().subscribe((o) => {
       this.organizers = o;
       let neutralOrganizer : Organizer = new Organizer();
-      neutralOrganizer. name = '-alle Veranstalter:innen';
+      neutralOrganizer. name = '- alle Veranstalter:innen -';
       neutralOrganizer.id = 0;
       this.organizers.push(neutralOrganizer);
       this.organizers.sort(function(a, b){

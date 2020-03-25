@@ -23,16 +23,16 @@ export class EventShowComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(queryParams => {
       this.id = queryParams.get("id");
-      this.organizerName = queryParams.get("organizer");
-      console.log(this.organizerName);
+      console.log(this.id);
       this.eventService.getEvent(this.id).subscribe((e) => {
+        console.log(e);
         this.event = e[0];
         console.log(this.event);
         this.eventService.getCategory(this.event.category).subscribe((c) => {
           console.log(c);
           this.category = c[0];
         });
-        this.eventService.getOrganizer(this.event.category).subscribe((o) => {
+        this.eventService.getOrganizer(this.event.organizer).subscribe((o) => {
           console.log(o);
           this.organizerName = o[0].name;
         });
