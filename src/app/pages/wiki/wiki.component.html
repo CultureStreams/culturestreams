@@ -1,9 +1,9 @@
+
 <h2>Kulturkanäle</h2>
 
 <mat-card class="channel-container" *ngFor="let channel of channels">
-<a href="{{channel.link}}">
+<a href="{{channel.link}}" target="_blank">
     <mat-card-title>{{channel.name}}</mat-card-title>
     <mat-card-subtitle *ngIf="channel.organizerName">by {{channel.organizerName}}</mat-card-subtitle>
 </a>
 </mat-card>
-
