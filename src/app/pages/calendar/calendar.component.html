@@ -10,37 +10,38 @@
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field-->
 
-
-        <mat-form-field>
-            <mat-label>Veranstalter:In</mat-label>
-            <mat-select [(ngModel)]="selectedOrganizerId">
-              <mat-option *ngFor="let organizer of organizers" value="{{organizer.id}}">{{organizer.name}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          
-          <!--form class="example-form">
-            <mat-form-field class="example-full-width">
-              <input type="text"
-                     placeholder="Pick one"
-                     aria-label="Number"
-                     matInput
-                     [formControl]="myControl"
-                     [matAutocomplete]="auto">
-              <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let organizer of organizers | async" [value]="organizer.name">
-                  {{organizer.name}}
-                </mat-option>
-              </mat-autocomplete>
-            </mat-form-field>
-          </form-->
-          
           <mat-form-field>
             <mat-label>Kategorie</mat-label>
             <mat-select [(ngModel)]="selectedCategoryId">
               <!--mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option-->
-              <mat-option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</mat-option>
+              <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-option>
             </mat-select>
           </mat-form-field>
+          
+          <mat-form-field>
+              <mat-label>Veranstalter:In</mat-label>
+              <mat-select [(ngModel)]="selectedOrganizerId">
+                <mat-option *ngFor="let organizer of organizers" [value]="organizer.id">{{organizer.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!--form class="example-form">
+              <mat-form-field class="example-full-width">
+                <input type="text"
+                       placeholder="Pick one"
+                       aria-label="Number"
+                       matInput
+                       [formControl]="myControl"
+                       [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let organizer of organizers | async" [value]="organizer.name">
+                    {{organizer.name}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </form-->
+
+
           <button mat-button class="filterButton" (click)="getFilteredEvents()">filtern</button>
     </div>
 
@@ -58,5 +59,3 @@
         </mat-card>
     </div>
 </div>
-
-
