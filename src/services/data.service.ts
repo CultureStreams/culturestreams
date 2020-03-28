@@ -21,6 +21,7 @@ export class DataStore {
   public platforms: OrgaPlatform[];
   public organizers: Organizer[] = [];
   protected api = environment.server;
+  protected token  = environment.authorization;
   public generalEvents: OrgaEvent[];
 
   constructor(private http: HttpClient,
@@ -41,7 +42,7 @@ export class DataStore {
    */
   public getCategories (): Observable<Category[]> {
     console.log('getCategories');
-    let res = this.http.get<Category[]>(this.api + 'categories/?format=json', {headers: new HttpHeaders().set('Authorization', 'Token e0b6473b126123ee38b78317d919561952c4f3e7')});
+    let res = this.http.get<Category[]>(this.api + 'categories/?format=json', {headers: new HttpHeaders().set('Authorization', this.token)});
     return res;
   }
 
@@ -52,7 +53,7 @@ export class DataStore {
    * no params needed
    */
   public getSubCategories (): Observable<Subcategory[]> {
-    let res = this.http.get<Subcategory[]>(this.api + 'subcategories/?format=json', {headers: new HttpHeaders().set('Authorization', 'Token e0b6473b126123ee38b78317d919561952c4f3e7')});
+    let res = this.http.get<Subcategory[]>(this.api + 'subcategories/?format=json', {headers: new HttpHeaders().set('Authorization', this.token)});
     return res;
   }
 
@@ -62,7 +63,7 @@ export class DataStore {
    * no params needed
    */
   public getPlatforms (): Observable<OrgaPlatform[]> {
-    let res = this.http.get<OrgaPlatform[]>(this.api + 'plattforms/?format=json', {headers: new HttpHeaders().set('Authorization', 'Token e0b6473b126123ee38b78317d919561952c4f3e7')});
+    let res = this.http.get<OrgaPlatform[]>(this.api + 'plattforms/?format=json', {headers: new HttpHeaders().set('Authorization', this.token)});
     return res;
   }
 
@@ -72,7 +73,7 @@ export class DataStore {
    * no params needed
    */
   public getOrganizers () : Observable<Organizer[]> {
-    let res = this.http.get<Organizer[]>(this.api + 'organizers/?format=json', {headers: new HttpHeaders().set('Authorization', 'Token e0b6473b126123ee38b78317d919561952c4f3e7')});
+    let res = this.http.get<Organizer[]>(this.api + 'organizers/?format=json', {headers: new HttpHeaders().set('Authorization', this.token)});
     return res;
   }
 
