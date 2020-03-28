@@ -21,39 +21,39 @@ export class CalendarComponent implements OnInit {
 
   myControl = new FormControl();
   public events: OrgaEvent[] = [];
-  public week: Date[] = new Array<Date>(); 
+  public week: Date[] = new Array<Date>();
   private date: Date = new Date();
   filteredOptions: Observable<Organizer[]>;
 
   protected organizers: Organizer[] = [];
-  protected categories: Category[] = []; 
+  protected categories: Category[] = [];
 
   public isLoaded = false;
 
   protected selectedOrganizerId: number = 0;
   protected selectedCategoryId: number = 0;
-  
+
   private filterDate: Date;
   private filterCategory;
   private filterHostName;
 
   constructor(protected router: Router,
     protected eventService: EventService,
-    protected dataStore: DataStore) { 
+    protected dataStore: DataStore) {
     this.date = new Date();
     this.dataStore.getOrganizers().subscribe((o) => {
       this.organizers = o;
       let neutralOrganizer : Organizer = new Organizer();
-      neutralOrganizer. name = '- alle Veranstalter:innen -';
+      neutralOrganizer.name = 'alle Veranstalter:innen';
       neutralOrganizer.id = 0;
       this.organizers.push(neutralOrganizer);
       this.organizers.sort(function(a, b){
         var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
-        if (nameA < nameB) 
-            return -1 
+        if (nameA < nameB)
+            return -1
         if (nameA > nameB)
             return 1
-        return 0; 
+        return 0;
       })
     })
 
@@ -65,13 +65,13 @@ export class CalendarComponent implements OnInit {
       this.categories.push(neutralCategory);
       this.categories.sort(function(a, b){
         var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
-        if (nameA < nameB) 
-            return -1 
+        if (nameA < nameB)
+            return -1
         if (nameA > nameB)
             return 1
-        return 0; 
+        return 0;
     })
-      //this.getEvents();
+      this.getFilteredEvents();
     })
   }
 
@@ -159,5 +159,5 @@ export class CalendarComponent implements OnInit {
       day6.setDate(day.getDate()+6);
       this.week.push(day6);
     }
-  
+
 }
