@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import categoriesJson from '../dummy/categories.json';
 import {environment} from '../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category } from 'src/interfaces/category';
 import { Platform } from '@angular/cdk/platform';
@@ -41,7 +41,7 @@ export class DataStore {
    */
   public getCategories (): Observable<Category[]> {
     console.log('getCategories');
-    let res = this.http.get<Category[]>(this.api + 'categories/?format=json');
+    let res = this.http.get<Category[]>(this.api + 'categories/?format=json', {headers: new HttpHeaders().set('Authorization', 'Token e0b6473b126123ee38b78317d919561952c4f3e7')});
     return res;
   }
 
@@ -52,7 +52,7 @@ export class DataStore {
    * no params needed
    */
   public getSubCategories (): Observable<Subcategory[]> {
-    let res = this.http.get<Subcategory[]>(this.api + 'subcategories/?format=json');
+    let res = this.http.get<Subcategory[]>(this.api + 'subcategories/?format=json', {headers: new HttpHeaders().set('Authorization', 'Token e0b6473b126123ee38b78317d919561952c4f3e7')});
     return res;
   }
 
@@ -62,7 +62,7 @@ export class DataStore {
    * no params needed
    */
   public getPlatforms (): Observable<OrgaPlatform[]> {
-    let res = this.http.get<OrgaPlatform[]>(this.api + 'plattforms/?format=json');
+    let res = this.http.get<OrgaPlatform[]>(this.api + 'plattforms/?format=json', {headers: new HttpHeaders().set('Authorization', 'Token e0b6473b126123ee38b78317d919561952c4f3e7')});
     return res;
   }
 
@@ -72,7 +72,7 @@ export class DataStore {
    * no params needed
    */
   public getOrganizers () : Observable<Organizer[]> {
-    let res = this.http.get<Organizer[]>(this.api + 'organizers/?format=json');
+    let res = this.http.get<Organizer[]>(this.api + 'organizers/?format=json', {headers: new HttpHeaders().set('Authorization', 'Token e0b6473b126123ee38b78317d919561952c4f3e7')});
     return res;
   }
 
