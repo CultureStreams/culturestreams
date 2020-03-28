@@ -35,21 +35,17 @@ public addOrganizer(organizerName: string) : Observable<Organizer> {
   organizer.name = organizerName;
 
   let res = this.http.post<Organizer>(this.api + 'organizers/?format=json', organizer);
-  console.log(res);
   return res;
 }
 
 public getEvent(eventId: number) : Observable<OrgaEvent> {
-  console.log(eventId);
   let res = this.http.get<OrgaEvent>(this.api + 'events/?id=' + eventId);
-  console.log(res);
   return res;
 }
 
-public getEventsByFilterParams(date : Date, organizerId: number = 0, categoryId: number = 0) : Observable<OrgaEvent[]> {
+public getEventsByFilterParams(organizerId: number = 0, categoryId: number = 0) : Observable<OrgaEvent[]> {
 
     //console.log(date.toJSON());
-    console.log(organizerId);
     let req = this.api + 'events/?';//?startDate=' + date.toJSON(); 
     if (organizerId != 0) {
       req = req + 'organizer=' + organizerId;
@@ -60,21 +56,17 @@ public getEventsByFilterParams(date : Date, organizerId: number = 0, categoryId:
     if (categoryId == 0 && organizerId == 0) {
       req = req + 'format=json';
     }
-    console.log(req);
     let res = this.http.get<OrgaEvent[]>(req);
-    console.log(res);
     return res;
 }
 
 public getCategory(categoryId: number) : Observable<Category>{
   let res = this.http.get<Category>(this.api + 'categories/?id=' + categoryId);
-  console.log(res);
   return res;
 }
 
 public getOrganizer(organizerId: number) : Observable<Organizer>{
   let res = this.http.get<Organizer>(this.api + 'organizers/?id=' + organizerId);
-  console.log(res);
   return res;
 }
 

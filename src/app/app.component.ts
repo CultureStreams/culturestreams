@@ -13,10 +13,14 @@ import { DataStore } from 'src/services/data.service';
 export class AppComponent implements OnInit{
   title = 'culture-streaming-app';
 
-  constructor(protected dataStore:DataStore) { }
+  constructor(protected dataStore:DataStore) { 
+    console.log('init');
+    this.dataStore.loadData();
+  }
 
   ngOnInit() {
     this.dataStore.loadData();
     //console.log('load');
   }
+  
 }

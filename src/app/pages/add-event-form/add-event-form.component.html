@@ -68,12 +68,10 @@
     </mat-form-field>
     <br/>
     <br/>
-    <!--mat-form-field class="half-width">
-        <mat-label>Zugriffs-Passwort</mat-label>
-        <input (keyup)="setPassword($event)" matInput>
-  </mat-form-field>
-  <mat-icon matTooltip="Um den Eintrag später noch einmal bearbeiten zu können, wählen Sie hier bitte ein Passwort.">info</mat-icon--> 
-  
+
+    <div *ngIf="error" class="error">
+      Bitte fülle alle Angaben aus.
+    </div>
 
   <button mat-button class="submitButton" (click)="submit()">Eintrag anlegen</button>
     

@@ -16,13 +16,9 @@ export class EventItemComponent implements OnInit {
 
   constructor( protected dataStore: DataStore) {
     this.date = new Date();
-    this.dataStore.getOrganizers().subscribe((o) => {
-      this.organizers = o;
-    })
    }
 
   ngOnInit() {
-    console.log(this.event);
   }
 
 }

@@ -33,3 +33,9 @@ mat-form-field {
 mat-icon {
     margin: -15px;
 }
+
+.error {
+    background-color: #ffdddd;
+    display: inline-block;
+    padding: 20px;
+}

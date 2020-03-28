@@ -18,6 +18,7 @@
             </mat-select>
           </mat-form-field>
           
+          
           <!--form class="example-form">
             <mat-form-field class="example-full-width">
               <input type="text"
@@ -46,15 +47,16 @@
 
 
 </div>
-<div class="calendar-container" *ngIf="events">
+<div class="calendar-container" *ngIf="events.length">
     <div *ngFor="let day of week">
         <mat-card class="date">
             <mat-card-title>{{day | date}}</mat-card-title>
-            <div *ngFor="let event of events" >
-                <div *ngIf="day.getDate() == event.parsedDate.getDate()">
-                    <app-event-item [event]="event" (click)="navigateToEvent(event)"></app-event-item>
-                </div>
-            </div>
+              <div *ngFor="let event of events" >
+                  <div *ngIf="day.getDate() == event.parsedDate.getDate()">
+                      <app-event-item [event]="event" (click)="navigateToEvent(event)"></app-event-item>
+                  </div>
+              </div>
+            
         </mat-card>
     </div>
 </div>

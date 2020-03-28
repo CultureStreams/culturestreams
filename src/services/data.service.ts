@@ -9,6 +9,8 @@ import platformsJson from '../dummy/platforms.json';
 import { Subcategory } from 'src/interfaces/subcategory';
 import { Organizer } from 'src/interfaces/host';
 import { OrgaPlatform } from 'src/interfaces/orga-platform';
+import { EventService } from './event.service';
+import { OrgaEvent } from 'src/interfaces/event';
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +19,18 @@ export class DataStore {
 
   public categories: Category[];
   public platforms: OrgaPlatform[];
+  public organizers: Organizer[] = [];
   protected api = environment.server;
+  public generalEvents: OrgaEvent[];
 
-  constructor(private http: HttpClient,) { }
+  constructor(private http: HttpClient,
+    protected eventService: EventService) { }
 
   /**
    * load all static Data
    */
   public loadData(){
+    this.getOrganizers().subscribe((o) => this.organizers = o);
     this.getCategories().subscribe((c) => this.categories = c);
     this.getPlatforms().subscribe((p) => this.platforms = p);
   }
@@ -36,7 +42,6 @@ export class DataStore {
   public getCategories (): Observable<Category[]> {
     console.log('getCategories');
     let res = this.http.get<Category[]>(this.api + 'categories/?format=json');
-    console.log(res);
     return res;
   }
 
@@ -48,7 +53,6 @@ export class DataStore {
    */
   public getSubCategories (): Observable<Subcategory[]> {
     let res = this.http.get<Subcategory[]>(this.api + 'subcategories/?format=json');
-    console.log(res);
     return res;
   }
 
@@ -59,7 +63,6 @@ export class DataStore {
    */
   public getPlatforms (): Observable<OrgaPlatform[]> {
     let res = this.http.get<OrgaPlatform[]>(this.api + 'plattforms/?format=json');
-    console.log(res);
     return res;
   }
 

@@ -6,6 +6,7 @@ import { DataStore } from 'src/services/data.service';
 import { Category } from 'src/interfaces/category';
 import { Subcategory } from 'src/interfaces/subcategory';
 import { Organizer } from 'src/interfaces/host';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-event-form',
@@ -23,12 +24,16 @@ export class AddEventFormComponent implements OnInit {
   protected date: Date = new Date();
   protected organizer: Organizer = new Organizer();
 
+  protected error = false;
+
 
   categoryControl = new FormControl('category');
   fontSizeControl = new FormControl(16, Validators.min(10));
 
-  constructor(protected eventService : EventService,
-              protected dataStore : DataStore) {
+  constructor(
+    protected router: Router,
+    protected eventService : EventService,
+    protected dataStore : DataStore) {
 
   }
 
@@ -87,16 +92,17 @@ export class AddEventFormComponent implements OnInit {
 
   protected submit(){
 
-    if (this.startTime && this.endTime) {
+    if (this.startTime && this.endTime && this.event.name && this.organizer.name && this.event.description && this.event.link) {
       this.parseStartAndEnd();
       this.event.subCategory = this.event.category;
       console.log(this.event);
       this.eventService.addOrganizer(this.organizer.name).subscribe((organizer) => {
         this.event.organizer = organizer.id;
-        this.eventService.addEvent(this.event).subscribe(c => console.log(c));
+        this.eventService.addEvent(this.event).subscribe(c => this.router.navigate(['/event', c.id]));
       });
+
     } else {
-      console.log('error');
+      this.error = true;
     }
   }
 
