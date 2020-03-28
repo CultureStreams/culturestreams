@@ -1,29 +1,31 @@
 
 <div class="container">
-    <div class="headlinecul">Culture Streams</div>
-    <img class="logo-image" src="../../../assets/logo.jpg"/>
-    <br/>
-    <h1>Stream-Veranstaltungs-Datenbank</h1>
-    <div class="explanation-text">
-        culturestreams.org bringt Kunst und Künstler:innen live in eure Wohnzimmer! Theater und Oper, Ballett und Streetdance, Orchester, Band und Musiker, Poetry-Slam und Lesung – die Plattform versammelt alle Livestream-Events an einem Ort. Die Auswahl ist riesig!
-        
-    </div>
-    <button mat-button routerLink="/calendar" routerLinkActive="active">zum Veranstaltungskalender</button>
 
-    <div class="headlinecul">#wirvsvirushack</div>
-    <div class="explanation-text">
-        Dieses Projekt nimmt an dem Hackaton #WirVsVirus teil!
+  <div layout="column">
+    <div flex>
+      <h1 class="invisible">Culture Streams</h1>
+      <h2 class="invisible">Die Veranstaltungsdatenbank für Kulturstreaming</h2>
     </div>
-
-    <img class="virusimage" src="../../../assets/Logo_Projekt.png"/>
-    
+    <div flex>
+      <img class="logo-image" src="../../../assets/logo.jpg"/>
+    </div>
+    <div flex class="explanation-text">
+          culturestreams.org bringt Kunst und Künstler:innen live in eure Wohnzimmer! Theater und Oper, Ballett und Streetdance, Orchester, Band und Musiker, Poetry-Slam und Lesung – die Plattform versammelt alle Livestream-Events an einem Ort. Die Auswahl ist riesig!
+    </div>
+    <div flex>
+          <button mat-button routerLink="/calendar" routerLinkActive="active">zum Veranstaltungskalender</button>
+    </div>
+    <div flex>
+          <div class="headlinecul">#wirvsvirushack</div>
+          <div class="explanation-text">
+              Dieses Projekt nimmt am Hackaton <a href="https://wirvsvirushackathon.org/" target="_blank" rel="noopener">#WirVsVirus</a> teil!
+          </div>
+          <img class="virusimage" src="../../../assets/Logo_Projekt.png"/>
+    </div>
+  </div>
 </div>
     <!--div class="container">
         <app-category-preview [category]="'Sport'" [image]="'../../../assets/Wohnzimmerkonzert.png'"></app-category-preview>
         <app-category-preview [category]="'Musik'" [image]="'../../../assets/Wohnzimmerkonzert.png'"></app-category-preview>
         <app-category-preview [category]="'Rundgang'" [image]="'../../../assets/Wohnzimmerkonzert.png'"></app-category-preview>
     </div-->
-
-
-
- 

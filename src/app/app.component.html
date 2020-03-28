@@ -8,8 +8,6 @@
     <button mat-button routerLink="/wiki" routerLinkActive="active">Kulturkanäle</button>
     <button mat-button routerLink="/about" routerLinkActive="active">About Us</button>
     <button mat-button routerLink="/contact" routerLinkActive="active">Kontakt</button>
-    <a href="../assets/Impressum.pdf" download><button mat-button>Impressum</button></a>
-    <a href="../assets/Datenschutz.pdf" download><button mat-button routerLink="/datenschutz" routerLinkActive="active">Datenschutz</button></a>
   </div>
   <button mat-button class="add-button" routerLink="/add-event" routerLinkActive="active">Event hinzufügen</button>
 </mat-toolbar>
@@ -18,7 +16,12 @@
    <div class="ribbon"><span>Beta Version</span></div>
 </div>
 
-<router-outlet></router-outlet>
-
+  <router-outlet></router-outlet>
 
 <div></div>
+<mat-toolbar>
+  <div class="tool-container">
+    <a href="../assets/Impressum.pdf" download><button mat-button>Impressum</button></a>
+    <a href="../assets/Datenschutz.pdf" download><button mat-button routerLink="/datenschutz" routerLinkActive="active">Datenschutz</button></a>
+  </div>
+</mat-toolbar>

@@ -10,11 +10,13 @@ h2 {
     z-index: 10;
 }
 
+
 mat-toolbar {
     font-family: 'Courier New'!important;
     background-color:white !important;
     color: black !important;
 }
+
 
 button {
     font-family: 'Courier New'!important;
@@ -29,3 +31,10 @@ mat-form-field {
     font-family: 'Courier New'!important;
 }
 
+.mat-button, .mat-fab, .mat-flat-button, .mat-icon-button, .mat-mini-fab, .mat-raised-button, .mat-stroked-button {
+    font-size: 1em;
+}
+
+.invisible{
+  display: none;
+}
