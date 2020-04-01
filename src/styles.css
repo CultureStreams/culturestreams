@@ -3,6 +3,12 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Courier New', Courier, monospace, "Helvetica Neue", sans-serif; }
 
+@font-face {
+  font-family: 'sueellen';
+  src: url('fonts/SueEllenFrancisco-Regular.ttf') format("truetype");
+}
+
+
 h2 {
     margin: 30px;
     font-size: 2.5em;
@@ -15,6 +21,12 @@ mat-toolbar {
     font-family: 'Courier New'!important;
     background-color:white !important;
     color: black !important;
+}
+
+.logo-font {
+  font-family: 'sueellen'!important;
+  font-size: 1em;
+  text-transform: uppercase;
 }
 
 
@@ -37,4 +49,7 @@ mat-form-field {
 
 .invisible{
   display: none;
+}
+.spacer {
+  flex: 1 1 auto;
 }

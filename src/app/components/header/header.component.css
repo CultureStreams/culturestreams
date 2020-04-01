@@ -1,0 +1,105 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.nav-items {
+    text-align: center;
+    width: 100%;
+}
+.mobile-nav-items {
+    text-align: center;
+    width: 100%;
+}
+
+.hidden {
+    display : none;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+button:hover {
+    background-color: red;
+    color: white;
+}
+
+button.homeButton:hover {
+    background-color: white;
+    color: white;
+}
+
+.homeButton {
+    background-color: white;
+    max-height: 100%;
+    vertical-align: center;
+}
+
+/* RIBBON */
+
+/* .spacer-ribbon {
+  flex: 1 1 auto;
+} */
+
+.fixed {
+  /* display: none; */
+  position: fixed;
+  z-index: 100000;
+  width: 100%;
+}
+
+.ribbon {
+  position: absolute;
+  right: -95px;
+  top: -10px;
+  z-index: 1000;
+  overflow: hidden;
+  width: 310px;
+  height: 310px;
+  text-align: right;
+  pointer-events: none;
+}
+.ribbon span {
+  font-size: 20px;
+  font-weight: bold;
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 40px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 400px;
+  display: block;
+  background: linear-gradient(#000000 0%, #000000 100%);
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 0.85);
+  position: absolute;
+  top: 50px; left: -45px;
+}
+.ribbon span::before {
+  content: "";
+  position: absolute; left: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid #000000;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #000000;
+}
+.ribbon span::after {
+  content: "";
+  position: absolute; right: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-right: 3px solid #000000;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #000000;
+}

@@ -37,6 +37,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CategoryPreviewComponent } from './pages/home/category-preview/category-preview.component';
 import { ArtistSectionComponent } from './pages/artist-section/artist-section.component';
 import { ContanctComponent } from './pages/contanct/contanct.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { IconLogoComponent } from './components/icons/icon-logo/icon-logo.component';
+import { HeaderComponent } from './components/header/header.component';
+import { IconLogoOnlyComponent } from './components/icons/icon-logo-only/icon-logo-only.component';
 registerLocaleData(localeDe, 'de-DE');
 
 const appRoutes: Routes = [
@@ -65,7 +69,10 @@ const appRoutes: Routes = [
     EventItemComponent,
     CategoryPreviewComponent,
     ArtistSectionComponent,
-    ContanctComponent
+    ContanctComponent,
+    IconLogoComponent,
+    HeaderComponent,
+    IconLogoOnlyComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +100,8 @@ const appRoutes: Routes = [
     IgxTimePickerModule,
     NgxMaterialTimepickerModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true } // <-- debugging purposes only
-    )
+    ),
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
