@@ -4,33 +4,31 @@
     <img class="event-img" src="../../../../assets/sofaherz.jpeg">
     <div class="event-description-container">
         <div class="property-item">
-            <mat-label class="event-property">Veranstalter:in:</mat-label> 
+            <mat-label class="event-property">Veranstalter:in:</mat-label>
             <mat-label class="event-attribute" *ngIf="event">{{organizerName}}</mat-label>
         </div>
         <!--div class="property-item">
-            <mat-label class="event-property">Location in Nicht-Kriesen-Zeiten:</mat-label> 
+            <mat-label class="event-property">Location in Nicht-Kriesen-Zeiten:</mat-label>
             <mat-label class="event-attribute">{{event.host.location}}</mat-label>
         </div-->
         <div class="property-item">
-            <mat-label class="event-property">Beginn:</mat-label> 
+            <mat-label class="event-property">Beginn:</mat-label>
             <mat-label class="event-attribute" *ngIf="event">{{event.start}}</mat-label>
         </div>
         <!--div class="property-item">
-            <mat-label class="event-property">Ende:</mat-label> 
+            <mat-label class="event-property">Ende:</mat-label>
             <mat-label class="event-attribute" *ngIf="event">{{event.end}}</mat-label>
         </div-->
         <div class="property-item">
-            <mat-label class="event-property">Kategorie:</mat-label> 
-            <mat-label class="event-attribute" *ngIf="category">{{category.name}}</mat-label> 
+            <mat-label class="event-property">Kategorie:</mat-label>
+            <mat-label class="event-attribute" *ngIf="category">{{category.name}}</mat-label>
         </div>
         <div class="property-item">
-            <mat-label class="event-property">Beschreibung:</mat-label> 
-            <mat-label class="event-attribute" *ngIf="event">{{event.description}}</mat-label> 
+            <mat-label class="event-property">Beschreibung:</mat-label>
+            <mat-label class="event-attribute" *ngIf="event">{{event.description}}</mat-label>
         </div>
-    
-        <a *ngIf="event" href="{{event.link}}" class="redirect-stream" mat-button>Zum Stream</a>
-    
+
+        <a *ngIf="event" href="{{event.link}}" target="_blank" rel="noopener" class="redirect-stream" mat-button>Zum Stream</a>
+
     </div>
 </div>
-   
-

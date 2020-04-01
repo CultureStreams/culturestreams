@@ -1,6 +1,6 @@
 <h2>Event hinzufügen</h2>
 <mat-card class="card">
-    
+
     <div class="example-container">
     <mat-form-field class="full-width">
       <mat-label>Titel</mat-label>
@@ -43,7 +43,7 @@
     </mat-form-field>
     <br>
     <mat-form-field class="full-width">
-        <mat-label>Künstler*In</mat-label>
+        <mat-label>Veranstalter:in</mat-label>
         <input [(ngModel)]="organizer.name" matInput>
     </mat-form-field>
     <br/>
@@ -63,7 +63,7 @@
     </mat-form-field>
     <br/>
     <mat-form-field class="full-width">
-          <mat-label>Stream-Link</mat-label>
+          <mat-label>Stream-Link (inkl. http://)</mat-label>
           <input (keyup)="setLink($event)" matInput>
     </mat-form-field>
     <br/>
@@ -74,7 +74,7 @@
     </div>
 
   <button mat-button class="submitButton" (click)="submit()">Eintrag anlegen</button>
-    
+
   </div>
 
 </mat-card>

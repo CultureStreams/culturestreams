@@ -23,3 +23,11 @@
 .virusimage {
     width: 70%;
 }
+.partner-card {
+  max-width: 200px;
+}
+
+.mat-card-image {
+      margin: 0;
+      height: 100%;
+    }
