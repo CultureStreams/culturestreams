@@ -1,13 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Courier New', Courier, monospace, "Helvetica Neue", sans-serif; }
-
 @font-face {
   font-family: 'sueellen';
-  src: url('fonts/SueEllenFrancisco-Regular.ttf') format("truetype");
+  src: url('assets/fonts/SueEllenFrancisco-Regular.ttf') format("truetype");
 }
 
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace !important }
+
+a {
+    color: black;
+}
+
+section {
+  padding-bottom: 20px;
+}
 
 h2 {
     margin: 30px;
@@ -16,6 +25,9 @@ h2 {
     z-index: 10;
 }
 
+p {
+  max-width: 800px;
+}
 
 mat-toolbar {
     font-family: 'Courier New'!important;
@@ -23,16 +35,13 @@ mat-toolbar {
     color: black !important;
 }
 
-.logo-font {
-  font-family: 'sueellen'!important;
-  font-size: 1em;
-  text-transform: uppercase;
-}
-
-
 button {
     font-family: 'Courier New'!important;
     font-weight: bolder;
+}
+button:hover {
+    background-color: red;
+    color: white;
 }
 
 mat-card {
@@ -47,9 +56,32 @@ mat-form-field {
     font-size: 1em;
 }
 
-.invisible{
-  display: none;
+.hidden {
+    display : none;
 }
+
 .spacer {
   flex: 1 1 auto;
+}
+
+.content {
+    text-align: center;
+    margin: 20px;
+    padding: 5px;
+}
+
+@media screen and (min-width: 801px) {
+  .display-text {
+    font-size: 5em;
+  }
+}
+@media screen and (max-width: 800px) {
+  .display-text {
+    font-size: 3em;
+  }
+}
+@media screen and (max-width: 500px) {
+  .display-text {
+    font-size: 2em;
+  }
 }

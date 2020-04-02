@@ -7,17 +7,17 @@ import { OrgaPlatform } from 'src/interfaces/orga-platform';
 import { Organizer } from 'src/interfaces/host';
 
 @Component({
-  selector: 'app-wiki',
-  templateUrl: './wiki.component.html',
-  styleUrls: ['./wiki.component.css']
+  selector: 'app-culture-channels',
+  templateUrl: './culture-channels.component.html',
+  styleUrls: ['./culture-channels.component.css']
 })
-export class WikiComponent implements OnInit {
+export class CultureChannelsComponent implements OnInit {
 
   protected channels: OrgaPlatform[] = [];
   protected organizers: Organizer[] = [];
 
   constructor(protected dataStore: DataStore) {
-    
+
    }
 
   ngOnInit() {

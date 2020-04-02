@@ -17,7 +17,7 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { AddEventFormComponent } from './pages/add-event-form/add-event-form.component';
 import { ImprintComponent } from './pages/imprint/imprint.component';
 import { Routes, RouterModule } from '@angular/router';
-import { WikiComponent } from './pages/wiki/wiki.component';
+import { CultureChannelsComponent } from './pages/culture-channels/culture-channels.component';
 import { HomeComponent } from './pages/home/home.component';
 import { EventShowComponent } from './pages/calendar/event-show/event-show.component';
 import { MatCardModule } from '@angular/material/card';
@@ -29,6 +29,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule } from '@angular/forms';
 import { IgxTimePickerModule } from 'igniteui-angular';
+import { FlexLayoutModule } from '@angular/flex-layout';
 //import { EventShowComponent } from './pages/calendar/event-show/event-show.component';
 
 import { registerLocaleData } from '@angular/common';
@@ -39,8 +40,9 @@ import { ArtistSectionComponent } from './pages/artist-section/artist-section.co
 import { ContanctComponent } from './pages/contanct/contanct.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { IconLogoComponent } from './components/icons/icon-logo/icon-logo.component';
-import { HeaderComponent } from './components/header/header.component';
+import { NavComponent } from './components/nav/nav.component';
 import { IconLogoOnlyComponent } from './components/icons/icon-logo-only/icon-logo-only.component';
+import { FooterComponent } from './components/footer/footer.component';
 registerLocaleData(localeDe, 'de-DE');
 
 const appRoutes: Routes = [
@@ -48,7 +50,7 @@ const appRoutes: Routes = [
   { path: 'event/:id', component: EventShowComponent },
   { path: 'calendar', component: CalendarComponent },
   { path: 'add-event', component: AddEventFormComponent },
-  { path: 'wiki', component: WikiComponent },
+  { path: 'culture-channels', component: CultureChannelsComponent },
   { path: 'home', component: HomeComponent },
   { path: 'artists', component: ArtistSectionComponent },
   { path: 'imprint', component: ImprintComponent },
@@ -64,15 +66,16 @@ const appRoutes: Routes = [
     AddEventFormComponent,
     ImprintComponent,
     HomeComponent,
-    WikiComponent,
+    CultureChannelsComponent,
     EventShowComponent,
     EventItemComponent,
     CategoryPreviewComponent,
     ArtistSectionComponent,
     ContanctComponent,
     IconLogoComponent,
-    HeaderComponent,
-    IconLogoOnlyComponent
+    NavComponent,
+    IconLogoOnlyComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -101,7 +104,8 @@ const appRoutes: Routes = [
     NgxMaterialTimepickerModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true } // <-- debugging purposes only
     ),
-    LayoutModule
+    LayoutModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

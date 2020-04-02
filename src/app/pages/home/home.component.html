@@ -1,31 +1,28 @@
+<header fxLayout="column" fxLayoutAlign=" center">
+  <icon-logo></icon-logo>
+  <h1 class="hidden">Culture Streams - Die Veranstaltungsdatenbank für Kulturstreaming</h1>
+</header>
 
-<div class="container">
+<main class="content">
+  <section fxLayout="column" fxLayoutAlign=" center">
+    <p class="explanation-text">
+      culturestreams.org bringt Kunst und Künstler:innen live in eure Wohnzimmer!
+      Theater und Oper, Ballett und Streetdance, Orchester, Band und Musiker, Poetry-Slam und Lesung –
+      die Plattform versammelt Livestream-Events an einem Ort.
+    </p>
+  </section>
 
-  <div layout="column">
-    <div flex>
-      <h1 class="invisible">Culture Streams</h1>
-      <h2 class="invisible">Die Veranstaltungsdatenbank für Kulturstreaming</h2>
-    </div>
-    <div flex>
-      <icon-logo></icon-logo>
-    </div>
-    <div flex class="explanation-text">
-          culturestreams.org bringt Kunst und Künstler:innen live in eure Wohnzimmer! Theater und Oper, Ballett und Streetdance, Orchester, Band und Musiker, Poetry-Slam und Lesung – die Plattform versammelt alle Livestream-Events an einem Ort. Die Auswahl ist riesig!
-    </div>
-    <div flex>
-          <button mat-button routerLink="/calendar" routerLinkActive="active">zum Veranstaltungskalender</button>
-    </div>
-    <div flex>
-          <div class="headlinecul">#wirvsvirushack</div>
-          <div class="explanation-text">
-              Dieses Projekt nimmt am Hackaton <a href="https://wirvsvirushackathon.org/" target="_blank" rel="noopener">#WirVsVirus</a> teil!
-          </div>
-          <img class="virusimage" src="../../../assets/Logo_Projekt.png"/>
-    </div>
-  </div>
-</div>
-    <!--div class="container">
-        <app-category-preview [category]="'Sport'" [image]="'../../../assets/Wohnzimmerkonzert.png'"></app-category-preview>
-        <app-category-preview [category]="'Musik'" [image]="'../../../assets/Wohnzimmerkonzert.png'"></app-category-preview>
-        <app-category-preview [category]="'Rundgang'" [image]="'../../../assets/Wohnzimmerkonzert.png'"></app-category-preview>
-    </div-->
+  <section class="events" fxLayout="column" fxLayoutAlign=" center" >
+    <button mat-button routerLink="/calendar" routerLinkActive="active">zum Veranstaltungskalender</button>
+  </section>
+
+  <section class="home-footnote" fxLayout="column" fxLayoutAlign=" center" >
+    <div class="display-text">#wirvsvirushack</div>
+    <p class="explanation-text">
+      Dieses Projekt ist beim Hackaton
+      <a href="https://wirvsvirushackathon.org/" target="_blank" rel="noopener">#WirVsVirus</a>
+      entstanden!
+    </p>
+    <img class="home-banner-img" src="../../../assets/img/banner-wirvsvirus-reg.jpg"/>
+  </section>
+</main>
