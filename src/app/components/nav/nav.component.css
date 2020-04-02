@@ -30,7 +30,7 @@
 }
 
 button.homeButton:hover {
-    background-color: white;
+    background-color: transparent !important;
     color: white;
 }
 
@@ -44,6 +44,13 @@ button.homeButton:hover {
     white-space: pre-wrap !important;
     line-height: 1.4;
 }
+
+.mat-button-focus-overlay {
+  background-color: white !important;
+}
+
+.mat-button-focus-overlay{background:white}
+
 
 /* RIBBON */
 .spacer-ribbon {

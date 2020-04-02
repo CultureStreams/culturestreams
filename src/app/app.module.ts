@@ -28,7 +28,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule } from '@angular/forms';
-import { IgxTimePickerModule } from 'igniteui-angular';
 import { FlexLayoutModule } from '@angular/flex-layout';
 //import { EventShowComponent } from './pages/calendar/event-show/event-show.component';
 
@@ -100,7 +99,6 @@ const appRoutes: Routes = [
     MatTooltipModule,
     ReactiveFormsModule,
     FormsModule,
-    IgxTimePickerModule,
     NgxMaterialTimepickerModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true } // <-- debugging purposes only
     ),

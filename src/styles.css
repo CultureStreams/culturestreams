@@ -36,6 +36,7 @@ mat-toolbar {
 }
 
 button {
+  color: black;
     font-family: 'Courier New'!important;
     font-weight: bolder;
 }
@@ -84,4 +85,9 @@ mat-form-field {
   .display-text {
     font-size: 2em;
   }
+}
+
+.mat-button-focus-overlay {
+  background: white !important;
+  background-color: white !important;
 }
