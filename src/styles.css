@@ -31,6 +31,7 @@ mat-toolbar {
 
 
 button {
+  color: black;
     font-family: 'Courier New'!important;
     font-weight: bolder;
 }
@@ -53,3 +54,9 @@ mat-form-field {
 .spacer {
   flex: 1 1 auto;
 }
+
+.mat-button-focus-overlay {
+  background: white !important;
+  background-color: white !important;
+}
+
