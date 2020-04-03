@@ -1,14 +1,22 @@
 h1 {
   display: hidden;
 }
-p.property-name {
-  font-weight: bold;
+
+.event-date, .event-time, .event-description {
+  padding: 5px;
 }
 
-span.property-value {
-  font-weight: normal;
+.event-description{
+  padding-bottom: 15px;
 }
 
+.event-category {
+  padding: 15px;
+}
+
+.mat-card-image {
+    margin: 0;
+}
 
 /* .event-img {
     width:600px;
@@ -30,10 +38,10 @@ span.property-value {
     margin:30px;
 }
 
-.redirect-stream {
+/* .redirect-stream {
     background-color: black;
     color: white;
-}
+} */
 
 .container {
     text-align: center;

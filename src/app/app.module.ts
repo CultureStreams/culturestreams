@@ -33,6 +33,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
+import { LOCALE_ID } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoryPreviewComponent } from './pages/home/category-preview/category-preview.component';
 import { ArtistSectionComponent } from './pages/artist-section/artist-section.component';
@@ -42,7 +43,7 @@ import { IconLogoComponent } from './components/icons/icon-logo/icon-logo.compon
 import { NavComponent } from './components/nav/nav.component';
 import { IconLogoOnlyComponent } from './components/icons/icon-logo-only/icon-logo-only.component';
 import { FooterComponent } from './components/footer/footer.component';
-registerLocaleData(localeDe, 'de-DE');
+registerLocaleData(localeDe, 'de');
 
 const appRoutes: Routes = [
   { path: 'about', component: AboutUsComponent },
@@ -105,7 +106,9 @@ const appRoutes: Routes = [
     LayoutModule,
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'de' },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

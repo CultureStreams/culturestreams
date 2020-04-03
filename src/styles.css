@@ -32,6 +32,20 @@ a {
     color: black;
 }
 
+a.mat-flat-button {
+  font-size: 1.1em;
+  font-family: 'Courier New', Courier, monospace !important;
+  color: white;
+  background: red;
+}
+
+a.mat-flat-button:hover {
+  /* font-size: 1em;
+  font-family: 'Courier New', Courier, monospace !important; */
+  color: red;
+  background: white;
+}
+
 section {
   padding-bottom: 20px;
 }
@@ -75,6 +89,11 @@ mat-form-field {
     font-size: 1em;
 }
 
+.mat-button-focus-overlay {
+  background: white !important;
+  background-color: white !important;
+}
+
 .hidden {
     display : none;
 }
@@ -103,9 +122,4 @@ mat-form-field {
   .display-text {
     font-size: 2em;
   }
-}
-
-.mat-button-focus-overlay {
-  background: white !important;
-  background-color: white !important;
 }
