@@ -1,4 +1,63 @@
-<div class="container">
+<h1 class="event-title" itemprop="name">Testevent</h1>
+<main class="content" >
+  <mat-card class="example-card">
+    <mat-card-header>
+      <!-- <div mat-card-avatar class="example-header-image"></div> -->
+      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="../../../../assets/sofaherz.jpeg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+
+</main>
+
+
+
+
+<!-- <article fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center stretch" itemscope itemtype="http://schema.org/Event">
+  <h1 *ngIf="event" class="event-title md-display-1" itemprop="name">{{event.name}}</h1>
+  <section>
+    <mat-list>
+      <mat-list-item>
+          <p class="property-name">Veranstalter:in
+          <span *ngIf="event" class="property-value" itemprop="organizer">{{organizerName}}</span></p>
+      </mat-list-item>
+      <mat-list-item>
+          <p class="property-name">Kategorie
+          <span *ngIf="category" class="property-value" itemprop="subjectOf">{{category.name}}</span></p>
+      </mat-list-item>
+      <mat-list-item>
+          <p class="property-name">Beschreibung
+          <span *ngIf="event" class="property-value" itemprop="description">{{event.description}}</span></p>
+      </mat-list-item>
+      <mat-list-item>
+          <p class="property-name">Beginn
+          <span *ngIf="event" class="property-value" itemprop="startDate">{{event.start}}</span></p>
+      </mat-list-item>
+      <mat-list-item>
+          <p class="property-name">Stream
+          <span *ngIf="event" class="property-value" itemprop="location"><a *ngIf="event" href="{{event.link}}" target="_blank" rel="noopener" class="redirect-stream" mat-button>zum Stream</a></span></p>
+      </mat-list-item>
+    </mat-list>
+  </section>
+  <section>
+    <img class="event-img" src="../../../../assets/sofaherz.jpeg">
+  </section>
+</article>
+</main> -->
+
+<!-- <div class="container">
     <h2 *ngIf="event">{{event.name}}</h2>
 
     <img class="event-img" src="../../../../assets/sofaherz.jpeg">
@@ -7,18 +66,18 @@
             <mat-label class="event-property">Veranstalter:in:</mat-label>
             <mat-label class="event-attribute" *ngIf="event">{{organizerName}}</mat-label>
         </div>
-        <!--div class="property-item">
+        div class="property-item">
             <mat-label class="event-property">Location in Nicht-Kriesen-Zeiten:</mat-label>
             <mat-label class="event-attribute">{{event.host.location}}</mat-label>
-        </div-->
+        </div
         <div class="property-item">
             <mat-label class="event-property">Beginn:</mat-label>
             <mat-label class="event-attribute" *ngIf="event">{{event.start}}</mat-label>
         </div>
-        <!--div class="property-item">
+        div class="property-item">
             <mat-label class="event-property">Ende:</mat-label>
             <mat-label class="event-attribute" *ngIf="event">{{event.end}}</mat-label>
-        </div-->
+        </div
         <div class="property-item">
             <mat-label class="event-property">Kategorie:</mat-label>
             <mat-label class="event-attribute" *ngIf="category">{{category.name}}</mat-label>
@@ -31,4 +90,4 @@
         <a *ngIf="event" href="{{event.link}}" target="_blank" rel="noopener" class="redirect-stream" mat-button>Zum Stream</a>
 
     </div>
-</div>
+</div> -->
