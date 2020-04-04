@@ -14,8 +14,6 @@ export class AppComponent implements OnInit{
   title = 'culture-streaming-app';
 
   constructor(protected dataStore:DataStore) { 
-    console.log('init');
-    this.dataStore.loadData();
   }
 
   ngOnInit() {

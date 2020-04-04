@@ -33,6 +33,18 @@ export class DataStore {
   public loadData(){
     this.getOrganizers().subscribe((o) => this.organizers = o);
     this.getCategories().subscribe((c) => this.categories = c);
+    let neutralCategory : Category = new Category();
+      neutralCategory.id = 0;
+      neutralCategory.name = 'alle Kategorien';
+      this.categories.push(neutralCategory);
+      this.categories.sort(function(a, b){
+        var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
+        if (nameA < nameB)
+            return -1
+        if (nameA > nameB)
+            return 1
+        return 0;
+      })
     this.getPlatforms().subscribe((p) => this.platforms = p);
   }
 
@@ -43,6 +55,7 @@ export class DataStore {
   public getCategories (): Observable<Category[]> {
     console.log('getCategories');
     let res = this.http.get<Category[]>(this.api + 'categories/?format=json', {headers: new HttpHeaders().set('Authorization', this.token)});
+    
     return res;
   }
 

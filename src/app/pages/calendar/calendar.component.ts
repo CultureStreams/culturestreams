@@ -57,27 +57,34 @@ export class CalendarComponent implements OnInit {
       })
     })
 
-    this.dataStore.getCategories().subscribe((c) => {
-      this.categories = c;
-      let neutralCategory : Category = new Category();
-      neutralCategory.id = 0;
-      neutralCategory.name = 'alle Kategorien';
-      this.categories.push(neutralCategory);
-      this.categories.sort(function(a, b){
-        var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
-        if (nameA < nameB)
-            return -1
-        if (nameA > nameB)
-            return 1
-        return 0;
-    })
+    if (this.dataStore.categories) {
+      this.categories = this.dataStore.categories;
+      console.log('schonda');
       this.getFilteredEvents();
-    })
+    } else {
+      console.log('keine');
+      this.dataStore.getCategories().subscribe((c) => {
+        this.categories = c;
+        let neutralCategory : Category = new Category();
+        neutralCategory.id = 0;
+        neutralCategory.name = 'alle Kategorien';
+        this.categories.push(neutralCategory);
+        this.categories.sort(function(a, b){
+          var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
+          if (nameA < nameB)
+              return -1
+          if (nameA > nameB)
+              return 1
+          return 0;
+        })
+        this.getFilteredEvents();
+      })
+    }
+
   }
 
   ngOnInit() {
     this.getWeek(this.date);
-    this.getEvents();
   }
 
   protected getEvents() {

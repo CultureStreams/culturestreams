@@ -21,13 +21,17 @@ export class CultureChannelsComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.dataStore.getOrganizers().subscribe((o) => this.organizers = o);
+    this.channels = this.dataStore.platforms;
+    this.organizers = this.dataStore.organizers;
+    console.log(this.dataStore);
+    console.log(this.dataStore.organizers);
+    //this.dataStore.getOrganizers().subscribe((o) => this.organizers = o);
     this.dataStore.getPlatforms().subscribe((p) => {
       this.channels = p;
       this.channels.forEach((c) => {
-        console.log(c);
         let organizer = this.organizers.find((e) => e.id == c.organizer);
         if (organizer != undefined){
+          console.log(organizer.name);
           c.organizerName = organizer.name;
         }
       })
