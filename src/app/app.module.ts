@@ -43,6 +43,8 @@ import { IconLogoComponent } from './components/icons/icon-logo/icon-logo.compon
 import { NavComponent } from './components/nav/nav.component';
 import { IconLogoOnlyComponent } from './components/icons/icon-logo-only/icon-logo-only.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { EventItemBaseComponent } from './components/events/event-item-base/event-item-base.component';
+import { EventItemDetailComponent } from './components/events/event-item-detail/event-item-detail.component';
 registerLocaleData(localeDe, 'de');
 
 const appRoutes: Routes = [
@@ -75,7 +77,9 @@ const appRoutes: Routes = [
     IconLogoComponent,
     NavComponent,
     IconLogoOnlyComponent,
-    FooterComponent
+    FooterComponent,
+    EventItemBaseComponent,
+    EventItemDetailComponent,
   ],
   imports: [
     BrowserModule,
