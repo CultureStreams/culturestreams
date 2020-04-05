@@ -96,6 +96,7 @@ export class AddEventFormComponent implements OnInit {
       this.parseStartAndEnd();
       this.event.subCategory = this.event.category;
       console.log(this.event);
+      this.event.tags = ['test'];
       this.eventService.addOrganizer(this.organizer.name).subscribe((organizer) => {
         this.event.organizer = organizer.id;
         this.eventService.addEvent(this.event).subscribe(c => this.router.navigate(['/event', c.id]));
