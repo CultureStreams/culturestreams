@@ -43,10 +43,10 @@ export class CalendarComponent implements OnInit {
     this.date = new Date();
     this.dataStore.getOrganizers().subscribe((o) => {
       this.organizers = o;
-      let neutralOrganizer : Organizer = new Organizer();
-      neutralOrganizer.name = 'alle Veranstalter:innen';
-      neutralOrganizer.id = 0;
-      this.organizers.push(neutralOrganizer);
+      // let neutralOrganizer : Organizer = new Organizer();
+      // neutralOrganizer.name = 'alle Veranstalter:innen';
+      // neutralOrganizer.id = 0;
+      // this.organizers.push(neutralOrganizer);
       this.organizers.sort(function(a, b){
         var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
         if (nameA < nameB)
@@ -65,10 +65,10 @@ export class CalendarComponent implements OnInit {
       console.log('keine');
       this.dataStore.getCategories().subscribe((c) => {
         this.categories = c;
-        let neutralCategory : Category = new Category();
-        neutralCategory.id = 0;
-        neutralCategory.name = 'alle Kategorien';
-        this.categories.push(neutralCategory);
+        // let neutralCategory : Category = new Category();
+        // neutralCategory.id = 0;
+        // neutralCategory.name = 'alle Kategorien';
+        // this.categories.push(neutralCategory);
         this.categories.sort(function(a, b){
           var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
           if (nameA < nameB)

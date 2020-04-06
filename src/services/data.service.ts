@@ -32,18 +32,18 @@ export class DataStore {
   public loadData(){
     this.getOrganizers().subscribe((o) => this.organizers = o);
     this.getCategories().subscribe((c) => this.categories = c);
-    let neutralCategory : Category = new Category();
-      neutralCategory.id = 0;
-      neutralCategory.name = 'alle Kategorien';
-      this.categories.push(neutralCategory);
-      this.categories.sort(function(a, b){
-        var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
-        if (nameA < nameB)
-            return -1
-        if (nameA > nameB)
-            return 1
-        return 0;
-      })
+  //   let neutralCategory : Category = new Category();
+  //     neutralCategory.id = 0;
+  //     neutralCategory.name = 'alle Kategorien';
+  //     this.categories.push(neutralCategory);
+      // this.categories.sort(function(a, b){
+      //   var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
+      //   if (nameA < nameB)
+      //       return -1
+      //   if (nameA > nameB)
+      //       return 1
+      //   return 0;
+      // })
     this.getChannels().subscribe((p) => this.channels = p);
   }
 
