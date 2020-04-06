@@ -1,10 +1,10 @@
 export class Organizer {
-    id: number;
+    id: number = 0;
     name: string = '';
     slug: string = '';
     website: string = null;
-    description: string = null;
-    image: string = null;
-    datePublished: Date = new Date();
+    description: string = '';
+    image: string = '';
     category: number = null;
+    datePublished: Date = new Date();
 }

@@ -9,7 +9,7 @@ import { Platform } from '@angular/cdk/platform';
 import { Organizer } from 'src/interfaces/organizer';
 import { Channel } from 'src/interfaces/channel';
 import { EventService } from './event.service';
-import { OrgaEvent } from 'src/interfaces/event';
+import { Event } from 'src/interfaces/event';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class DataStore {
   public organizers: Organizer[] = [];
   protected api = environment.server;
   protected token  = environment.authorization;
-  public generalEvents: OrgaEvent[];
+  public generalEvents: Event[];
 
   constructor(private http: HttpClient,
     protected eventService: EventService) { }

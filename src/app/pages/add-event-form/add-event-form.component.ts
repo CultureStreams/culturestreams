@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, AbstractFormGroupDirective } from '@angular/forms';
-import { OrgaEvent } from 'src/interfaces/event';
+import { Event } from 'src/interfaces/event';
 import { EventService } from 'src/services/event.service';
 import { DataStore } from 'src/services/data.service';
 import { Category } from 'src/interfaces/category';
@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class AddEventFormComponent implements OnInit {
 
-  protected event: OrgaEvent = new OrgaEvent();
+  protected event: Event = new Event();
   protected password: string;
   protected categories: Category[] = [];
   protected startTime;

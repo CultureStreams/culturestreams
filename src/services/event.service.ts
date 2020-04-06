@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { OrgaEvent } from 'src/interfaces/event';
 import event from '../dummy/event.json';
 import eventsJson from '../dummy/arrays.json';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Event } from 'src/interfaces/event';
 import {environment} from '../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpParameterCodec } from "@angular/common/http";
@@ -24,9 +24,9 @@ export class EventService {
   ) { }
 
 
-public addEvent(orgaEvent: OrgaEvent) : Observable<OrgaEvent>{
+public addEvent(event: Event) : Observable<Event>{
 
-    let res = this.http.post<OrgaEvent>(this.api + 'events/?format=json', orgaEvent, {headers: new HttpHeaders().set('Authorization', this.token)});
+    let res = this.http.post<Event>(this.api + 'events/?format=json', event, {headers: new HttpHeaders().set('Authorization', this.token)});
     return res;
 }
 
@@ -39,12 +39,12 @@ public addOrganizer(organizerName: string) : Observable<Organizer> {
   return res;
 }
 
-public getEvent(eventId: number) : Observable<OrgaEvent> {
-  let res = this.http.get<OrgaEvent>(this.api + 'events/?id=' + eventId, {headers: new HttpHeaders().set('Authorization', this.token)});
+public getEvent(eventId: number) : Observable<Event> {
+  let res = this.http.get<Event>(this.api + 'events/?id=' + eventId, {headers: new HttpHeaders().set('Authorization', this.token)});
   return res;
 }
 
-public getEventsByFilterParams(organizerId: number = 0, categoryId: number = 0) : Observable<OrgaEvent[]> {
+public getEventsByFilterParams(organizerId: number = 0, categoryId: number = 0) : Observable<Event[]> {
 
     //console.log(date.toJSON());
     let req = this.api + 'events/?';//?startDate=' + date.toJSON();
@@ -57,7 +57,7 @@ public getEventsByFilterParams(organizerId: number = 0, categoryId: number = 0) 
     if (categoryId == 0 && organizerId == 0) {
       req = req + 'format=json';
     }
-    let res = this.http.get<OrgaEvent[]>(req, {headers: new HttpHeaders().set('Authorization', this.token)});
+    let res = this.http.get<Event[]>(req, {headers: new HttpHeaders().set('Authorization', this.token)});
     return res;
 }
 
@@ -71,8 +71,8 @@ public getOrganizer(organizerId: number) : Observable<Organizer>{
   return res;
 }
 
-protected getEventsByDate(date: Date) : Observable<OrgaEvent[]> {
-  let res = this.http.get<OrgaEvent[]>(this.api + 'events/' + date +'?format=json', {headers: new HttpHeaders().set('Authorization', this.token)});
+protected getEventsByDate(date: Date) : Observable<Event[]> {
+  let res = this.http.get<Event[]>(this.api + 'events/' + date +'?format=json', {headers: new HttpHeaders().set('Authorization', this.token)});
   return res;
 }
 

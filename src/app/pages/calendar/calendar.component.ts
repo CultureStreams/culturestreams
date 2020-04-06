@@ -3,7 +3,7 @@ import eventsJson from '../../../dummy/arrays.json';
 import { Week } from 'src/interfaces/week';
 import { Router } from '@angular/router';
 import { EventService } from 'src/services/event.service';
-import { OrgaEvent } from 'src/interfaces/event';
+import { Event } from 'src/interfaces/event';
 import { DataStore } from 'src/services/data.service';
 import { Organizer } from 'src/interfaces/organizer';
 import { Category } from 'src/interfaces/category';
@@ -20,7 +20,7 @@ import {map, startWith} from 'rxjs/operators';
 export class CalendarComponent implements OnInit {
 
   myControl = new FormControl();
-  public events: OrgaEvent[] = [];
+  public events: Event[] = [];
   public week: Date[] = new Array<Date>();
   private date: Date = new Date();
   filteredOptions: Observable<Organizer[]>;

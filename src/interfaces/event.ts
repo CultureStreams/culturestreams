@@ -1,19 +1,18 @@
-import { Time } from '@angular/common';
-import { Host } from '@angular/core';
-
-export class OrgaEvent {
+export class Event {
     id: number = 0;
     name: string = '';
+    slug: string = '';
     start: Date = new Date();
     end: Date = new Date();
-    freeOfCharge: boolean = true;
-    availableLiveOnly: boolean = false;
     link: string = '';
     description: string = '';
-    image: string = '';
-    datePublished: Date = new Date();
     organizer: number = 0;
     category: number;
-    parsedDate: Date = new Date();
+    infoLink: string = '';
+    image: string = '';
+    freeOfCharge: boolean = true;
+    availableLiveOnly: boolean = false;
+    datePublished: Date = new Date();
     tags: String[];
+    parsedDate: Date = new Date();
 }

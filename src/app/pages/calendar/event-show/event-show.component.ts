@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from 'src/services/event.service';
 import { ActivatedRoute } from "@angular/router";
 import { Category } from 'src/interfaces/category';
-import { OrgaEvent } from 'src/interfaces/event';
+import { Event } from 'src/interfaces/event';
 
 
 @Component({
@@ -12,7 +12,7 @@ import { OrgaEvent } from 'src/interfaces/event';
 })
 export class EventShowComponent implements OnInit {
 
-  protected event: OrgaEvent;
+  protected event: Event;
   protected id;
   protected organizerName: string;
   protected category: Category;
@@ -37,7 +37,7 @@ export class EventShowComponent implements OnInit {
           this.organizerName = o[0].name;
         });
       });
-      
+
     })
   }
 
