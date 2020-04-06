@@ -1,0 +1,50 @@
+[
+  {
+        "id": 2,
+        "name": "Deutsche Digitale Bibliothek",
+        "slug": null,
+        "freeOfCharge": true,
+        "availableLiveOnly": true,
+        "link": "https://www.deutsche-digitale-bibliothek.de/content/journal/ausstellungen",
+        "description": "Ausstellungen erzählen Geschichten - zu großen und zu kleinen Themen, mittels unterschiedlicher Medien und Texte. Mit unseren virtuellen Ausstellungen möchten wir genau das: Geschichten erzählen, jedoch im virtuellen Raum. Hereinspaziert!",
+        "image": "https://www.deutsche-digitale-bibliothek.de/assets/logoHeaderSmall-59eac59d107607779ca2751d76e9c03c.png",
+        "organizer": 56,
+        "category": 8
+    },
+    {
+        "id": 4,
+        "name": "Digitale Angebote des Städel Museum",
+        "slug": null,
+        "freeOfCharge": true,
+        "availableLiveOnly": false,
+        "link": "https://www.staedelmuseum.de/de/digitale-angebote",
+        "description": "\"Das Städel Museum hat ein breites Spektrum digitaler Angebote entwickelt, die Sie – völlig unabhängig von Ihrem Museumsbesuch – zu Hause oder unterwegs, auf Ihrem Desktop, Tablet oder Smartphone nutzen können.\" (Posdcasts, digitale Sammlungen und mehr)",
+        "image": "",
+        "organizer": 55,
+        "category": 8
+    },
+    {
+        "id": 5,
+        "name": "SRF3 Live-Stream-Konzert-Kalender",
+        "slug": null,
+        "freeOfCharge": true,
+        "availableLiveOnly": true,
+        "link": "https://www.srf.ch/radio-srf-3/musik/live-stream-konzert-kalender-diese-bands-und-acts-streamen-direkt-in-dein-wohnzimmer",
+        "description": "Bands und Acts streamen direkt in dein Wohnzimmer",
+        "image": "",
+        "organizer": 38,
+        "category": 1
+    },
+    {
+        "id": 6,
+        "name": "Kinoflimmern",
+        "slug": "kinoflimmern",
+        "freeOfCharge": false,
+        "availableLiveOnly": true,
+        "link": "https://www.kinoflimmern.com/",
+        "description": "Das Online-Anti-Mainstream Kino",
+        "image": "",
+        "organizer": 23,
+        "category": 7
+    }
+]

@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import categoriesJson from '../dummy/categories.json';
+import channelsJson from '../dummy/channels.json';
 import {environment} from '../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category } from 'src/interfaces/category';
 import { Platform } from '@angular/cdk/platform';
-import platformsJson from '../dummy/platforms.json';
 import { Organizer } from 'src/interfaces/organizer';
-import { OrgaPlatform } from 'src/interfaces/orga-platform';
+import { Channel } from 'src/interfaces/channel';
 import { EventService } from './event.service';
 import { OrgaEvent } from 'src/interfaces/event';
 
@@ -17,7 +17,7 @@ import { OrgaEvent } from 'src/interfaces/event';
 export class DataStore {
 
   public categories: Category[];
-  public platforms: OrgaPlatform[];
+  public channels: Channels[];
   public organizers: Organizer[] = [];
   protected api = environment.server;
   protected token  = environment.authorization;
@@ -44,7 +44,7 @@ export class DataStore {
             return 1
         return 0;
       })
-    this.getPlatforms().subscribe((p) => this.platforms = p);
+    this.getChannels().subscribe((p) => this.channels = p);
   }
 
   /**
@@ -60,11 +60,11 @@ export class DataStore {
 
 
   /**
-   * load all Platforms
+   * load all Channels
    * no params needed
    */
-  public getPlatforms (): Observable<OrgaPlatform[]> {
-    let res = this.http.get<OrgaPlatform[]>(this.api + 'plattforms/?format=json', {headers: new HttpHeaders().set('Authorization', this.token)});
+  public getChannels (): Observable<Channel[]> {
+    let res = this.http.get<Channel[]>(this.api + 'channels/?format=json', {headers: new HttpHeaders().set('Authorization', this.token)});
     return res;
   }
 

@@ -1,4 +1,4 @@
-export class OrgaPlatform {
+export class Channel {
     id: number;
     name: string;
     freeOfCharge: boolean;
