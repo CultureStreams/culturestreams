@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { Category } from 'src/interfaces/category';
 import { Platform } from '@angular/cdk/platform';
 import platformsJson from '../dummy/platforms.json';
-import { Subcategory } from 'src/interfaces/subcategory';
 import { Organizer } from 'src/interfaces/host';
 import { OrgaPlatform } from 'src/interfaces/orga-platform';
 import { EventService } from './event.service';
@@ -48,25 +47,14 @@ export class DataStore {
     this.getPlatforms().subscribe((p) => this.platforms = p);
   }
 
-  /** 
+  /**
    * load all Categories
    * no params needed
    */
   public getCategories (): Observable<Category[]> {
     console.log('getCategories');
     let res = this.http.get<Category[]>(this.api + 'categories/?format=json', {headers: new HttpHeaders().set('Authorization', this.token)});
-    
-    return res;
-  }
 
-
-
-  /** 
-   * load all Categories
-   * no params needed
-   */
-  public getSubCategories (): Observable<Subcategory[]> {
-    let res = this.http.get<Subcategory[]>(this.api + 'subcategories/?format=json', {headers: new HttpHeaders().set('Authorization', this.token)});
     return res;
   }
 

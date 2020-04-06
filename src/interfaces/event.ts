@@ -14,7 +14,6 @@ export class OrgaEvent {
     datePublished: Date = new Date();
     organizer: number = 0;
     category: number;
-    subCategory: number;
     parsedDate: Date = new Date();
     tags: String[];
 }

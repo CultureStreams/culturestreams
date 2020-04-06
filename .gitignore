@@ -40,8 +40,8 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
-_tbd_*.css
-_tbd_*.html
+_tbdel_*
+_tbd_*
 
 # System Files
 .DS_Store

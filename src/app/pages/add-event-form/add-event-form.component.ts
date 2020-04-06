@@ -4,7 +4,6 @@ import { OrgaEvent } from 'src/interfaces/event';
 import { EventService } from 'src/services/event.service';
 import { DataStore } from 'src/services/data.service';
 import { Category } from 'src/interfaces/category';
-import { Subcategory } from 'src/interfaces/subcategory';
 import { Organizer } from 'src/interfaces/host';
 import { Router } from '@angular/router';
 
@@ -18,7 +17,6 @@ export class AddEventFormComponent implements OnInit {
   protected event: OrgaEvent = new OrgaEvent();
   protected password: string;
   protected categories: Category[] = [];
-  protected subcategories: Subcategory[] = [];
   protected startTime;
   protected endTime;
   protected date: Date = new Date();
@@ -39,7 +37,6 @@ export class AddEventFormComponent implements OnInit {
 
   ngOnInit() {
     this.dataStore.getCategories().subscribe((c) => this.categories = c);
-    this.dataStore.getSubCategories().subscribe((s) => this.subcategories = s);
     console.log(this.categories);
   }
 
@@ -94,7 +91,6 @@ export class AddEventFormComponent implements OnInit {
 
     if (this.startTime && this.endTime && this.event.name && this.organizer.name && this.event.description && this.event.link) {
       this.parseStartAndEnd();
-      this.event.subCategory = this.event.category;
       console.log(this.event);
       this.event.tags = ['test'];
       this.eventService.addOrganizer(this.organizer.name).subscribe((organizer) => {

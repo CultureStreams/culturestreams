@@ -7,5 +7,4 @@ export class Organizer {
     image: string = null;
     datePublished: Date = new Date();
     category: number = null;
-    subCategory: number = null;
 }

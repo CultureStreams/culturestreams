@@ -1,56 +1,42 @@
 [
     {
-        "title": "United we stream",
-        "id": "1",
-        "startTime": "14.5",
-        "endTime": "16.5",
-        "date": "2020-03-25T18:25:43.511Z",
-        "permanentAvailable": "true",
-        "link": "'https://www.unitedwestream.berlin/'",
-        "shortDescription": "our wunderfull livestream: Die Berliner Clubkultur steht vor der größten Herausforderung ihrer Geschichte. ",
-        "description": "'Die Berliner Clubkultur steht vor der größten Herausforderung ihrer Geschichte. Am Freitag, dem 13. März wurde das gesamte Berliner Nachtleben behördlich stillgelegt, um die Ausbreitung des Coronavirus zu unterbinden. Damit sind mehr als 9.000 Mitarbeiter*innen, sowie zehntausende Kunstschaffende schlagartig ohne Beschäftigung und die vielen für Berlin identitätsstiftenden Orte stehen vor dem Ruin. Als Antwort darauf, dass in Berlin die Clubs geschlossen sind und auch der Rest der Welt in Quarantäne sitzt, erklärt sich Berlin solidarisch und bringt den größten digitalen Club zu Dir nach Hause. Wenn schon alleine feiern, dann richtig.",
-        "category": "Musik",
-        "subcategory": "\"Techno\"",
-        "costs": "0",
-        "host": {
-            "name": "Mira, Caleesi, iL Civetto, The Sorry Entertainer",
-            "location": "Kater Blau Berlin"
-        }
-      },
-      {
-        "title": "Kunstauftritt XY Live",
-        "id": "2",
-        "startTime": "14.5",
-        "endTime": "16.5",
-        "date": "2020-03-25T18:25:43.511Z",
-        "permanentAvailable": "true",
-        "link": "'https://www.unitedwestream.berlin/'",
-        "shortDescription": "our wunderfull livestream: Die Berliner Clubkultur steht vor der größten Herausforderung ihrer Geschichte. ",
-        "description": "'Die Berliner Clubkultur steht vor der größten Herausforderung ihrer Geschichte. Am Freitag, dem 13. März wurde das gesamte Berliner Nachtleben behördlich stillgelegt, um die Ausbreitung des Coronavirus zu unterbinden. Damit sind mehr als 9.000 Mitarbeiter*innen, sowie zehntausende Kunstschaffende schlagartig ohne Beschäftigung und die vielen für Berlin identitätsstiftenden Orte stehen vor dem Ruin. Als Antwort darauf, dass in Berlin die Clubs geschlossen sind und auch der Rest der Welt in Quarantäne sitzt, erklärt sich Berlin solidarisch und bringt den größten digitalen Club zu Dir nach Hause. Wenn schon alleine feiern, dann richtig.",
-        "category": "Musik",
-        "subcategory": "\"Techno\"",
-        "costs": "0",
-        "host": {
-            "name": "Mira, Caleesi, iL Civetto, The Sorry Entertainer",
-            "location": "Kater Blau Berlin"
-        }
-      },
-      {
-        "title": "Kunstauftritt XY Live",
-        "id": "3",
-        "startTime": "14.5",
-        "endTime": "16.5",
-        "date": "2020-03-24T18:25:43.511Z",
-        "permanentAvailable": "true",
-        "link": "'https://www.unitedwestream.berlin/'",
-        "shortDescription": "our wunderfull livestream: Die Berliner Clubkultur steht vor der größten Herausforderung ihrer Geschichte. ",
-        "description": "'Die Berliner Clubkultur steht vor der größten Herausforderung ihrer Geschichte. Am Freitag, dem 13. März wurde das gesamte Berliner Nachtleben behördlich stillgelegt, um die Ausbreitung des Coronavirus zu unterbinden. Damit sind mehr als 9.000 Mitarbeiter*innen, sowie zehntausende Kunstschaffende schlagartig ohne Beschäftigung und die vielen für Berlin identitätsstiftenden Orte stehen vor dem Ruin. Als Antwort darauf, dass in Berlin die Clubs geschlossen sind und auch der Rest der Welt in Quarantäne sitzt, erklärt sich Berlin solidarisch und bringt den größten digitalen Club zu Dir nach Hause. Wenn schon alleine feiern, dann richtig.",
-        "category": "Rundgang",
-        "subcategory": "\"Techno\"",
-        "costs": "0",
-        "host": {
-            "name": "Mira, Caleesi, iL Civetto, The Sorry Entertainer",
-            "location": "Kater Blau Berlin"
-        }
-      }
+        "id": 112,
+        "tags": [
+            "DJ-Set"
+        ],
+        "name": "Raffi Balboa Live DJ Set",
+        "slug": "raffi-balboa-live-dj-set",
+        "start": "2020-04-04T16:00:00+02:00",
+        "end": "2020-04-04T17:00:00+02:00",
+        "freeOfCharge": true,
+        "availableLiveOnly": false,
+        "link": "https://dringeblieben.de/videos/raffi-balboa-live-dj-set",
+        "infoLink": null,
+        "description": "Bei wem es beim Namen Raffi Balboa nicht sofort klingelt, der sollte kurz an den zuletzt gesehenen OK-Kid-Auftritt denken. Da ist der Herr Balboa nämlich als Drummer Groove- und Taktmaschine....",
+        "image": "",
+        "datePublished": "2020-04-04T11:48:38.705615+02:00",
+        "organizer": 288,
+        "category": 1
+    },
+    {
+        "id": 113,
+        "tags": [
+            "Kurs",
+            "Cocktails",
+            "Food & Drinks"
+        ],
+        "name": "Virtueller Cocktailkurs - Live aus dem Little Link",
+        "slug": "virtueller-cocktailkurs-live-aus-dem-little-link",
+        "start": "2020-04-04T17:00:00+02:00",
+        "end": "2020-04-04T18:00:00+02:00",
+        "freeOfCharge": true,
+        "availableLiveOnly": false,
+        "link": "https://dringeblieben.de/videos/virtueller-cocktailkurs-live-aus-dem-little-link",
+        "infoLink": null,
+        "description": "Liebe Freunde, liebe Gäste! Wie viele andere Betriebe in Köln ist das Little Link seit letztem Monat geschlossen. In Windeseile haben wir einen Liefer- und Abholservice vorbereitet, um wenigstens einen kleinen Teil der Verluste aufzufangen und Euch ein bisschen Little Link in Euer Wohnzimmer zu bringen.",
+        "image": "https://hello.culturestreams.org/assets/sofaherz.jpeg",
+        "datePublished": "2020-04-04T11:53:38.074243+02:00",
+        "organizer": 335,
+        "category": 14
+    }
 ]
