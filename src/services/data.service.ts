@@ -17,7 +17,7 @@ import { OrgaEvent } from 'src/interfaces/event';
 export class DataStore {
 
   public categories: Category[];
-  public channels: Channels[];
+  public channels: Channel[];
   public organizers: Organizer[] = [];
   protected api = environment.server;
   protected token  = environment.authorization;
