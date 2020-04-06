@@ -4,7 +4,7 @@ import { DataStore } from 'src/services/data.service';
 import { Category } from 'src/interfaces/category';
 import { Platform } from '@angular/cdk/platform';
 import { OrgaPlatform } from 'src/interfaces/orga-platform';
-import { Organizer } from 'src/interfaces/host';
+import { Organizer } from 'src/interfaces/organizer';
 
 @Component({
   selector: 'app-culture-channels',

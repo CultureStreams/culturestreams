@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { Category } from 'src/interfaces/category';
 import { Platform } from '@angular/cdk/platform';
 import platformsJson from '../dummy/platforms.json';
-import { Organizer } from 'src/interfaces/host';
+import { Organizer } from 'src/interfaces/organizer';
 import { OrgaPlatform } from 'src/interfaces/orga-platform';
 import { EventService } from './event.service';
 import { OrgaEvent } from 'src/interfaces/event';

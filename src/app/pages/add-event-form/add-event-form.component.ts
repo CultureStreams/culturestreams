@@ -4,7 +4,7 @@ import { OrgaEvent } from 'src/interfaces/event';
 import { EventService } from 'src/services/event.service';
 import { DataStore } from 'src/services/data.service';
 import { Category } from 'src/interfaces/category';
-import { Organizer } from 'src/interfaces/host';
+import { Organizer } from 'src/interfaces/organizer';
 import { Router } from '@angular/router';
 
 @Component({
@@ -45,8 +45,8 @@ export class AddEventFormComponent implements OnInit {
     console.log(this.event);
   }
 
-  protected setHostName($event) {
-    //this.event.hostName = ($event.target.value);;
+  protected setOrganizerName($event) {
+    //this.event.organizerName = ($event.target.value);;
   }
 
   protected setDescription($event) {

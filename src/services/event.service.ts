@@ -6,7 +6,7 @@ import eventsJson from '../dummy/arrays.json';
 import {environment} from '../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpParameterCodec } from "@angular/common/http";
-import { Organizer } from 'src/interfaces/host';
+import { Organizer } from 'src/interfaces/organizer';
 import { Category } from 'src/interfaces/category';
 
 
@@ -47,7 +47,7 @@ public getEvent(eventId: number) : Observable<OrgaEvent> {
 public getEventsByFilterParams(organizerId: number = 0, categoryId: number = 0) : Observable<OrgaEvent[]> {
 
     //console.log(date.toJSON());
-    let req = this.api + 'events/?';//?startDate=' + date.toJSON(); 
+    let req = this.api + 'events/?';//?startDate=' + date.toJSON();
     if (organizerId != 0) {
       req = req + 'organizer=' + organizerId;
     }

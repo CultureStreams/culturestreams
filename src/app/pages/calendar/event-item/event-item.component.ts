@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataStore } from 'src/services/data.service';
-import { Organizer } from 'src/interfaces/host';
+import { Organizer } from 'src/interfaces/organizer';
 
 @Component({
   selector: 'app-event-item',
@@ -10,7 +10,7 @@ import { Organizer } from 'src/interfaces/host';
 export class EventItemComponent implements OnInit {
 
   @Input() event: Event;
-  
+
   protected organizers: Organizer[] = [];
   protected date: Date;
 

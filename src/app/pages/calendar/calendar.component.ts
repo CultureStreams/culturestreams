@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { EventService } from 'src/services/event.service';
 import { OrgaEvent } from 'src/interfaces/event';
 import { DataStore } from 'src/services/data.service';
-import { Organizer } from 'src/interfaces/host';
+import { Organizer } from 'src/interfaces/organizer';
 import { Category } from 'src/interfaces/category';
 import { CategoryPreviewComponent } from '../home/category-preview/category-preview.component';
 import {FormControl} from '@angular/forms';
@@ -35,7 +35,7 @@ export class CalendarComponent implements OnInit {
 
   private filterDate: Date;
   private filterCategory;
-  private filterHostName;
+  private filterOrganizerName;
 
   constructor(protected router: Router,
     protected eventService: EventService,
@@ -120,8 +120,8 @@ export class CalendarComponent implements OnInit {
     this.router.navigate(['/event', event.id]);
   }
 
-  protected setHost($event) {
-    this.filterHostName = $event.target.value;
+  protected setOrganizer($event) {
+    this.filterOrganizerName = $event.target.value;
   }
 
   protected setCategory($event) {
