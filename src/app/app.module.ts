@@ -2,15 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { MatSliderModule } from '@angular/material/slider';
-import { MatInputModule } from '@angular/material/input';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MaterialDesignModule } from './modules/material-design/material-design.module';
 
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatSelectModule, MatNativeDateModule } from '@angular/material';
-
 import { AppRoutingModule } from './app-routing.module';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
@@ -20,13 +14,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { CultureChannelsComponent } from './pages/culture-channels/culture-channels.component';
 import { HomeComponent } from './pages/home/home.component';
 import { EventShowComponent } from './pages/calendar/event-show/event-show.component';
-import { MatCardModule } from '@angular/material/card';
 import { EventItemComponent } from './pages/calendar/event-item/event-item.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 //import { EventShowComponent } from './pages/calendar/event-show/event-show.component';
@@ -82,26 +71,10 @@ const appRoutes: Routes = [
     EventItemDetailComponent,
   ],
   imports: [
+    MaterialDesignModule,
     BrowserModule,
-    BrowserAnimationsModule,
-    MatSliderModule,
-    MatInputModule,
-    MatMenuModule,
-    MatSnackBarModule,
     HttpClientModule,
     AppRoutingModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatIconModule,
-    MatCardModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatAutocompleteModule,
-    MatTooltipModule,
     ReactiveFormsModule,
     FormsModule,
     NgxMaterialTimepickerModule,
