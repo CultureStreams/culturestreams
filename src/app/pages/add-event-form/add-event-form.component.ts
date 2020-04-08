@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, AbstractFormGroupDirective } from '@angular/forms';
-import { Event } from 'src/interfaces/event';
+import { Event } from 'src/models/event';
 import { EventService } from 'src/services/event.service';
 import { DataStore } from 'src/services/data.service';
-import { Category } from 'src/interfaces/category';
-import { Organizer } from 'src/interfaces/organizer';
+import { Category } from 'src/models/category';
+import { Organizer } from 'src/models/organizer';
 import { Router } from '@angular/router';
 
 @Component({

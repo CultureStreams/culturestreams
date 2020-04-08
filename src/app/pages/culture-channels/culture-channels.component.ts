@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from 'src/services/event.service';
 import { DataStore } from 'src/services/data.service';
-import { Category } from 'src/interfaces/category';
+import { Category } from 'src/models/category';
 import { Platform } from '@angular/cdk/platform';
-import { Channel } from 'src/interfaces/channel';
-import { Organizer } from 'src/interfaces/organizer';
+import { Channel } from 'src/models/channel';
+import { Organizer } from 'src/models/organizer';
 
 @Component({
   selector: 'cs-culture-channels',

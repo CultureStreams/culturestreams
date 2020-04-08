@@ -18,7 +18,6 @@ import { EventItemComponent } from './pages/calendar/event-item/event-item.compo
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-//import { EventShowComponent } from './pages/calendar/event-show/event-show.component';
 
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';

@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import event from '../dummy/event.json';
 import eventsJson from '../dummy/arrays.json';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Event } from 'src/interfaces/event';
+import { Event } from 'src/models/event';
 import {environment} from '../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpParameterCodec } from "@angular/common/http";
-import { Organizer } from 'src/interfaces/organizer';
-import { Category } from 'src/interfaces/category';
+import { Organizer } from 'src/models/organizer';
+import { Category } from 'src/models/category';
 
 
 

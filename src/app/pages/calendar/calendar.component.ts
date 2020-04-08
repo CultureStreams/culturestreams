@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import eventsJson from '../../../dummy/arrays.json';
-import { Week } from 'src/interfaces/week';
+import { Week } from 'src/models/week';
 import { Router } from '@angular/router';
 import { EventService } from 'src/services/event.service';
-import { Event } from 'src/interfaces/event';
+import { Event } from 'src/models/event';
 import { DataStore } from 'src/services/data.service';
-import { Organizer } from 'src/interfaces/organizer';
-import { Category } from 'src/interfaces/category';
+import { Organizer } from 'src/models/organizer';
+import { Category } from 'src/models/category';
 import { CategoryPreviewComponent } from '../home/category-preview/category-preview.component';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';

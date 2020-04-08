@@ -4,12 +4,12 @@ import channelsJson from '../dummy/channels.json';
 import {environment} from '../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Category } from 'src/interfaces/category';
+import { Category } from 'src/models/category';
 import { Platform } from '@angular/cdk/platform';
-import { Organizer } from 'src/interfaces/organizer';
-import { Channel } from 'src/interfaces/channel';
+import { Organizer } from 'src/models/organizer';
+import { Channel } from 'src/models/channel';
 import { EventService } from './event.service';
-import { Event } from 'src/interfaces/event';
+import { Event } from 'src/models/event';
 
 @Injectable({
   providedIn: 'root'

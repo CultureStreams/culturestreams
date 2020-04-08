@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataStore } from 'src/services/data.service';
-import { Organizer } from 'src/interfaces/organizer';
+import { Organizer } from 'src/models/organizer';
 
 @Component({
   selector: 'cs-event-item',
