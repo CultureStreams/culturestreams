@@ -6,7 +6,7 @@ import { Event } from 'src/interfaces/event';
 
 
 @Component({
-  selector: 'app-event-show',
+  selector: 'cs-event-show',
   templateUrl: './event-show.component.html',
   styleUrls: ['./event-show.component.css']
 })

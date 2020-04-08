@@ -59,7 +59,7 @@
             <mat-card-title>{{day | date:'fullDate':'de'}}</mat-card-title>
               <div *ngFor="let event of events" >
                   <div *ngIf="day.getDate() == event.parsedDate.getDate()">
-                      <app-event-item [event]="event" (click)="navigateToEvent(event)"></app-event-item>
+                      <cs-event-item [event]="event" (click)="navigateToEvent(event)"></cs-event-item>
                   </div>
               </div>
 

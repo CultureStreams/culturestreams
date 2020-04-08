@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-imprint',
+  selector: 'cs-imprint',
   templateUrl: './imprint.component.html',
   styleUrls: ['./imprint.component.css']
 })

@@ -3,7 +3,7 @@ import { DataStore } from 'src/services/data.service';
 import { Organizer } from 'src/interfaces/organizer';
 
 @Component({
-  selector: 'app-event-item',
+  selector: 'cs-event-item',
   templateUrl: './event-item.component.html',
   styleUrls: ['./event-item.component.css']
 })

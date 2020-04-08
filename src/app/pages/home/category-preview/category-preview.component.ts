@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-category-preview',
+  selector: 'cs-category-preview',
   templateUrl: './category-preview.component.html',
   styleUrls: ['./category-preview.component.css']
 })

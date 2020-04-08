@@ -7,7 +7,7 @@ import { Channel } from 'src/interfaces/channel';
 import { Organizer } from 'src/interfaces/organizer';
 
 @Component({
-  selector: 'app-culture-channels',
+  selector: 'cs-culture-channels',
   templateUrl: './culture-channels.component.html',
   styleUrls: ['./culture-channels.component.css']
 })

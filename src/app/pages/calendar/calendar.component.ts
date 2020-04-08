@@ -13,7 +13,7 @@ import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
 @Component({
-  selector: 'app-calendar',
+  selector: 'cs-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })

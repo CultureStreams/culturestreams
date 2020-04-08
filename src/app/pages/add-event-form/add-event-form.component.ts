@@ -8,7 +8,7 @@ import { Organizer } from 'src/interfaces/organizer';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-add-event-form',
+  selector: 'cs-add-event-form',
   templateUrl: './add-event-form.component.html',
   styleUrls: ['./add-event-form.component.css']
 })

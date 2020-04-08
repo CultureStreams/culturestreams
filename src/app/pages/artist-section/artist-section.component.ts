@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-artist-section',
+  selector: 'cs-artist-section',
   templateUrl: './artist-section.component.html',
   styleUrls: ['./artist-section.component.css']
 })
