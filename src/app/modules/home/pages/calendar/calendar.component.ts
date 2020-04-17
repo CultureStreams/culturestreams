@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import eventsJson from '../../../dummy/arrays.json';
+import eventsJson from 'src/dummy/arrays.json';
 import { Week } from 'src/models/week';
 import { Router } from '@angular/router';
 import { EventService } from 'src/services/event.service';
