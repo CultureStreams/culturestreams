@@ -30,8 +30,6 @@ import { IconLogoOnlyComponent } from '@shared/components/icons/icon-logo-only/i
 
     IconLogoComponent,
     IconLogoOnlyComponent,
-    // NavComponent,
-    // FooterComponent,
   ]
 })
 export class SharedModule { }

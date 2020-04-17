@@ -7,6 +7,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { registerLocaleData } from '@angular/common';
+import localeDe from '@angular/common/locales/de';
+import { LOCALE_ID } from '@angular/core';
+registerLocaleData(localeDe, 'de');
+
 
 @NgModule({
   declarations: [],
@@ -16,6 +21,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HttpClientModule,
     LayoutModule,
     FlexLayoutModule,
-  ]
+  ],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'de' },
+  ],
 })
 export class CoreModule { }
