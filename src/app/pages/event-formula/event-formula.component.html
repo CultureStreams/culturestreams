@@ -1,22 +1,15 @@
 <h2>Event hinzufügen</h2>
 <mat-card class="card">
 
-
-    <form [formGroup]="eventForm" (ngSubmit)="onSubmit(eventForm)">
+    <div class="example-container">
     <mat-form-field class="full-width">
       <mat-label>Titel</mat-label>
-      <input formControlName="name" matInput>
+      <input [(ngModel)]="event.name" matInput>
     </mat-form-field>
-    <br/>
-
-    <mat-form-field class="half-width">
-      <mat-label>Host</mat-label>
-      <input formControlName="organizer" matInput>
-    </mat-form-field>
-    
+    <br>
     <mat-form-field class="half-width">
       <mat-label>Kategorie</mat-label>
-      <mat-select formControlName="category">
+      <mat-select [formControl]="categoryControl">
         <mat-option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -25,41 +18,27 @@
 
     <mat-form-field class="special-width">
         <mat-label>Datum wählen</mat-label>
-        <input formControlName="date" (keyup)="setDate($event)" matInput [matDatepicker]="picker">
+        <input (keyup)="setDate($event)" matInput [matDatepicker]="picker" [(ngModel)]="date">
         <mat-datepicker-toggle matSuffix [for]="picker" #picker ngDefaultControl (selectedChanged)="onChange($event)"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field class="min-width">
         <mat-label>Start</mat-label>
-        <input formControlName="start" (keyup)="setStartTime($event)" [ngxTimepicker]="pickerStart" matInput>
+        <input (keyup)="setStartTime($event)" [(ngModel)]="startTime" [ngxTimepicker]="pickerStart" matInput>
         <ngx-material-timepicker (keyup)="setStartTime($event)" #pickerStart></ngx-material-timepicker>
     </mat-form-field>
     <mat-form-field class="min-width">
         <mat-label>Ende</mat-label>
-        <input formControlName="end" (keyup)="setEndTime($event)" (change)="setEndTime($event)" (selectedChanged)="onChange($event)" [ngxTimepicker]="pickerEnd" matInput>
+        <input (keyup)="setEndTime($event)" [(ngModel)]="endTime" (change)="setEndTime($event)" (selectedChanged)="onChange($event)" [ngxTimepicker]="pickerEnd" matInput>
         <ngx-material-timepicker #pickerEnd></ngx-material-timepicker>
     </mat-form-field>
     <br>
     <mat-form-field class="full-width">
         <mat-label>Veranstalter:in</mat-label>
-        <input formControlName="host" matInput>
+        <input [(ngModel)]="organizer.name" matInput>
     </mat-form-field>
     <br/>
-
-    <mat-radio-group aria-label="Select an option" formControlName="availableLiveOnly">
-      <mat-radio-button value="true">Live-Event</mat-radio-button>
-      <mat-radio-button value="false">dauerhaft verfügbar</mat-radio-button>
-    </mat-radio-group>
-
-    <br>
-    <br>
-
-    <mat-radio-group aria-label="Select an option">
-      <mat-radio-button value="1">auf Spendenbasis</mat-radio-button>
-      <mat-radio-button value="2">kostenpflichtig</mat-radio-button>
-      <mat-radio-button value="2">kostenlos</mat-radio-button>
-    </mat-radio-group>
     <!--mat-form-field class="full-width">
         <mat-label>Location wenn gerade keine Kriesenzeit ist</mat-label>
         <input (keyup)="setLocation($event)" matInput>
@@ -72,21 +51,22 @@
     <br/>
     <mat-form-field class="full-width">
       <mat-label>Beschreibung</mat-label>
-      <textarea formControlName="description" (keyup)="setDescription($event)" matInput></textarea>
+      <textarea (keyup)="setDescription($event)" matInput></textarea>
     </mat-form-field>
     <br/>
     <mat-form-field class="full-width">
           <mat-label>Stream-Link (inkl. http://)</mat-label>
-          <input formControlName="streamlink" (keyup)="setLink($event)" matInput>
+          <input (keyup)="setLink($event)" matInput>
     </mat-form-field>
     <br/>
     <br/>
 
-    <button type="submit">Send</button>
-  </form>
+    <div *ngIf="error" class="error">
+      Bitte fülle alle Angaben aus.
+    </div>
 
-  <!--button mat-button class="submitButton" (click)="submit()">Eintrag anlegen</button-->
+  <button mat-button class="submitButton" (click)="submit()">Eintrag anlegen</button>
 
-
+  </div>
 
 </mat-card>

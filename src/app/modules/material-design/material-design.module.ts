@@ -9,7 +9,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/';
 import {MatFormFieldModule} from '@angular/material/form-field';
-// import {MatRadioModule} from '@angular/material/radio';
+import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSliderModule} from '@angular/material/slider';
 // import {MatSlideToggleModule} from '@angular/material/slide-toggle';
@@ -81,7 +81,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatDatepickerModule,
     MatNativeDateModule,
     MatFormFieldModule,
-    // MatRadioModule,
+    MatRadioModule,
     MatSelectModule,
     MatSliderModule,
     // MatSlideToggleModule,

@@ -33,6 +33,7 @@ import { IconLogoOnlyComponent } from './components/icons/icon-logo-only/icon-lo
 import { FooterComponent } from './components/footer/footer.component';
 import { EventItemBaseComponent } from './components/events/event-item-base/event-item-base.component';
 import { EventItemDetailComponent } from './components/events/event-item-detail/event-item-detail.component';
+import { EventFormulaComponent } from './pages/event-formula/event-formula.component';
 registerLocaleData(localeDe, 'de');
 
 const appRoutes: Routes = [
@@ -68,6 +69,7 @@ const appRoutes: Routes = [
     FooterComponent,
     EventItemBaseComponent,
     EventItemDetailComponent,
+    EventFormulaComponent,
   ],
   imports: [
     MaterialDesignModule,

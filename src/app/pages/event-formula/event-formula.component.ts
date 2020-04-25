@@ -1,21 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, AbstractFormGroupDirective, FormGroup } from '@angular/forms';
+import { FormControl, Validators, AbstractFormGroupDirective } from '@angular/forms';
 import { Event } from 'src/models/event';
 import { EventService } from 'src/services/event.service';
 import { DataStore } from 'src/services/data.service';
 import { Category } from 'src/models/category';
 import { Organizer } from 'src/models/organizer';
 import { Router } from '@angular/router';
-import {MatRadioModule} from '@angular/material/radio';
-
-//import { eventNames } from 'cluster';
 
 @Component({
-  selector: 'cs-add-event-form',
-  templateUrl: './add-event-form.component.html',
-  styleUrls: ['./add-event-form.component.css']
+  selector: 'cs-event-formula',
+  templateUrl: './event-formula.component.html',
+  styleUrls: ['./event-formula.component.css']
 })
-export class AddEventFormComponent implements OnInit {
+export class EventFormulaComponent implements OnInit {
 
   protected event: Event = new Event();
   protected password: string;
@@ -31,8 +28,6 @@ export class AddEventFormComponent implements OnInit {
   categoryControl = new FormControl('category');
   fontSizeControl = new FormControl(16, Validators.min(10));
 
-  eventForm: FormGroup;
-
   constructor(
     protected router: Router,
     protected eventService : EventService,
@@ -41,41 +36,9 @@ export class AddEventFormComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.eventForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      organizer: new FormControl('', Validators.required),
-      category: new FormControl('', Validators.required),
-      date: new FormControl('', Validators.required),
-      start: new FormControl('', Validators.required),
-      end: new FormControl('', Validators.required),
-      host: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
-      streamlink: new FormControl('', Validators.required),
-      availableLiveOnly: new FormControl('', Validators.required),
-      //freeOfCharge: new FormControl('', Validators.uhrequired),
-      imageLink: new FormControl('')
-    });
-
     this.dataStore.getCategories().subscribe((c) => this.categories = c);
     console.log(this.categories);
   }
-
-
-  onSubmit(form: FormGroup) {
-
-    let newEvent = new Event()
-    console.log(form.valid);
-    console.log(form);
-
-    if (form.valid) {
-
-      this.eventService.addEvent(this.event).subscribe(c => this.router.navigate(['/event', c.id]));
-    }
-
-    //this.sendEvent()
-  }
-
 
   protected setCategory($event) {
     this.event.category = $event.target.value;
@@ -124,10 +87,9 @@ export class AddEventFormComponent implements OnInit {
     this.event.end = new Date(endDate);
   }
 
-  protected sendEvent(){
+  protected submit(){
 
-    console.log(this.event);
-    /*if (this.startTime && this.endTime && this.event.name && this.organizer.name && this.event.description && this.event.link) {
+    if (this.startTime && this.endTime && this.event.name && this.organizer.name && this.event.description && this.event.link) {
       this.parseStartAndEnd();
       console.log(this.event);
       this.event.tags = ['test'];
@@ -138,7 +100,7 @@ export class AddEventFormComponent implements OnInit {
 
     } else {
       this.error = true;
-    }*/
+    }
   }
 
 }
