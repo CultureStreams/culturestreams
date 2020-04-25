@@ -1,6 +1,9 @@
 .explanation-text{
     padding: 40px;
     font-size: 1.2em;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 button {
@@ -25,6 +28,9 @@ button:hover {
     width: 70%;
 }
 
+.mat-card-image {
+  max-width: 45em;
+}
 /* .show-go-on {
     position: relative;
     bottom: 400px;
