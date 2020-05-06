@@ -2,18 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MaterialDesignModule } from "./modules/material-design/material-design.module";
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
-import { IconLogoComponent } from '@shared/components/icons/icon-logo/icon-logo.component';
-import { IconLogoOnlyComponent } from '@shared/components/icons/icon-logo-only/icon-logo-only.component';
+import { IconLogoComponent } from './components/icons/icon-logo/icon-logo.component';
+import { IconLogoOnlyComponent } from './components/icons/icon-logo-only/icon-logo-only.component';
+
+import { HelperModule } from "./modules/helper/helper.module";
+import { TextExcerptFilter } from "./filters/text-excerpt.filter";
 
 @NgModule({
   declarations: [
     IconLogoComponent,
     IconLogoOnlyComponent,
+    TextExcerptFilter,
   ],
   imports: [
     CommonModule,
@@ -21,15 +26,20 @@ import { IconLogoOnlyComponent } from '@shared/components/icons/icon-logo-only/i
     FormsModule,
     ReactiveFormsModule,
     NgxMaterialTimepickerModule,
+    FlexLayoutModule,
+    HelperModule
   ],
   exports: [
     MaterialDesignModule,
     FormsModule,
     ReactiveFormsModule,
     NgxMaterialTimepickerModule,
+    FlexLayoutModule,
+    HelperModule,
 
     IconLogoComponent,
     IconLogoOnlyComponent,
+    TextExcerptFilter
   ]
 })
 export class SharedModule { }

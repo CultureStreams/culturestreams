@@ -3,6 +3,8 @@ import { DataStore } from 'src/services/data.service';
 import { Organizer } from 'src/models/organizer';
 import { OrgaEvent } from 'src/models/event';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'cs-event-item',
   templateUrl: './event-item.component.html',
@@ -15,11 +17,17 @@ export class EventItemComponent implements OnInit {
   protected organizers: Organizer[] = [];
   protected date: Date;
 
-  constructor( protected dataStore: DataStore) {
+  constructor(
+    protected router: Router,
+    protected dataStore: DataStore) {
     this.date = new Date();
    }
 
   ngOnInit() {
+  }
+
+  protected navigateToEvent(event) {
+    this.router.navigate(['/event', event.id]);
   }
 
 }

@@ -1,9 +1,71 @@
-.event-card {
-    margin:5px;
-    color: red;
-    
+.mat-card-header-text {
+ margin: 0 !important;
 }
 
-.event-logo {
-    display:inline;
+.mat-card {
+    margin: 5px;
+    overflow: hidden;
+}
+
+.mat-card-content {
+    margin: 0 16px;
+}
+
+.mat-card-content, .mat-card-title, .mat-card-subtitle {
+  text-align: left;
+}
+
+.mat-card-actions {
+    margin: 0 16px;
+}
+
+section {
+    padding: 0;
+    margin: 0;
+}
+
+.event-infos {
+  /* margin-left: 10px; */
+}
+
+.event-time {
+    /* white-space: nowrap; */
+    padding: 8px;
+}
+
+.mat-flat-button {
+  margin: auto;
+}
+
+.mat-flat-button.mat-button-base {
+  min-width: 100px;
+    /* height: 150%;
+    vertical-align: middle;
+    margin-top: -25px; */
+}
+
+/* .mat-button-wrapper {
+    height: 100% !important;
+    align-items: center !important;
+    display: inline-flex !important;
+} */
+
+.mat-card-image {
+  background-image: url('/../../../../assets/img/cs-sofaherz-dunkel.png');
+  background-size: cover;
+  background-position: center;
+  margin-top: -18px;
+  margin-bottom: -18px;
+  margin-left: -18px;
+  margin-right: 0;
+}
+
+.mat-icon {
+    /* margin-top: auto;
+    margin-bottom: auto; */
+    margin: auto;
+}
+
+.mat-card-avatar {
+    /* margin-right: 8px; */
 }

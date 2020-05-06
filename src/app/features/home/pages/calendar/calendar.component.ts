@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import eventsJson from 'src/dummy/arrays.json';
-import { Week } from 'src/models/week';
+// import { Week } from 'src/models/week';
 import { Router } from '@angular/router';
 import { EventService } from 'src/services/event.service';
 import { OrgaEvent } from 'src/models/event';
@@ -40,7 +40,9 @@ export class CalendarComponent implements OnInit {
   constructor(protected router: Router,
     protected eventService: EventService,
     protected dataStore: DataStore) {
-    this.date = new Date();
+    // this.date = new Date();
+    // this.date.setHours(0, 0, 0, 0);
+    console.log(this.date);
     this.dataStore.getOrganizers().subscribe((o) => {
       this.organizers = o;
       // let neutralOrganizer : Organizer = new Organizer();
@@ -94,6 +96,10 @@ export class CalendarComponent implements OnInit {
       var bar = new Promise((resolve, reject) => {
         c.forEach((e, index, array) => {
           e.parsedDate = new Date(e.start);
+          e.parsedDate.setHours(0, 0, 0, 0);
+          // if (e.parsedDate > this.date ) {
+          //   console.log(e.parsedDate)
+          // }
           let organizer = this.dataStore.organizers.find(x => x.id === e.organizer);
           if (organizer != undefined) {
             e['organizerName'] = organizer.name;
@@ -115,10 +121,10 @@ export class CalendarComponent implements OnInit {
     this.getEvents();
   }
 
-  protected navigateToEvent(event) {
-    let dateN = new Date(event.start);
-    this.router.navigate(['/event', event.id]);
-  }
+  // protected navigateToEvent(event) {
+  //   let dateN = new Date(event.start);
+  //   this.router.navigate(['/event', event.id]);
+  // }
 
   protected setOrganizer($event) {
     this.filterOrganizerName = $event.target.value;
@@ -137,34 +143,50 @@ export class CalendarComponent implements OnInit {
 
     protected getWeek(day){
 
-      this.week = [];
+      var dayBase = new Date();
+      dayBase.setDate(day.getDate());
 
-      day.setDate(day.getDate());
-      this.week.push(day);
+      for (let index = 0; index < 7; index++) {
+        var dayTemp = new Date();
+        dayTemp.setDate(day.getDate()+index)
+        dayTemp.setHours(0, 0, 0, 0);
+        // console.log('day ' + index + ': ' + dayTemp);
+        this.week.push(dayTemp);
+      }
+      // console.log(this.week);
 
-      var day1 = new Date();
-      day1.setDate(day.getDate()+1);
-      this.week.push(day1);
+      // this.week = [];
+      //
+      // day.setDate(day.getDate());
+      // day.setHours(0, 0, 0, 0);
+      // console.log('day: ' + day);
+      // this.week.push(day);
 
-      var day2 = new Date();
-      day2.setDate(day.getDate()+2);
-      this.week.push(day2);
-
-      var day3 = new Date();
-      day3.setDate(day.getDate()+3);
-      this.week.push(day3);
-
-      var day4 = new Date();
-      day4.setDate(day.getDate()+4);
-      this.week.push(day4);
-
-      var day5 = new Date();
-      day5.setDate(day.getDate()+5);
-      this.week.push(day5);
-
-      var day6 = new Date();
-      day6.setDate(day.getDate()+6);
-      this.week.push(day6);
+      // var day1 = new Date();
+      // day1.setDate(day.getDate()+1);
+      // console.log('day1: ' + day1);
+      // this.week.push(day1);
+      //
+      // var day2 = new Date();
+      // day2.setDate(day.getDate()+2);
+      // console.log('day2: ' + day2);
+      // this.week.push(day2);
+      //
+      // var day3 = new Date();
+      // day3.setDate(day.getDate()+3);
+      // this.week.push(day3);
+      //
+      // var day4 = new Date();
+      // day4.setDate(day.getDate()+4);
+      // this.week.push(day4);
+      //
+      // var day5 = new Date();
+      // day5.setDate(day.getDate()+5);
+      // this.week.push(day5);
+      //
+      // var day6 = new Date();
+      // day6.setDate(day.getDate()+6);
+      // this.week.push(day6);
     }
 
 }

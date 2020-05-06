@@ -24,10 +24,23 @@
     width: 70%;
 }
 .partner-card {
-  max-width: 200px;
+    align-content: center;
+    max-width: fit-content;
 }
 
 .mat-card-image {
-      margin: 0;
-      height: 100%;
-    }
+    margin-left: 15px;
+    width: min-content;
+}
+
+.mat-card-content {
+    margin-left: 20px;
+    width: min-content;
+    text-align: center;
+}
+
+.partner-card-title {
+    margin-left: 20px;
+    text-align: center;
+}
+
