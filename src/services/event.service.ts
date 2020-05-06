@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import event from '../dummy/event.json';
 import eventsJson from '../dummy/arrays.json';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Event } from 'src/models/event';
+import { OrgaEvent } from 'src/models/event';
 import {environment} from '../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpParameterCodec } from "@angular/common/http";
@@ -24,9 +24,9 @@ export class EventService {
   ) { }
 
 
-public addEvent(event: Event) : Observable<Event>{
+public addEvent(event: OrgaEvent) : Observable<OrgaEvent>{
 
-    let res = this.http.post<Event>(this.api + 'events/?format=json', event, {headers: new HttpHeaders().set('Authorization', this.token)});
+    let res = this.http.post<OrgaEvent>(this.api + 'events/?format=json', event, {headers: new HttpHeaders().set('Authorization', this.token)});
     return res;
 }
 
@@ -44,7 +44,7 @@ public getEvent(eventId: number) : Observable<Event> {
   return res;
 }
 
-public getEventsByFilterParams(organizerId: number = 0, categoryId: number = 0) : Observable<Event[]> {
+public getEventsByFilterParams(organizerId: number = 0, categoryId: number = 0) : Observable<OrgaEvent[]> {
 
     //console.log(date.toJSON());
     let req = this.api + 'events/?';//?startDate=' + date.toJSON();
@@ -57,7 +57,7 @@ public getEventsByFilterParams(organizerId: number = 0, categoryId: number = 0) 
     if (categoryId == 0 && organizerId == 0) {
       req = req + 'format=json';
     }
-    let res = this.http.get<Event[]>(req, {headers: new HttpHeaders().set('Authorization', this.token)});
+    let res = this.http.get<OrgaEvent[]>(req, {headers: new HttpHeaders().set('Authorization', this.token)});
     return res;
 }
 

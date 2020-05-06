@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
   server: "https://api.culturestreams.org/api/v0/",
+  production: false,
   authorization: "Token e0b6473b126123ee38b78317d919561952c4f3e7"
 };
 

@@ -9,7 +9,8 @@ import { Platform } from '@angular/cdk/platform';
 import { Organizer } from 'src/models/organizer';
 import { Channel } from 'src/models/channel';
 import { EventService } from './event.service';
-import { Event } from 'src/models/event';
+import { OrgaEvent } from 'src/models/event';
+import { Tag } from 'src/models/tag';
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +20,10 @@ export class DataStore {
   public categories: Category[];
   public channels: Channel[];
   public organizers: Organizer[] = [];
+  public tags: Tag[];
   protected api = environment.server;
   protected token  = environment.authorization;
-  public generalEvents: Event[];
+  public generalEvents: OrgaEvent[];
 
   constructor(private http: HttpClient,
     protected eventService: EventService) { }
@@ -31,6 +33,7 @@ export class DataStore {
    */
   public loadData(){
     this.getOrganizers().subscribe((o) => this.organizers = o);
+    this.getTags().subscribe((t) => this.tags = t);
     this.getCategories().subscribe((c) => {
       this.categories = c;
       this.categories.sort(function(a, b){
@@ -52,6 +55,17 @@ export class DataStore {
   public getCategories (): Observable<Category[]> {
     console.log('getCategories');
     let res = this.http.get<Category[]>(this.api + 'categories/?format=json', {headers: new HttpHeaders().set('Authorization', this.token)});
+
+    return res;
+  }
+
+    /**
+   * load all Categories
+   * no params needed
+   */
+  public getTags (): Observable<Category[]> {
+    console.log('getTags');
+    let res = this.http.get<Category[]>(this.api + 'tags/?format=json', {headers: new HttpHeaders().set('Authorization', this.token)});
 
     return res;
   }

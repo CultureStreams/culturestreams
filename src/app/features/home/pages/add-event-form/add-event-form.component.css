@@ -1,0 +1,57 @@
+.card {
+    margin:30px;
+    padding:30px;
+}
+
+mat-form-field {
+    margin-right: 20px;
+}
+
+.full-width {
+    width: 520px;
+}
+
+.half-width {
+    width: 250px;
+}
+
+.min-width {
+    width: 95px;
+}
+
+.special-width {
+    width:290px;
+}
+
+.submitButton {
+    background-color: black;
+    color: white;
+    float:right;
+    margin-right: 60px;
+}
+
+mat-icon {
+    margin: -15px;
+}
+
+.label-tooltip {
+    display: inline-block;
+    margin-left: 3px;
+}
+
+.error {
+    background-color: #ffdddd;
+    display: inline-block;
+    padding: 20px;
+}
+
+.float {
+    float: left;
+}
+
+.inline-checkbox {
+    display: inline-block;
+    margin-bottom:20px;
+    margin-top: 20px;
+
+}
