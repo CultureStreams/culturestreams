@@ -1,10 +1,10 @@
 <main class="content" fxLayout="column">
   <button mat-button fxLayoutAlign="start start" routerLink="/calendar" routerLinkActive="active">zurück</button>
-  <mat-card class="example-card">
+  <mat-card *ngIf="event" class="event-item">
     <mat-card-header fxLayout="column" fxLayoutAlign="center stretch">
       <!-- <div mat-card-avatar class="example-header-image"></div> -->
-      <mat-card-title><h1 *ngIf="event" class="event-title md-display-1" itemprop="name">{{event.name}}</h1></mat-card-title>
-      <mat-card-subtitle *ngIf="event" itemprop="organizer">von {{organizerName}}</mat-card-subtitle>
+      <mat-card-title><h1 class="event-title md-display-1" itemprop="name">{{event.name}}</h1></mat-card-title>
+      <mat-card-subtitle *ngIf="event.organizer" itemprop="organizer">von {{event.organizer.name}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions>
       <section fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center stretch">
@@ -20,7 +20,7 @@
         <section>
           <p *ngIf="event" class="event-description" itemprop="description">{{event.description}}</p>
           <mat-divider [inset]="true"></mat-divider>
-          <p *ngIf="category" class="event-category" itemprop="subjectOf">{{category.name}}</p>
+          <p *ngIf="event.category" class="event-category" itemprop="subjectOf">{{event.category.name}}</p>
         </section>
         <section>
           <img mat-card-image src="../../../../assets/img/cs-sofaherz.jpg" alt="{{event.name}}">

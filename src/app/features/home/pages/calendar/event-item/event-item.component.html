@@ -5,13 +5,13 @@
 <!-- <article *ngFor="let event of events" fxLayout="column"> -->
     <mat-card fxLayout="row">
       <!-- <img mat-card-image fxFlex="20"> -->
-        <!-- <img mat-card-image *ngIf="event.image; else elseBlock" [ngStyle]="{'background': 'url(' + event.image + ')'}"
+        <img mat-card-image *ngIf="event.image; else elseBlock" [ngStyle]="{'background': 'url(' + event.image + ')'}"
         style="background-size: cover;
         background-position: center;"
         fxFlex="30" fxHide.xs>
-        <ng-template #elseBlock> -->
+        <ng-template #elseBlock>
           <img mat-card-image fxFlex="25">
-        <!-- </ng-template> -->
+        </ng-template>
 
       <section class="event-infos" fxFlex="grow">
         <mat-card-header>

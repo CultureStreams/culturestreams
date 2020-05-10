@@ -105,6 +105,12 @@ export class DataStore {
        return creatingEvent$;
     }
   }
+
+  public readEvent(id: number): Observable<Happening[]>{
+    let params = {};
+    params['id'] = id;
+    return this.happeningHttpService.list(params);
+  }
   /**
    * Organizers
    */
