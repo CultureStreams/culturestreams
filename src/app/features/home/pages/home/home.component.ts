@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataStore } from 'src/services/data.service';
+import { DataStore } from '@core/services/data.service';
 
 @Component({
   selector: 'cs-home',
@@ -8,10 +8,9 @@ import { DataStore } from 'src/services/data.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(protected dataStore:DataStore) { }
+  constructor(protected store:DataStore) { }
 
   ngOnInit() {
-    console.log('homeinit');
   }
 
 

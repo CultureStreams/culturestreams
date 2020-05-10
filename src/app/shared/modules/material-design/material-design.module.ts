@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+// import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -39,7 +39,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
   declarations: [],
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     MatCheckboxModule,
     MatButtonModule,
     MatInputModule,
@@ -73,7 +73,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     // MatPaginatorModule
   ],
   exports: [
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     MatCheckboxModule,
     MatButtonModule,
     MatInputModule,

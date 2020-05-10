@@ -1,18 +1,22 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { FormControl, Validators, AbstractFormGroupDirective, FormGroup } from '@angular/forms';
-import { Happening } from '@core/models/happening.model';
-import { EventService } from 'src/services/event.service';
-import { DataStore } from 'src/services/data.service';
+
 import { DataStore as Store } from '@core/services/data.service';
+
+import { Happening } from '@core/models/happening.model';
 import { Category } from '@core/models/category.model';
 import { Organizer } from '@core/models/organizer.model';
-import { Router } from '@angular/router';
-import {MatRadioModule} from '@angular/material/radio';
-import { Tag } from '@core/models/tag.model';
-import { MatChipInputEvent, MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material';
+
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
+
+import { Router } from '@angular/router';
+
+
+import { Tag } from '@core/models/tag.model';
+import { MatChipInputEvent, MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material';
+
 import {cities} from 'src/dummy/cities';
 import { addTimeToDate } from "@shared/filters/date.filter";
 
@@ -73,7 +77,7 @@ export class AddEventFormComponent implements OnInit {
   public filteredTags$: Observable<Tag[]>;
   public tagStr: string = '';
   tags: Tag[] = [];
-  alltags : Tag[];
+  alltags: Tag[];
   public tagValue = '';
   @ViewChild('tagInput', { read: ElementRef, static: false } ) tagInput: ElementRef<HTMLInputElement>;
 
@@ -87,8 +91,8 @@ export class AddEventFormComponent implements OnInit {
 
   constructor(
     protected router: Router,
-    protected eventService : EventService,
-    protected dataStore : DataStore,
+    // protected eventService : EventService,
+    // protected dataStore : DataStore,
     protected store : Store
   ) {
       this.cities = cities;
@@ -115,18 +119,18 @@ export class AddEventFormComponent implements OnInit {
       imageLink: new FormControl('')
     });
 
-    this.filteredTags$ = this.eventForm.controls.tags.valueChanges.pipe(
-      startWith(null),
-      map((tag: Tag | null) => tag ? this._filterTags(tag) : this.alltags.slice()));
+    // this.store.tags$.subscribe((o) => this.alltags = o );
 
-    // this.store.categories$.subscribe((c) => this.categories = c);
-    // this.store.tags$.subscribe((t) => {
-    //   this.alltags = t;
-    //   this.filteredTags$ = this.eventForm.controls.tags.valueChanges.pipe(
-    //     startWith(null),
-    //     map((tag: Tag | null) => tag ? this._filterTags(tag) : this.alltags.slice()));
-    //
-    // })
+    this.store.tags$.subscribe((t) => {
+        this.alltags = t;
+        console.log(this.alltags);
+      })
+
+      this.filteredTags$ = this.eventForm.controls.tags.valueChanges.pipe(
+        startWith(null),
+        map((tag: Tag | null) => tag ? this._filterTags(tag) : this.alltags.slice())
+      );
+
 
     this.filteredCities = this.eventForm.controls.cities.valueChanges
       .pipe(
@@ -319,9 +323,9 @@ export class AddEventFormComponent implements OnInit {
     // console.log(form.tags.value);
     let tags = []
     this.tags.forEach(function (item) {
-      tags.push(item.name)
+      tags.push(item.name.toLowerCase())
     });
-    this.event.tags = tags;
+    this.event.tags = tags; // ['tag1','tag2']
     // let tagString = [];
     // this.tags.forEach((t, i) => {
     //   if (i !== 0) {

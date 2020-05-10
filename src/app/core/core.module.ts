@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+// import { CommonModule } from '@angular/common';
 import { DatePipe } from '@angular/common';
 
-import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { LayoutModule } from '@angular/cdk/layout';
@@ -18,8 +18,8 @@ import { DataStore } from '@core/services/data.service';
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
-    BrowserModule,
+    // CommonModule,
+    // BrowserModule,
     HttpClientModule,
     LayoutModule,
   ],

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from 'src/services/event.service';
+// import { EventService } from 'src/services/event.service';
 import { ActivatedRoute } from "@angular/router";
 
 import { Category } from '@core/models/category.model';
@@ -22,7 +22,7 @@ export class EventShowComponent implements OnInit {
 
   constructor(
     protected store: DataStore,
-    protected eventService: EventService,
+    // protected eventService: EventService,
     private route: ActivatedRoute
   ) { }
 

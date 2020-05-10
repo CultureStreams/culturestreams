@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DataStore } from 'src/services/data.service';
-import { Organizer } from 'src/models/organizer';
-import { OrgaEvent } from 'src/models/event';
+
+import { DataStore } from '@core/services/data.service';
+
+import { Organizer } from '@core/models/organizer.model';
+import { Happening } from '@core/models/happening.model';
 
 import { Router } from '@angular/router';
 
@@ -12,15 +14,15 @@ import { Router } from '@angular/router';
 })
 export class EventItemComponent implements OnInit {
 
-  @Input() event: OrgaEvent;
+  @Input() event: Happening;
 
   protected organizers: Organizer[] = [];
-  protected date: Date;
+  // protected date: Date;
 
   constructor(
     protected router: Router,
-    protected dataStore: DataStore) {
-    this.date = new Date();
+    protected store: DataStore) {
+    // this.date = new Date();
    }
 
   ngOnInit() {

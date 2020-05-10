@@ -3,7 +3,7 @@ import eventsJson from 'src/dummy/arrays.json';
 // import { Week } from 'src/models/week';
 import { Router } from '@angular/router';
 
-import { EventService } from 'src/services/event.service';
+// import { EventService } from 'src/services/event.service';
 
 
 import { Happening } from '@core/models/happening.model';
@@ -15,7 +15,7 @@ import { DataStore } from '@core/services/data.service';
 
 
 
-import { CategoryPreviewComponent } from '../home/category-preview/category-preview.component';
+// import { CategoryPreviewComponent } from '../home/category-preview/category-preview.component';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -163,40 +163,6 @@ export class CalendarComponent implements OnInit {
         // console.log('day ' + index + ': ' + dayTemp);
         this.week.push(dayTemp);
       }
-      // console.log(this.week);
-
-      // this.week = [];
-      //
-      // day.setDate(day.getDate());
-      // day.setHours(0, 0, 0, 0);
-      // console.log('day: ' + day);
-      // this.week.push(day);
-
-      // var day1 = new Date();
-      // day1.setDate(day.getDate()+1);
-      // console.log('day1: ' + day1);
-      // this.week.push(day1);
-      //
-      // var day2 = new Date();
-      // day2.setDate(day.getDate()+2);
-      // console.log('day2: ' + day2);
-      // this.week.push(day2);
-      //
-      // var day3 = new Date();
-      // day3.setDate(day.getDate()+3);
-      // this.week.push(day3);
-      //
-      // var day4 = new Date();
-      // day4.setDate(day.getDate()+4);
-      // this.week.push(day4);
-      //
-      // var day5 = new Date();
-      // day5.setDate(day.getDate()+5);
-      // this.week.push(day5);
-      //
-      // var day6 = new Date();
-      // day6.setDate(day.getDate()+6);
-      // this.week.push(day6);
     }
 
 }

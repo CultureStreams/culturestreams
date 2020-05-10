@@ -6,6 +6,7 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 
 import { CoreModule } from '@core/core.module';
 import { SharedModule } from '@shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NavComponent } from '@features/main-layout/components/nav/nav.component';
 import { FooterComponent } from '@features/main-layout/components/footer/footer.component';
@@ -21,6 +22,7 @@ import { environment } from '../environments/environment';
     FooterComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     CoreModule,
     SharedModule,
     AppRoutingModule,

@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { OrgaEvent } from 'src/models/event';
-import { Category } from 'src/models/category';
 
 @Component({
   selector: 'cs-event-item-base',
@@ -9,10 +7,6 @@ import { Category } from 'src/models/category';
 })
 export class EventItemBaseComponent implements OnInit {
 
-  // quick fix for running build --prod
-  // todo fix
-  public event = new OrgaEvent();
-  public category = new Category();
 
   constructor() { }
 
