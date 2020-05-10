@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import categoriesJson from '../dummy/categories.json';
-import channelsJson from '../dummy/channels.json';
+// import categoriesJson from '../dummy/categories.json';
+// import channelsJson from '../dummy/channels.json';
 import {environment} from '../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category } from 'src/models/category';
-import { Platform } from '@angular/cdk/platform';
+// import { Platform } from '@angular/cdk/platform';
 import { Organizer } from 'src/models/organizer';
-import { Channel } from 'src/models/channel';
+// import { Channel } from 'src/models/channel';
 import { EventService } from './event.service';
 import { OrgaEvent } from 'src/models/event';
 import { Tag } from 'src/models/tag';
@@ -18,7 +18,7 @@ import { Tag } from 'src/models/tag';
 export class DataStore {
 
   public categories: Category[];
-  public channels: Channel[];
+  // public channels: Channel[];
   public organizers: Organizer[] = [];
   public tags: Tag[];
   protected api = environment.server;
@@ -45,7 +45,7 @@ export class DataStore {
         return 0;
       })
     });
-    this.getChannels().subscribe((p) => this.channels = p);
+    // this.getChannels().subscribe((p) => this.channels = p);
   }
 
   /**
@@ -75,10 +75,10 @@ export class DataStore {
    * load all Channels
    * no params needed
    */
-  public getChannels (): Observable<Channel[]> {
-    let res = this.http.get<Channel[]>(this.api + 'channels/?format=json', {headers: new HttpHeaders().set('Authorization', this.token)});
-    return res;
-  }
+  // public getChannels (): Observable<Channel[]> {
+  //   let res = this.http.get<Channel[]>(this.api + 'channels/?format=json', {headers: new HttpHeaders().set('Authorization', this.token)});
+  //   return res;
+  // }
 
 
   /**

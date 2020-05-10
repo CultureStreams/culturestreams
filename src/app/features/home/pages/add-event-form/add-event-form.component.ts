@@ -1,18 +1,20 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { FormControl, Validators, AbstractFormGroupDirective, FormGroup } from '@angular/forms';
-import { OrgaEvent } from 'src/models/event';
+import { Happening } from '@core/models/happening.model';
 import { EventService } from 'src/services/event.service';
 import { DataStore } from 'src/services/data.service';
-import { Category } from 'src/models/category';
-import { Organizer } from 'src/models/organizer';
+import { DataStore as Store } from '@core/services/data.service';
+import { Category } from '@core/models/category.model';
+import { Organizer } from '@core/models/organizer.model';
 import { Router } from '@angular/router';
 import {MatRadioModule} from '@angular/material/radio';
-import { Tag } from 'src/models/tag';
+import { Tag } from '@core/models/tag.model';
 import { MatChipInputEvent, MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import {cities} from 'src/dummy/cities';
+import { addTimeToDate } from "@shared/filters/date.filter";
 
 //import { eventNames } from 'cluster';
 
@@ -23,7 +25,7 @@ import {cities} from 'src/dummy/cities';
 })
 export class AddEventFormComponent implements OnInit {
 
-  public event: OrgaEvent = new OrgaEvent();
+  public event: Happening = new Happening();
   public password: string;
   public categories: Category[] = [];
   public startTime;
@@ -33,8 +35,8 @@ export class AddEventFormComponent implements OnInit {
   public organizer: Organizer = new Organizer();
 
   filterTag: string = '';
-  
-  
+
+
   @ViewChild('auto', { read: true, static: true }) matAutocomplete: MatAutocomplete;
   visible = true;
   selectable = true;
@@ -49,7 +51,7 @@ export class AddEventFormComponent implements OnInit {
   public addImage : boolean = false;
   public addTag : boolean = false;
   public addArtist : boolean = false;
-  
+
   /* Organizer */
   public organizers: Organizer[];
   public filteredOrganizers: Observable<Organizer[]>;
@@ -59,16 +61,16 @@ export class AddEventFormComponent implements OnInit {
   public filteredCities: Observable<String[]>;
 
   /* Artists */
-  public filteredArtists: Observable<Organizer[]>;
-  public artistStr: string = '';
-  artists: Organizer[] = [];
-  allArtists : Organizer[];
-  public artistValue = '';
-  @ViewChild('artistInput', { read: ElementRef, static: false } ) artistInput: ElementRef<HTMLInputElement>;
+  // public filteredArtists: Observable<Organizer[]>;
+  // public artistStr: string = '';
+  // artists: Organizer[] = [];
+  // allArtists : Organizer[];
+  // public artistValue = '';
+  // @ViewChild('artistInput', { read: ElementRef, static: false } ) artistInput: ElementRef<HTMLInputElement>;
 
 
   /* Tags */
-  public filteredTags: Observable<Tag[]>;
+  public filteredTags$: Observable<Tag[]>;
   public tagStr: string = '';
   tags: Tag[] = [];
   alltags : Tag[];
@@ -86,7 +88,9 @@ export class AddEventFormComponent implements OnInit {
   constructor(
     protected router: Router,
     protected eventService : EventService,
-    protected dataStore : DataStore) {
+    protected dataStore : DataStore,
+    protected store : Store
+  ) {
       this.cities = cities;
     }
 
@@ -111,14 +115,18 @@ export class AddEventFormComponent implements OnInit {
       imageLink: new FormControl('')
     });
 
-    this.dataStore.getCategories().subscribe((c) => this.categories = c);
-    this.dataStore.getTags().subscribe((t) => {
-      this.alltags = t;
-      this.filteredTags = this.eventForm.controls.tags.valueChanges.pipe(
-        startWith(null),
-        map((tag: Tag | null) => tag ? this._filterTags(tag) : this.alltags.slice()));
-        
-    })
+    this.filteredTags$ = this.eventForm.controls.tags.valueChanges.pipe(
+      startWith(null),
+      map((tag: Tag | null) => tag ? this._filterTags(tag) : this.alltags.slice()));
+
+    // this.store.categories$.subscribe((c) => this.categories = c);
+    // this.store.tags$.subscribe((t) => {
+    //   this.alltags = t;
+    //   this.filteredTags$ = this.eventForm.controls.tags.valueChanges.pipe(
+    //     startWith(null),
+    //     map((tag: Tag | null) => tag ? this._filterTags(tag) : this.alltags.slice()));
+    //
+    // })
 
     this.filteredCities = this.eventForm.controls.cities.valueChanges
       .pipe(
@@ -126,22 +134,22 @@ export class AddEventFormComponent implements OnInit {
         map(value => this._filterCities(value))
       );
 
-    this.dataStore.getOrganizers().subscribe((o) => {
-      this.organizers = o;
-      this.allArtists = o;
+    // this.dataStore.getOrganizers().subscribe((o) => {
+       this.store.organizers$.subscribe((o) => this.organizers = o );
+    //   this.allArtists = o;
 
       // Für Künstler:innen
       /*this.filteredArtists = this.eventForm.controls.artists.valueChanges.pipe(
         startWith(null),
         map((tag: Tag | null) => tag ? this._filterArtists(tag) : this.allArtists.slice()));*/
-      
+
       this.filteredOrganizers = this.eventForm.controls.organizer.valueChanges
       .pipe(
         startWith(''),
         map(value => this._filterOrganizers(value))
       );
-        
-    })
+    //
+    // })
 
   }
 
@@ -150,27 +158,32 @@ export class AddEventFormComponent implements OnInit {
 
     if (form.valid) {
       this.prepareForm();
+      console.log(this.event);
+      this.store.createEvent(this.event).subscribe(e => this.router.navigate(['/event', e.id]));
 
-      let organizer : Organizer = this.organizers.find(o => o.name == this.eventForm.controls.organizer.value);
-      if (organizer === undefined) {
-        organizer = new Organizer();
-        organizer.name = this.eventForm.controls.organizer.value;
-      }
-      this.event.organizer = organizer.id;
-
-      if (this.event.organizer == 0) {
-        console.log('noorganizer');
-        this.eventService.addOrganizer(organizer.name).subscribe((organizer) => {
-          this.event.organizer = organizer.id;
-          this.eventService.addEvent(this.event).subscribe(e => this.router.navigate(['/event', e.id]));
-        });
-      } else {
-        console.log('withorganizer');
-        this.eventService.addEvent(this.event).subscribe(e => this.router.navigate(['/event', e.id]));
-      }
+      // Habe die Logik in den Datastore übernommen (@core/services/data.service.ts)
+      // let organizer : Organizer = this.organizers.find(o => o.name == this.eventForm.controls.organizer.value);
+      // if (organizer === undefined) {
+      //   organizer = new Organizer();
+      //   organizer.name = this.eventForm.controls.organizer.value;
+      // }
+      // this.event.organizer = organizer.id;
+      //
+      // if (this.event.organizer == 0) {
+      //   console.log('noorganizer');
+      //   this.eventService.addOrganizer(organizer.name).subscribe((organizer) => {
+      //     this.event.organizer = organizer.id;
+      //     this.eventService.addEvent(this.event).subscribe(e => this.router.navigate(['/event', e.id]));
+      //   });
+      // } else {
+      //   console.log('withorganizer');
+      //   this.eventService.addEvent(this.event).subscribe(e => this.router.navigate(['/event', e.id]));
+      // }
     } else {
+      this.prepareForm();
       console.log('not valid weil aus Gründen');
       console.log(this.eventForm);
+      console.log(this.event);
     }
   }
 
@@ -184,6 +197,13 @@ export class AddEventFormComponent implements OnInit {
     const filterValue = value.toLowerCase();
     return this.organizers.filter(organizer => organizer.name.toLowerCase().includes(filterValue));
   }
+  displayFn(option){
+  if(option && option.name) {
+    return option.name;
+  } else {
+    return option
+  }
+}
 
   /* Organizer Autocomplete */
 
@@ -230,82 +250,102 @@ export class AddEventFormComponent implements OnInit {
   /* Tag Autocomplete End _____________________________________________________ */
 
   /* Artist Autocomplete Begin _____________________________________________________ */
-  addArtists(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
-    if ((value || '').trim()) {
-      let artist = new Organizer();
-      artist.name = value.trim();
-      this.artists.push(artist);
-    }
-    if (input) {
-      input.value = '';
-    }
-    this.eventForm.controls.artists.setValue(null);
-  }
-
-  removeArtists(artist: Organizer): void {
-    const index = this.artists.indexOf(artist);
-    if (index >= 0) {
-      this.artists.splice(index, 1);
-    }
-  }
-
-  selectedArtists(event: MatAutocompleteSelectedEvent): void {
-    let tag = this.allArtists.find(t => t.name == event.option.viewValue);
-    this.artists.push(tag);
-    this.artistInput.nativeElement.value = '';
-    this.eventForm.controls.artists.setValue(null);
-  }
-
-  private _filterArtists(value): Organizer[] {
-    const filterValue = value.toLowerCase();
-    return this.allArtists.filter(artist => artist.name.toLowerCase().indexOf(filterValue) === 0);
-  }
+  // addArtists(event: MatChipInputEvent): void {
+  //   const input = event.input;
+  //   const value = event.value;
+  //   if ((value || '').trim()) {
+  //     let artist = new Organizer();
+  //     artist.name = value.trim();
+  //     this.artists.push(artist);
+  //   }
+  //   if (input) {
+  //     input.value = '';
+  //   }
+  //   this.eventForm.controls.artists.setValue(null);
+  // }
+  //
+  // removeArtists(artist: Organizer): void {
+  //   const index = this.artists.indexOf(artist);
+  //   if (index >= 0) {
+  //     this.artists.splice(index, 1);
+  //   }
+  // }
+  //
+  // selectedArtists(event: MatAutocompleteSelectedEvent): void {
+  //   let tag = this.allArtists.find(t => t.name == event.option.viewValue);
+  //   this.artists.push(tag);
+  //   this.artistInput.nativeElement.value = '';
+  //   this.eventForm.controls.artists.setValue(null);
+  // }
+  //
+  // private _filterArtists(value): Organizer[] {
+  //   const filterValue = value.toLowerCase();
+  //   return this.allArtists.filter(artist => artist.name.toLowerCase().indexOf(filterValue) === 0);
+  // }
   /* Artist Autocomplete End _____________________________________________________ */
 
-  private parseStartAndEnd() {
-    let dayTime = this.startTime.slice(-2);
-    let startTimeString = this.startTime.substr(0, this.startTime.length - 3);
-    let startMinutes = startTimeString.slice(-2);
-    startTimeString = startTimeString.substr(0, this.startTime.length - 6);
-    let startHours = parseInt(startTimeString);
-    if (dayTime == 'PM') {
-      startHours = startHours + 12;
-    }
-    this.startDate.setHours(startHours, startMinutes, 0);
-    let startDate = this.startDate.setHours(startHours, startMinutes);
-    this.event.start = new Date(startDate);
-
-    let nightTime = this.endTime.slice(-2);
-    let endTimeString = this.endTime.substr(0, this.endTime.length - 3);
-    let endMinutes = endTimeString.slice(-2);
-    endTimeString = endTimeString.substr(0, this.endTime.length - 6);
-    let endHours = parseInt(endTimeString);
-    if (nightTime == 'PM') {
-      endHours = endHours + 12;
-    }
-    this.startDate.setHours(endHours, endMinutes, 0);
-    let endDate = this.endDate.setHours(endHours, endMinutes);
-    this.event.end = new Date(endDate);
-  }
+  // private parseStartAndEnd() {
+  //   let dayTime = this.startTime.slice(-2);
+  //   let startTimeString = this.startTime.substr(0, this.startTime.length - 3);
+  //   let startMinutes = startTimeString.slice(-2);
+  //   startTimeString = startTimeString.substr(0, this.startTime.length - 6);
+  //   let startHours = parseInt(startTimeString);
+  //   if (dayTime == 'PM') {
+  //     startHours = startHours + 12;
+  //   }
+  //   this.startDate.setHours(startHours, startMinutes, 0);
+  //   let startDate = this.startDate.setHours(startHours, startMinutes);
+  //   this.event.start = new Date(startDate);
+  //
+  //   let nightTime = this.endTime.slice(-2);
+  //   let endTimeString = this.endTime.substr(0, this.endTime.length - 3);
+  //   let endMinutes = endTimeString.slice(-2);
+  //   endTimeString = endTimeString.substr(0, this.endTime.length - 6);
+  //   let endHours = parseInt(endTimeString);
+  //   if (nightTime == 'PM') {
+  //     endHours = endHours + 12;
+  //   }
+  //   this.startDate.setHours(endHours, endMinutes, 0);
+  //   let endDate = this.endDate.setHours(endHours, endMinutes);
+  //   this.event.end = new Date(endDate);
+  // }
 
   private prepareForm() {
-    let tagString = '';
-    this.tags.forEach((t, i) => {
-      if (i !== 0) {
-        tagString = tagString + ', ';
-      }
-      tagString = tagString + t.name;
-    });
+    let form = this.eventForm.controls;
 
-    this.event.tags = tagString;
-    this.event.name = this.eventForm.controls.name.value;
-    this.event.description = this.eventForm.controls.description.value;
-    this.event.imageLink = this.eventForm.controls.imageLink.value;
-    this.event.infoLink = this.eventForm.controls.additionalInformation.value;
-    this.event.donationLink = this.eventForm.controls.donationLink.value;
-    this.event.city = this.eventForm.controls.cities.value;
+    this.event.start = addTimeToDate(form.startDate.value,form.startTime.value);
+    this.event.end = addTimeToDate(form.endDate.value,form.endTime.value);
+    // console.log(this.tags);
+    // console.log(form.tags.value);
+    let tags = []
+    this.tags.forEach(function (item) {
+      tags.push(item.name)
+    });
+    this.event.tags = tags;
+    // let tagString = [];
+    // this.tags.forEach((t, i) => {
+    //   if (i !== 0) {
+    //     tagString = tagString.push(t.name);
+    //   }
+    //   tagString = tagString + t.name;
+    // });
+
+    if (form.organizer.value.id === undefined) {
+      this.event.organizer.id = 0;
+      this.event.organizer.name = form.organizer.value;
+    }
+    else {
+      this.event.organizer.id = form.organizer.value.id;
+      this.event.organizer.name = form.organizer.value.name;
+    }
+    this.event.category.id = form.category.value;
+    this.event.link = form.streamlink.value;
+    this.event.name = form.name.value;
+    this.event.description = form.description.value;
+    this.event.image = form.imageLink.value;
+    this.event.infoLink = form.additionalInformation.value;
+    this.event.donationLink = form.donationLink.value;
+    this.event.city = form.cities.value;
   }
 
 }

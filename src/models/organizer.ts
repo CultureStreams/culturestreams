@@ -5,6 +5,6 @@ export class Organizer {
     website: string = null;
     description: string = '';
     image: string = '';
-    category: number = null;
+    // category: number = null;
     datePublished: Date = new Date();
 }

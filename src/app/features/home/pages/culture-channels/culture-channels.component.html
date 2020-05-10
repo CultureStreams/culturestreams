@@ -2,10 +2,11 @@
 <h2>Kulturkanäle</h2>
 
 <mat-card>Hier findet ihr Plattformen, die Kulturveranstaltungen streamen. Gerne tragen wir noch weitere ein. Schreibt uns einfach: <a href="mailto:kulturkanaele@culturestreams.org">kulturkanaele@culturestreams.org</a>.</mat-card>
-
-<mat-card class="channel-container" *ngFor="let channel of channels">
-<a href="{{channel.link}}" target="_blank">
-    <mat-card-title>{{channel.name}}</mat-card-title>
-    <mat-card-subtitle *ngIf="channel.organizerName">by {{channel.organizerName}}</mat-card-subtitle>
-</a>
+<mat-card *ngIf="store.channels$ | async">
+  <mat-card class="channel-container" *ngFor="let channel of store.channels$ | async">
+  <a href="{{channel.link}}" target="_blank">
+      <mat-card-title>{{channel.name}}</mat-card-title>
+      <mat-card-subtitle *ngIf="channel.organizer.name">by {{channel.organizer.name}}</mat-card-subtitle>
+  </a>
+  </mat-card>
 </mat-card>

@@ -8,11 +8,11 @@
       <input formControlName="name" matInput>
     </mat-form-field>
     <br/>
-    
+
     <mat-form-field class="full-width">
       <mat-label>Kategorie *</mat-label>
       <mat-select formControlName="category">
-        <mat-option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</mat-option>
+        <mat-option *ngFor="let category of store.categories$ | async" value="{{ category.id }}">{{ category.name }}</mat-option>
       </mat-select>
     </mat-form-field>
 
@@ -30,9 +30,10 @@
     <mat-form-field class="half-width">
         <mat-label>Start Uhrzeit *</mat-label>
         <!-- removed vor prod (keyup)="setStartTime($event)"  -->
-        <input formControlName="startTime" [ngxTimepicker]="pickerStart" matInput>
+        <!-- <input formControlName="startTime" [ngxTimepicker]="pickerStart" matInput> -->
+        <input formControlName="startTime" matInput type="time">
         <!-- removed vor prod (keyup)="setStartTime($event)"  -->
-        <ngx-material-timepicker #pickerStart></ngx-material-timepicker>
+        <!-- <ngx-material-timepicker #pickerStart></ngx-material-timepicker> -->
     </mat-form-field>
   <br/>
   <mat-form-field class="half-width">
@@ -45,9 +46,10 @@
 </mat-form-field>
     <mat-form-field class="half-width">
         <mat-label>Ende Uhrzeit *</mat-label>
+        <input formControlName="endTime" matInput type="time">
         <!-- removed vor prod (keyup)="setEndTime($event)" (selectedChanged)="onChange($event)" -->
-        <input formControlName="endTime" [ngxTimepicker]="pickerEnd" matInput>
-        <ngx-material-timepicker #pickerEnd></ngx-material-timepicker>
+        <!-- <input formControlName="endTime" [ngxTimepicker]="pickerEnd" matInput>
+        <ngx-material-timepicker #pickerEnd></ngx-material-timepicker> -->
     </mat-form-field>
 <br/>
 
@@ -62,7 +64,7 @@
       <mat-checkbox [(ngModel)]="event.availableLiveOnly" [ngModelOptions]="{standalone: true}" class="label" >nur live?</mat-checkbox>
       <mat-icon class="label-tooltip" matTooltip="Ist dein Event kostenlos oder verlangst du eine Gebühr?" matSuffix>help_outline</mat-icon>
     </div>
-      
+
     <div class="half-width inline-checkbox " >
       <mat-checkbox [(ngModel)]="event.freeOfCharge" [ngModelOptions]="{standalone: true}" class="label">kostenlos?</mat-checkbox>
       <mat-icon class="label-tooltip" matTooltip="Ist dein Event nur live verfügbar oder auch nachträglich aufrufbar?" matSuffix>help_outline</mat-icon>
@@ -84,7 +86,7 @@
   </mat-form-field>
 
   <br/>
-  
+
 
   <br/>
   <mat-form-field class="full-width">
@@ -93,7 +95,7 @@
     <mat-icon matTooltip="Beschreibe kurz worum es geht." matSuffix>help_outline</mat-icon>
   </mat-form-field>
   <br/>
-    
+
 
     <mat-form-field class="full-width">
       <input type="text"
@@ -102,18 +104,18 @@
              matInput
              formControlName="organizer"
              [matAutocomplete]="autoOrganizer">
-      <mat-autocomplete #autoOrganizer="matAutocomplete">
-        <mat-option *ngFor="let organizer of filteredOrganizers | async" [value]="organizer.name">
-          {{organizer.name}}
+      <mat-autocomplete #autoOrganizer="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let organizer of filteredOrganizers | async" [value]="organizer">
+          {{ organizer.name }}
         </mat-option>
       </mat-autocomplete>
       <mat-icon matTooltip="Wer hostet die Veranstaltung?" matSuffix>help_outline</mat-icon>
     </mat-form-field>
-    
+
     <br/>
 
     <!-- hier Künstler:innen -->
-  
+
       <!--mat-form-field class="full-width">
         <mat-chip-list #chipListArtists aria-label="Artist selection">
           <mat-chip
@@ -144,7 +146,7 @@
       </mat-form-field-->
 
     <br/>
-    
+
     <mat-form-field class="full-width">
       <mat-chip-list #chipListTags aria-label="Tag selection">
         <mat-chip

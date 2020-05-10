@@ -13,7 +13,7 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.dataStore.loadData();
+    // this.dataStore.loadData();
     //console.log('load');
   }
 

@@ -3,19 +3,19 @@
 <div class="filter">
 
     <div class="example-container">
-          <mat-form-field>
+          <mat-form-field *ngIf="store.categories$">
             <mat-label>Kategorie</mat-label>
             <mat-select [(ngModel)]="selectedCategoryId">
               <mat-option>alle Kategorien</mat-option>
-              <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-option>
+              <mat-option *ngFor="let category of store.categories$ | async" [value]="category.id">{{category.name}}</mat-option>
             </mat-select>
           </mat-form-field>
 
-          <mat-form-field>
+          <mat-form-field *ngIf="store.organizers$">
               <mat-label>Veranstalter:in</mat-label>
               <mat-select [(ngModel)]="selectedOrganizerId">
                 <mat-option>alle Veranstalter:innen</mat-option>
-                <mat-option *ngFor="let organizer of organizers" [value]="organizer.id">{{organizer.name}}</mat-option>
+                <mat-option *ngFor="let organizer of store.organizers$ | async" [value]="organizer.id">{{organizer.name}}</mat-option>
               </mat-select>
           </mat-form-field>
 
@@ -53,14 +53,14 @@
 
 
 </div>
-<div class="calendar-container" *ngIf="events.length">
+<div class="calendar-container" *ngIf="store.events$">
     <div *ngFor="let day of week">
         <mat-card class="date">
             <mat-card-title>{{day | date:'fullDate':'de'}}</mat-card-title>
-              <div *ngFor="let event of events" >
-                  <div *ngIf="day.getTime() == event.parsedDate.getTime() ">
+              <div *ngFor="let event of store.events$ | async | filterByDateRange:'start':'end':day" >
+                  <!-- <div *ngIf="day.getTime() == event.parsedDate.getTime() "> -->
                       <cs-event-item [event]="event"></cs-event-item>
-                  </div>
+                  <!-- </div> -->
               </div>
 
         </mat-card>

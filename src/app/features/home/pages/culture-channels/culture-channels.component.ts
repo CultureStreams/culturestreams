@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from 'src/services/event.service';
-import { DataStore } from 'src/services/data.service';
-import { Category } from 'src/models/category';
-import { Platform } from '@angular/cdk/platform';
-import { Channel } from 'src/models/channel';
-import { Organizer } from 'src/models/organizer';
+// import { EventService } from 'src/services/event.service';
+import { DataStore } from '@core/services/data.service';
+// import { Category } from 'src/models/category';
+// import { Platform } from '@angular/cdk/platform';
+import { Channel } from '@core/models/channel.model';
+// import { Organizer } from 'src/models/organizer';
 
 @Component({
   selector: 'cs-culture-channels',
@@ -13,29 +13,28 @@ import { Organizer } from 'src/models/organizer';
 })
 export class CultureChannelsComponent implements OnInit {
 
-  public channels: Channel[] = [];
-  public organizers: Organizer[] = [];
+  // public channels: Channel[] = [];
+  // public organizers: Organizer[] = [];
 
-  constructor(protected dataStore: DataStore) {
+  constructor(protected store: DataStore) {
 
    }
 
   ngOnInit() {
-    this.channels = this.dataStore.channels;
-    this.organizers = this.dataStore.organizers;
-    console.log(this.dataStore);
-    console.log(this.dataStore.organizers);
-    //this.dataStore.getOrganizers().subscribe((o) => this.organizers = o);
-    this.dataStore.getChannels().subscribe((p) => {
-      this.channels = p;
-      this.channels.forEach((c) => {
-        let organizer = this.organizers.find((e) => e.id == c.organizer);
-        if (organizer != undefined){
-          console.log(organizer.name);
-          c.organizerName = organizer.name;
-        }
-      })
-    });
+    if (!this.store.channels$) {
+      console.log('no channels')
+    }
+    else {
+      console.log('channels!')
+    }
+    // this.channels = this.dataStore.channels;
+    // // this.organizers = this.dataStore.organizers;
+    // console.log(this.dataStore);
+    // console.log(this.dataStore.organizers);
+    // //this.dataStore.getOrganizers().subscribe((o) => this.organizers = o);
+    // this.dataStore.getChannels().subscribe((p) => {
+    //   this.channels = p;
+    // });
   }
 
 }

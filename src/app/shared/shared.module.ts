@@ -13,12 +13,14 @@ import { IconLogoOnlyComponent } from './components/icons/icon-logo-only/icon-lo
 
 import { HelperModule } from "./modules/helper/helper.module";
 import { TextExcerptFilter } from "./filters/text-excerpt.filter";
+import { FilterByDateRangePipe } from "./filters/date.filter";
 
 @NgModule({
   declarations: [
     IconLogoComponent,
     IconLogoOnlyComponent,
     TextExcerptFilter,
+    FilterByDateRangePipe,
   ],
   imports: [
     CommonModule,
@@ -39,7 +41,8 @@ import { TextExcerptFilter } from "./filters/text-excerpt.filter";
 
     IconLogoComponent,
     IconLogoOnlyComponent,
-    TextExcerptFilter
+    TextExcerptFilter,
+    FilterByDateRangePipe,
   ]
 })
 export class SharedModule { }
