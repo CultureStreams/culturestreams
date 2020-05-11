@@ -1,0 +1,67 @@
+<h2>Veranstaltungskalender</h2>
+
+<!-- <div class="filter">
+
+    <div class="example-container">
+          <mat-form-field *ngIf="store.categories$">
+            <mat-label>Kategorie</mat-label>
+            <mat-select [(ngModel)]="selectedCategoryId">
+              <mat-option>alle Kategorien</mat-option>
+              <mat-option *ngFor="let category of store.categories$ | async" [value]="category.id">{{category.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field *ngIf="store.organizers$">
+              <mat-label>Veranstalter:in</mat-label>
+              <mat-select [(ngModel)]="selectedOrganizerId">
+                <mat-option>alle Veranstalter:innen</mat-option>
+                <mat-option *ngFor="let organizer of store.organizers$ | async" [value]="organizer.id">{{organizer.name}}</mat-option>
+              </mat-select>
+          </mat-form-field> -->
+
+          <!-- <mat-form-field>
+              <mat-label>Veranstalter:in</mat-label>
+              <input type="text" matInput [(ngModel)]="selectedOrganizerId">
+                <mat-autocomplete>
+                  <mat-option *ngFor="let organizer of organizers" [value]="organizer.name" [value]="option">
+                    {{ organizer.name }}
+                  </mat-option>
+                </mat-autocomplete> -->
+                <!-- <mat-option>alle Veranstalter:innen</mat-option> -->
+          <!-- </mat-form-field> -->
+
+
+            <!--form class="example-form">
+              <mat-form-field class="example-full-width">
+                <input type="text"
+                       placeholder="Pick one"
+                       aria-label="Number"
+                       matInput
+                       [formControl]="myControl"
+                       [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let organizer of organizers | async" [value]="organizer.name">
+                    {{organizer.name}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </form-->
+
+
+          <!-- <button mat-button class="filterButton" (click)="getFilteredEvents()">filtern</button>
+    </div> -->
+
+
+<!-- </div> -->
+<div class="calendar-container" *ngIf="store.events$">
+    <div *ngFor="let day of week">
+        <mat-card class="date">
+            <mat-card-title>{{day | date:'fullDate':'de'}}</mat-card-title>
+              <div *ngFor="let event of store.events$ | async | filterByDateRange:'start':'end':day" >
+                  <!-- <div *ngIf="day.getTime() == event.parsedDate.getTime() "> -->
+                      <cs-event-overview [event]="event"></cs-event-overview>
+                  <!-- </div> -->
+              </div>
+        </mat-card>
+    </div>
+</div>

@@ -2,24 +2,24 @@
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { AppRoutingModule, appRoutingComponents } from './app-routing.module';
 
 import { CoreModule } from '@core/core.module';
 import { SharedModule } from '@shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { NavComponent } from '@features/main-layout/components/nav/nav.component';
-import { FooterComponent } from '@features/main-layout/components/footer/footer.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
+import { NavComponent } from "@features/base/components/nav/nav.component";
+import { FooterComponent } from "@features/base/components/footer/footer.component";
+
 @NgModule({
   declarations: [
+    appRoutingComponents,
     AppComponent,
-    routingComponents,
-
     NavComponent,
-    FooterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserAnimationsModule,
