@@ -1,10 +1,11 @@
 export class Resource {
-  id: number = null;
-  name: string = null;
+  id: number = 0;
+  name: string = "";
 
   getId() {
     return this.id;
   }
+
   getName() {
     return this.name;
   }
@@ -12,6 +13,7 @@ export class Resource {
   setId(id: number) {
     this.id = id;
   }
+  
   setName(name: string) {
     this.name = name;
   }

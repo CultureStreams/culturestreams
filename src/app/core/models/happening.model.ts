@@ -2,11 +2,8 @@ import { Resource } from './resource.model';
 
 import { Category } from './category.model';
 import { Organizer } from './organizer.model';
-// import { Member } from './models/member';
 
 export class Happening extends Resource {
-  // id: number = null;
-  // name: string = null;
   start: Date = new Date();
   end: Date = new Date();
   link: URL;
@@ -26,5 +23,4 @@ export class Happening extends Resource {
   parsedDate?: Date;
   organizerId?: number;
   categoryId?: number;
-
 }

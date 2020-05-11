@@ -12,13 +12,6 @@ export class OrganizerSerializer {
     return {
       id: organizer.id,
       name: organizer.name,
-      // description: event.description,
-      // categoryId: event.category.id,
-      // tags: event.tags,
-      // slug: event.slug,
-      // website: event.website,
-      // donationLink: event.donationLink,
-      // image: event.image,
     };
   }
 }

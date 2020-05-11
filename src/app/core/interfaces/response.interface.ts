@@ -2,13 +2,7 @@ import { Organizer } from './../models/organizer.model';
 import { Happening} from './../models/happening.model';
 import { Channel } from './../models/channel.model';
 import { Category } from './../models/category.model';
-
-import { ChannelState } from "./../states/channel.state";
-
-import { HappeningResponse} from './../models/happening-response.model';
-
-// import { ICategory } from './../interfaces/category.interface';
-// import { Resource } from './../models/resource.model';
+import { Tag } from './../models/tag.model';
 
 export interface IResponse {
   message?: string;
@@ -16,10 +10,9 @@ export interface IResponse {
   organizers?: Organizer[];
   organizer?: Organizer;
   events?: Happening[];
-  // events?: HappeningResponse;
   event?: Happening;
   channels?: Channel[];
-  // channels?: ChannelState;
   channel?: Channel;
   categories?: Category[];
+  tags?: Tag[];
 }

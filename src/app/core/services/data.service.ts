@@ -15,7 +15,6 @@ import { Channel } from './../models/channel.model';
 import { Happening } from './../models/happening.model';
 import { Tag } from '../models/tag.model';
 
-import { HappeningFilter } from "./../models/happening-filter.model";
 
 import { addDaysToDate, removeDaysFromDate, dateToApiString } from "@shared/filters/date.filter";
 
@@ -30,7 +29,7 @@ export class DataStore {
   private _tags: BehaviorSubject<Tag[]> = new BehaviorSubject([]);
 
   private _events: BehaviorSubject<Happening[]> = new BehaviorSubject([]);
-  private _eventFilter: BehaviorSubject<HappeningFilter[]> = new BehaviorSubject([]);
+  // private _eventFilter: BehaviorSubject<HappeningFilter[]> = new BehaviorSubject([]);
 
 
   public readonly categories$: Observable<Category[]> = this._categories.asObservable();
@@ -39,7 +38,7 @@ export class DataStore {
   public readonly tags$: Observable<Tag[]> = this._tags.asObservable();
 
   public readonly events$: Observable<Happening[]> = this._events.asObservable();
-  public readonly eventFilter$: Observable<HappeningFilter[]> = this._eventFilter.asObservable();
+  // public readonly eventFilter$: Observable<HappeningFilter[]> = this._eventFilter.asObservable();
 
   protected today: Date = new Date();
 
