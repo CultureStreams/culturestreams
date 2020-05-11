@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AddComponent } from "./components/add.component";
+
 import { AddEventFormComponent } from "./pages/add-event-form/add-event-form.component";
 
 const addRoutes: Routes = [
   { path:  '', component:  AddComponent,
     children: [
-      { path:  '', component:  AddEventFormComponent },
+      { path:  '', redirectTo: 'event', pathMatch: 'full' },
       { path:  'event', component:  AddEventFormComponent }
     ]
   }
@@ -20,5 +21,6 @@ const addRoutes: Routes = [
 })
 export class AddRoutingModule { }
 export const addRoutingComponents = [
-  AddEventFormComponent,
+  AddComponent,
+  AddEventFormComponent
 ]

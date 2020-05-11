@@ -28,7 +28,7 @@
       <mat-list-item><button mat-button routerLink="/browse/channels" routerLinkActive="active" (click)="drawer.toggle()">Kulturkanäle</button></mat-list-item>
       <mat-list-item><button mat-button routerLink="/about" routerLinkActive="active" (click)="drawer.toggle()">About</button></mat-list-item>
       <mat-list-item><button mat-button routerLink="/about/contact" routerLinkActive="active" (click)="drawer.toggle()">Kontakt</button></mat-list-item>
-      <mat-list-item><button mat-button class="add-button" routerLink="add/event" routerLinkActive="active" (click)="drawer.toggle()">Event eintragen</button></mat-list-item>
+      <mat-list-item><button mat-button class="add-button" routerLink="/add/event" routerLinkActive="active" (click)="drawer.toggle()">Event eintragen</button></mat-list-item>
       <mat-list-item><button mat-button class="homeButton" routerLink="/" routerLinkActive="active" (click)="drawer.toggle()"><icon-logo-only></icon-logo-only></button></mat-list-item>
     </mat-list>
   </mat-sidenav>
@@ -38,12 +38,12 @@
       <button mat-button class="homeButton" routerLink="/home" routerLinkActive="active"><icon-logo-only></icon-logo-only></button>
       <div class="nav-items"
       [ngClass]="{'hidden': (isHandset$ | async)}">
-        <button mat-button routerLink="/browse" routerLinkActive="active">Eventkalender</button>
+        <button mat-button routerLink="/browse/events" routerLinkActive="active">Eventkalender</button>
         <button mat-button routerLink="/browse/channels" routerLinkActive="active">Kulturkanäle</button>
         <button mat-button routerLink="/about" routerLinkActive="active">About</button>
         <button mat-button routerLink="/about/contact" routerLinkActive="active">Kontakt</button>
         <span class="spacer-ribbon"></span>
-        <button mat-button class="add-button" routerLink="add/event" routerLinkActive="active">Event eintragen</button>
+        <button mat-button class="add-button" routerLink="/add/event" routerLinkActive="active">Event eintragen</button>
       </div>
       <span class="spacer"></span>
       <button

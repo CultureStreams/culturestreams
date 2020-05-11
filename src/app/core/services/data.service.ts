@@ -73,8 +73,9 @@ export class DataStore {
 
   public loadCurrentEvents() {
     // load event from one week ago to in three weeks
-    let start = removeDaysFromDate(this.today, 7)
-    let end = addDaysToDate(this.today, 21)
+    let start = removeDaysFromDate(this.today, 7);
+    let end = addDaysToDate(this.today, 21);
+    // let params = new HttpParams;
     let params = {};
     params['start_after'] = dateToApiString(start);
     params['end_before'] = dateToApiString(end);
