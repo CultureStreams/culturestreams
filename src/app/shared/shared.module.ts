@@ -12,7 +12,7 @@ import { IconLogoComponent } from './components/icons/icon-logo/icon-logo.compon
 import { IconLogoOnlyComponent } from './components/icons/icon-logo-only/icon-logo-only.component';
 
 import { HelperModule } from "./modules/helper/helper.module";
-import { TextExcerptFilter } from "./filters/text-excerpt.filter";
+import { TextExcerptFilter } from "./filters/text.filter";
 import { FilterByDateRangePipe } from "./filters/date.filter";
 
 @NgModule({

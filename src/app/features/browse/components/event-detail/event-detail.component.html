@@ -17,7 +17,7 @@
     </mat-card-actions>
       <mat-card-content fxLayout="row" fxLayout.lt-md="column">
         <section>
-          <p *ngIf="event" class="event-description" itemprop="description">{{event.description}}</p>
+          <p *ngIf="event" class="event-description" itemprop="description" [innerHTML]="event.description"></p>
           <mat-divider [inset]="true"></mat-divider>
           <p *ngIf="event.category" class="event-category" itemprop="subjectOf">{{event.category.name}}</p>
         </section>

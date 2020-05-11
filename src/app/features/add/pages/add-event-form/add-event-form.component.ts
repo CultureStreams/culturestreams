@@ -345,7 +345,7 @@ export class AddEventFormComponent implements OnInit {
     this.event.category.id = form.category.value;
     this.event.link = form.streamlink.value;
     this.event.name = form.name.value;
-    this.event.description = form.description.value;
+    this.event.description = form.description.value.replace(new RegExp('\n', 'g'), "<br />");
     this.event.image = form.imageLink.value;
     this.event.infoLink = form.additionalInformation.value;
     this.event.donationLink = form.donationLink.value;

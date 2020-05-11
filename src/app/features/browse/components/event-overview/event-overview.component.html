@@ -28,7 +28,7 @@
         </mat-card-header>
         <mat-card-content>
           <span *ngIf="event.subtitle">{{event.subtitle}}<br><br></span>
-          <span *ngIf="event.description">{{event.description | excerpt:180}}</span>
+          <span *ngIf="event.description" [innerHTML]="event.description | excerpt:180"></span>
         </mat-card-content>
         <mat-card-actions fxLayout="row" fxLayout.xs="column">
           <!-- TODO jetzt live icon -->
