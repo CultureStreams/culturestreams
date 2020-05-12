@@ -7,7 +7,7 @@ import { ResourceHttpService } from './resource-http.service';
 
 import { HttpClient } from '@angular/common/http';
 
-import { addDaysToDate, dateToApiString } from "@shared/filters/date.filter";
+import { addDaysToDate, dateToApiString } from "@shared/utils/date.utils";
 
 @Injectable({
   providedIn: 'root'

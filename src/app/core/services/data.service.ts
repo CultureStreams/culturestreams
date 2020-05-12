@@ -16,7 +16,7 @@ import { Happening } from './../models/happening.model';
 import { Tag } from '../models/tag.model';
 
 
-import { addDaysToDate, removeDaysFromDate, dateToApiString } from "@shared/filters/date.filter";
+import { addDaysToDate, removeDaysFromDate, dateToApiString } from "@shared/utils/date.utils";
 
 @Injectable({
   providedIn: 'root'

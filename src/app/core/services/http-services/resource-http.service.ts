@@ -13,7 +13,7 @@ import { Resource } from './../../models/resource.model';
 //Todo Loading
 
 import { map, tap } from 'rxjs/operators';
-import { addDaysToDate, dateToApiString } from "@shared/filters/date.filter";
+import { addDaysToDate, dateToApiString } from "@shared/utils/date.utils";
 
 @Injectable({
   providedIn: 'root'

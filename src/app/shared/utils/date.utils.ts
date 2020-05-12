@@ -1,4 +1,3 @@
-import { Pipe, PipeTransform } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
 export function addDaysToDate(date1:Date, count:number): Date{
@@ -20,7 +19,7 @@ export function addTimeToDate(d:Date, t:string): Date {
   return date;
 }
 
-function compareDates(date1:Date, date2:Date) {
+export function compareDates(date1:Date, date2:Date) {
   let d1 = new Date(date1);
   let d2 = new Date(date2);
   d1.setHours(0, 0, 0, 0);
@@ -31,7 +30,7 @@ function compareDates(date1:Date, date2:Date) {
   if (d1 < d2) return -1;
 }
 
-function isInDateRange(start:Date, end:Date, date:Date) {
+export function isInDateRange(start:Date, end:Date, date:Date) {
   let newStart = new Date(start);
   let newEnd = new Date(end);
   newStart.setHours(0, 0, 0, 0);
@@ -56,16 +55,6 @@ export function dateToApiString(date: Date): string {
 //     }
 // }
 
-@Pipe({name: 'filterByDateRange'})
-export class FilterByDateRangePipe implements PipeTransform {
-    transform(items: any[],startAttr: string, endAttr: string, filterDate:Date): any {
-      if (!items || !filterDate) {
-            return items;
-        }
-       items = items.filter(item => (isInDateRange(item[startAttr],item[endAttr],filterDate)));
-      return items
-    }
-}
 
 
 

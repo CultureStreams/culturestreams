@@ -18,7 +18,7 @@ import { Tag } from '@core/models/tag.model';
 import { MatChipInputEvent, MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material';
 
 import {cities} from 'src/dummy/cities';
-import { addTimeToDate } from "@shared/filters/date.filter";
+import { addTimeToDate } from "@shared/utils/date.utils";
 
 //import { eventNames } from 'cluster';
 
