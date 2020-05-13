@@ -1,13 +1,54 @@
-h1 {
-  display: hidden;
+.mat-card-avatar {
+    height: 60px;
+    width: 60px;
+    margin-bottom: 16px;
 }
 
-.event-date, .event-time, .event-description {
+/* 
+
+mat-card {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+button.show-more {
+  color: red;
+  min-width: 160px;
+  margin: 0 auto;
+}
+button:hover{
+    background-color: white;
+    color: red;
+    border-color: red;
+}
+
+.mat-card-content {
+  margin: 0;
+}
+
+.event-date, .event-time {
   padding: 5px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.mat-card-header-text {
+ margin-left: 0 !important;
+}
+
+.mat-card-avatar {
+    height: 80px;
+    width: 80px;
+    margin-bottom: 16px;
+}
+
+.event-information {
+    margin-left: 16px;
 }
 
 .event-description{
   padding-bottom: 15px;
+  max-width: 600px;
 }
 
 .event-category {
@@ -15,34 +56,22 @@ h1 {
 }
 
 .mat-card-image {
-    margin: 0;
-}
+  background-image: url('/../../../../assets/img/cs-sofaherz-dunkel.png');
+  background-size: cover;
+  background-position: center;
+  margin-top: -18px;
+  margin-bottom: -18px;
+  margin-left: -18px;
+  margin-right: 0;
+} */
 
 /* .event-img {
     width:600px;
     margin:30px;
 } */
 
-.event-description-container {
-    padding: 30px;
-}
-
-.event-property {
-    display:inline-block;
-    margin-right: 20px;
-    font-weight: bold;
-    font-weight: 1000;
-}
-
-.property-item {
-    margin:30px;
-}
 
 /* .redirect-stream {
     background-color: black;
     color: white;
 } */
-
-.container {
-    text-align: center;
-}

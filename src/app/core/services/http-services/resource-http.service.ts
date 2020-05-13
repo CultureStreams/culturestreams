@@ -64,8 +64,8 @@ export class ResourceHttpService <T extends Resource>{
   }
 
   public create (item: T): Observable<T> {
-    console.log('posting ' + this.type);
     let type_singular = this.type.substring(0, this.type.length-1)
+    console.log('posting ' + type_singular);
     let headers = this.headers;
     let creatingResources$ = this.http.post<IResponse>(this.apiv1 + this.type + '/', this.serializer.toJSON(item), { headers })
         .pipe(catchError(err => {

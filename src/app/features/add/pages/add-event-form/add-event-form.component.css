@@ -2,6 +2,24 @@
     margin:30px;
     padding:30px;
 }
+span.mat-button-wrapper {
+    /* margin: 5px; */
+    /* min-width: 100%; */
+    white-space: normal;
+}
+button.add-button.mat-button {
+    min-width: unset!important;
+}
+.add-button mat-icon, .mat-form-field-suffix .mat-icon {
+    color: red;
+}
+.add-button mat-icon:hover, .mat-form-field-suffix mat-icon:hover {
+    color: white!important;
+}
+
+.mat-select-panel .mat-option {
+    height: 2.5em;
+}
 
 mat-form-field {
     margin-right: 20px;
@@ -30,9 +48,9 @@ mat-form-field {
     margin-right: 60px;
 }
 
-mat-icon {
+/* mat-icon {
     margin: -15px;
-}
+} */
 
 .label-tooltip {
     display: inline-block;

@@ -1,33 +1,75 @@
-<main class="content" fxLayout="column">
-  <button mat-button fxLayoutAlign="start start" routerLink="/calendar" routerLinkActive="active">zurück</button>
-  <mat-card *ngIf="event" class="event-item">
-    <mat-card-header fxLayout="column" fxLayoutAlign="center stretch">
-      <mat-card-title><h1 class="event-title md-display-1" itemprop="name">{{event.name}}</h1></mat-card-title>
-      <mat-card-subtitle *ngIf="event.organizer" itemprop="organizer">von {{event.organizer.name}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-actions>
-      <section fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center stretch">
-        <p *ngIf="event" class="event-date"><mat-icon>date_range</mat-icon> <span itemprop="startDate">{{event.start | date:'fullDate':'de'}}</span> </p>
-        <p *ngIf="event" class="event-time"><mat-icon>access_time</mat-icon> <span itemprop="doorTime">{{event.start | date:'shortTime':'de'}}</span> bis {{event.end | date:'shortTime':'de'}} Uhr </p>
+<!-- <main class="content" fxLayout="column">
+  <button mat-button fxLayoutAlign="start start" routerLink="/calendar" routerLinkActive="active">zurück</button> -->
+  <mat-card *ngIf="event" fxLayoutAlign="center stretch" fxLayout.xs="column" class="event-item">
+        <img *ngIf="event.image; else elseBlock" fxFlex="30" mat-card-image [ngStyle]="{'background': 'url(' + event.image + ')'}"
+        style="background-size: cover;
+        background-position: center;"
+        fxFlex="30" fxHide.xs>
+        <ng-template #elseBlock>
+          <img mat-card-image fxFlex="30" fxHide.xs>
+        </ng-template>
+      <section fxFlex="grow" fxLayout.xs="column" class="event-information">
+        <article fxLayout="row" fxLayout.lt-sm="column">
+          <mat-card-header>
+              <div mat-card-avatar [ngStyle]="{'background': 'url(' + event.image + ')'}"
+              style="background-size: cover;
+              background-position: center;"
+              fxHide fxShow.xs></div>
+              <mat-card-title *ngIf="event"><h1>{{event.name | uppercase}}</h1></mat-card-title>
+              <mat-card-subtitle>
+                <span *ngIf="event.subtitle">{{event.subtitle}} | </span>
+                <span class="event-organizer">{{event.organizer.name}}</span>
+              </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content fxLayout="column" fxLayout.xs="column">
+              <p class="event-description"
+                [innerHTML]="(show) ? event.description : event.description | slice:0:900 | attachString:'...':''">
+              </p>
+              <button mat-flat-button *ngIf="event.description.length > 900" class="show-more" (click)="show = !show">
+                <span>{{ show ? 'weniger': 'mehr' }}</span>
+                <mat-icon aria-hidden="false" aria-label="show more">{{ show ? 'keyboard_arrow_up': 'keyboard_arrow_down' }}</mat-icon>
+              </button>
+          </mat-card-content>
+        </article>
+          <mat-card-actions fxLayout.xs="column" style="background-color: red;">
+              <!-- TODO jetzt live icon -->
+            <mat-icon>access_time</mat-icon>
+            <p class="event-time">
+                von {{event.start | date:'shortDate':'de'}}, {{event.start | date:'shortTime':'de'}} Uhr<br>
+                bis <span *ngIf="event.end | isNotSameDate:event.start">{{event.end | date:'shortDate':'de'}}, </span>{{event.end | date:'shortTime':'de'}} Uhr
+            </p>
+            <p fxFlex="grow"></p>
+            <a (click)="navigateToEvent(event)" mat-flat-button>ZUM STREAM</a>
+          </mat-card-actions>
       </section>
-      <section fxLayout="row" fxLayout.lt-md="column">
-        <a *ngIf="event" fxFlex  href="{{event.link}}" target="_blank" rel="noopener" mat-flat-button>STREAM<mat-icon>play_arrow</mat-icon></a>
-        <span itemprop="location" class="hidden">{{event.link}}</span>
-      </section>
-    </mat-card-actions>
-      <mat-card-content fxLayout="row" fxLayout.lt-md="column">
-        <section>
-          <p *ngIf="event" class="event-description" itemprop="description" [innerHTML]="event.description"></p>
-          <mat-divider [inset]="true"></mat-divider>
-          <p *ngIf="event.category" class="event-category" itemprop="subjectOf">{{event.category.name}}</p>
-        </section>
-        <section>
-          <img mat-card-image src="../../../../assets/img/cs-sofaherz.jpg" alt="{{event.name}}">
-        </section>
-      </mat-card-content>
   </mat-card>
-</main>
+<!-- </main> -->
 
 <!-- <mat-label class="event-property">Location in Nicht-Kriesen-Zeiten:</mat-label>
 <mat-label class="event-attribute">{{event.organizer.location}}</mat-label>
 <mat-label class="event-attribute" *ngIf="event">{{event.end}}</mat-label> -->
+
+<!-- <mat-card-header fxLayout="column" fxLayoutAlign="center stretch">
+  <mat-card-title><h1 class="event-title md-display-1" itemprop="name">{{event.name}}</h1></mat-card-title>
+  <mat-card-subtitle *ngIf="event.organizer" itemprop="organizer">von {{event.organizer.name}}</mat-card-subtitle>
+</mat-card-header>
+<mat-card-actions>
+  <section fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center stretch">
+    <p *ngIf="event" class="event-date"><mat-icon>date_range</mat-icon> <span itemprop="startDate">{{event.start | date:'fullDate':'de'}}</span> </p>
+    <p *ngIf="event" class="event-time"><mat-icon>access_time</mat-icon> <span itemprop="doorTime">{{event.start | date:'shortTime':'de'}}</span> bis {{event.end | date:'shortTime':'de'}} Uhr </p>
+  </section>
+  <section fxLayout="row" fxLayout.lt-md="column">
+    <a *ngIf="event" fxFlex  href="{{event.link}}" target="_blank" rel="noopener" mat-flat-button>STREAM<mat-icon>play_arrow</mat-icon></a>
+    <span itemprop="location" class="hidden">{{event.link}}</span>
+  </section>
+</mat-card-actions>
+  <mat-card-content fxLayout="row" fxLayout.lt-md="column">
+    <section>
+      <p *ngIf="event" class="event-description" itemprop="description" [innerHTML]="event.description"></p>
+      <mat-divider [inset]="true"></mat-divider>
+      <p *ngIf="event.category" class="event-category" itemprop="subjectOf">{{event.category.name}}</p>
+    </section>
+    <section>
+      <img mat-card-image src="../../../../assets/img/cs-sofaherz.jpg" alt="{{event.name}}">
+    </section>
+  </mat-card-content> -->

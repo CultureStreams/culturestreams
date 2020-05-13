@@ -21,7 +21,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 // import {MatStepperModule} from '@angular/material/stepper';
 // import {MatTabsModule} from '@angular/material/tabs';
-// import {MatExpansionModule} from '@angular/material/expansion';
+import {MatExpansionModule} from '@angular/material/expansion';
 // import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
@@ -59,7 +59,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatCardModule,
     // MatStepperModule,
     // MatTabsModule,
-    // MatExpansionModule,
+    MatExpansionModule,
     // MatButtonToggleModule,
     MatChipsModule,
     MatIconModule,
@@ -93,7 +93,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatCardModule,
     // MatStepperModule,
     // MatTabsModule,
-    // MatExpansionModule,
+    MatExpansionModule,
     // MatButtonToggleModule,
     MatChipsModule,
     MatIconModule,

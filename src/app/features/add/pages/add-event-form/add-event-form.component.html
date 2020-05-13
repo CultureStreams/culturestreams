@@ -1,27 +1,51 @@
 <h2>Event hinzufügen</h2>
 <mat-card class="card">
+  <form [formGroup]="eventForm" (ngSubmit)="onSubmit(eventForm)">
+    <div fxLayout="row">
+      <mat-form-field fxFlex="grow">
+        <mat-label>Titel *</mat-label>
+        <input formControlName="name" matInput>
+        <mat-icon matTooltip="Wie heißt Deine Veranstaltung? (Dieses Feld muss ausgefühlt sein.)" matSuffix>help</mat-icon>
+      </mat-form-field>
+      <button *ngIf="!addSubtitle" mat-button class="add-button" (click)="addSubtitle = !addSubtitle">
+        <mat-icon inline=true>add</mat-icon> Untertitel
+      </button>
+    </div>
+    <div>
+      <mat-form-field *ngIf="addSubtitle" fxFlex="grow">
+        <mat-label>Untertitel</mat-label>
+        <input formControlName="subtitle" matInput>
+        <mat-icon matTooltip="Wenn Du möchtest, kannst Du einen Untertitel hinzufügen." matSuffix>help</mat-icon>
+      </mat-form-field>
+      <button *ngIf="addSubtitle" mat-button color="primary" class="add-button" (click)="addSubtitle = !addSubtitle">
+        <mat-icon inline=true>clear</mat-icon> entfernen
+      </button>
+    </div>
+    <div>
+      <mat-form-field class="full-width">
+        <mat-label>Link zum Stream *</mat-label>
+        <input formControlName="streamlink" matInput>
+        <mat-icon matTooltip="Dieser Link führt im besten Fall direkt zum Stream. (Dieses Feld muss ausgefühlt sein.)" matSuffix>help</mat-icon>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="full-width">
+        <mat-label>Kategorie *</mat-label>
+        <mat-select formControlName="category">
+          <mat-option *ngFor="let category of store.categories$ | async" value="{{ category.id }}">{{ category.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
 
-    <form [formGroup]="eventForm" (ngSubmit)="onSubmit(eventForm)">
-    <mat-form-field class="full-width">
-      <mat-label>Titel *</mat-label>
-      <input formControlName="name" matInput>
-    </mat-form-field>
-    <br/>
 
-    <mat-form-field class="full-width">
-      <mat-label>Kategorie *</mat-label>
-      <mat-select formControlName="category">
-        <mat-option *ngFor="let category of store.categories$ | async" value="{{ category.id }}">{{ category.name }}</mat-option>
-      </mat-select>
-    </mat-form-field>
 
     <br/>
 
     <mat-form-field class="half-width">
         <mat-label>Start Datum *</mat-label>
         <!-- removed vor prod (keyup)="setDate($event)"  -->
-        <input formControlName="startDate" matInput [matDatepicker]="pickerStartTime">
+        <input matInput formControlName="startDate" [matDatepicker]="pickerStartTime">
         <!-- removed vor prod (selectedChanged)="onChange($event)""  -->
         <mat-datepicker-toggle matSuffix [for]="pickerStartTime" #pickerStartTime ngDefaultControl></mat-datepicker-toggle>
         <mat-datepicker #pickerStartTime></mat-datepicker>
@@ -53,21 +77,21 @@
     </mat-form-field>
 <br/>
 
-    <div class="half-width inline-checkbox">
+    <!-- <div class="half-width inline-checkbox">
       <mat-checkbox [(ngModel)]="event.periodic" [ngModelOptions]="{standalone: true}" class="label">Wiederkehrend?</mat-checkbox>
-      <mat-icon class="label-tooltip" matTooltip="Wiederholt sich deine Veranstaltung regelmäßig?" matSuffix>help_outline</mat-icon>
-    </div>
+      <mat-icon class="label-tooltip" matTooltip="Wiederholt sich deine Veranstaltung regelmäßig?" matSuffix>help</mat-icon>
+    </div> -->
 
     <br>
 
     <div class="half-width float inline-checkbox">
-      <mat-checkbox [(ngModel)]="event.availableLiveOnly" [ngModelOptions]="{standalone: true}" class="label" >nur live?</mat-checkbox>
-      <mat-icon class="label-tooltip" matTooltip="Ist dein Event kostenlos oder verlangst du eine Gebühr?" matSuffix>help_outline</mat-icon>
+      <mat-checkbox [(ngModel)]="event.availableLiveOnly" [ngModelOptions]="{standalone: true}" class="label" >nur live</mat-checkbox>
+      <mat-icon class="label-tooltip" matTooltip="Ausgewählt: Dein Event ist nur live verfügbar und nicht nachträglich abrufbar. Nicht ausgewählt: Deinen Event kann man auch später noch streamen. (Dieses Feld muss ausgefühlt sein.)" matSuffix>help</mat-icon>
     </div>
 
     <div class="half-width inline-checkbox " >
-      <mat-checkbox [(ngModel)]="event.freeOfCharge" [ngModelOptions]="{standalone: true}" class="label">kostenlos?</mat-checkbox>
-      <mat-icon class="label-tooltip" matTooltip="Ist dein Event nur live verfügbar oder auch nachträglich aufrufbar?" matSuffix>help_outline</mat-icon>
+      <mat-checkbox [(ngModel)]="event.freeOfCharge" [ngModelOptions]="{standalone: true}" class="label">kostenlos</mat-checkbox>
+      <mat-icon class="label-tooltip" matTooltip="Ist dein Event kostenlos oder verlangst du eine Gebühr? (Dieses Feld muss ausgefühlt sein.)" matSuffix>help</mat-icon>
     </div>
 
     <br/>
@@ -75,24 +99,22 @@
     <mat-form-field class="full-width">
       <mat-label>Spenden-Link (http://)</mat-label>
       <input formControlName="donationLink" matInput>
-      <mat-icon matTooltip="Trage hier den Link zu deiner Spendenaktion ein, falls vorhanden" matSuffix>help_outline</mat-icon>
+      <mat-icon matTooltip="Trage hier den Link zu deiner Spendenaktion ein, falls vorhanden" matSuffix>help</mat-icon>
   </mat-form-field>
   <br/>
 
-  <mat-form-field class="full-width">
-    <mat-label>Stream-Link (inkl. http://) *</mat-label>
-    <input formControlName="streamlink" matInput>
-    <mat-icon matTooltip="Dieser Link sollte direkt zum Stream führen" matSuffix>help_outline</mat-icon>
-  </mat-form-field>
+
 
   <br/>
 
 
   <br/>
-  <mat-form-field class="full-width">
+  <mat-form-field appearance="fill">
     <mat-label>Beschreibung *</mat-label>
-    <textarea formControlName="description" matInput></textarea>
-    <mat-icon matTooltip="Beschreibe kurz worum es geht." matSuffix>help_outline</mat-icon>
+    <textarea formControlName="description" #txtarea matInput rows="6" cols="100" [maxLength]="1300" [placeholder]="label"></textarea>
+    <mat-hint align="start">max. 1300 Zeichen</mat-hint>
+   <mat-hint align="end">{{txtarea.value.length}} / 1300</mat-hint>
+    <mat-icon matTooltip="Beschreibe kurz worum es geht." matSuffix>help</mat-icon>
   </mat-form-field>
   <br/>
 
@@ -109,7 +131,7 @@
           {{ organizer.name }}
         </mat-option>
       </mat-autocomplete>
-      <mat-icon matTooltip="Wer hostet die Veranstaltung?" matSuffix>help_outline</mat-icon>
+      <mat-icon matTooltip="Wer hostet die Veranstaltung?" matSuffix>help</mat-icon>
     </mat-form-field>
 
     <br/>
@@ -142,7 +164,7 @@
             {{artist.name}}
           </mat-option>
         </mat-autocomplete>
-        <mat-icon matTooltip="Namen der Künstler:innen" matSuffix>help_outline</mat-icon>
+        <mat-icon matTooltip="Namen der Künstler:innen" matSuffix>help</mat-icon>
       </mat-form-field-->
 
     <br/>
@@ -173,30 +195,25 @@
           {{tag.name}}
         </mat-option>
       </mat-autocomplete>
-      <mat-icon matTooltip="Hier kannst du dein Event mit Hilfe von bis zu 6 Tags frei beschreiben" matSuffix>help_outline</mat-icon>
+      <mat-icon matTooltip="Hier kannst du dein Event mit Hilfe von bis zu 6 Tags frei beschreiben" matSuffix>help</mat-icon>
     </mat-form-field>
 
     <br/>
     <button mat-button class="add-button" *ngIf="!addImage" (click)="addImage = !addImage">+ Bildlink</button>
     <mat-form-field *ngIf="addImage" class="full-width">
         <mat-label>Bildlink</mat-label>
-        <input formControlName="imageLink" (keyup)="setLink($event)" matInput>
-        <mat-icon matTooltip="Falls du ein Bild hast kannst du es hier hochladen oder ein Link hinterlegen." matSuffix>help_outline</mat-icon>
+        <input formControlName="imageLink" matInput>
+        <mat-icon matTooltip="Falls du ein Bild hast kannst du es hier hochladen oder ein Link hinterlegen." matSuffix>help</mat-icon>
     </mat-form-field>
 
     <br/>
-    <button mat-button class="add-button" *ngIf="!addSubHeadline" (click)="addSubHeadline = !addSubHeadline">+ Untertitel</button>
-    <mat-form-field *ngIf="addSubHeadline" class="full-width">
-      <mat-label>Untertitel</mat-label>
-      <input formControlName="subHeadline" matInput>
-      <mat-icon matTooltip="Wenn du möchtest kannst du hier einen Untertitel angeben" matSuffix>help_outline</mat-icon>
-    </mat-form-field>
+
     <br/>
     <button mat-button class="add-button" *ngIf="!addAdditionalInformation" (click)="addAdditionalInformation = !addAdditionalInformation">+ Zusatzinformationen</button>
     <mat-form-field *ngIf="addAdditionalInformation" class="full-width">
       <mat-label>weitereInfos</mat-label>
       <input formControlName="additionalInformation" matInput>
-      <mat-icon matTooltip="Wenn du möchtest kannst du hier einen Untertitel angeben" matSuffix>help_outline</mat-icon>
+      <mat-icon matTooltip="Wenn du möchtest kannst du hier einen Untertitel angeben" matSuffix>help</mat-icon>
     </mat-form-field>
     <br/>
     <button mat-button class="add-button" *ngIf="!addCity" (click)="addCity = !addCity">+ Stadt</button>
@@ -212,14 +229,14 @@
           {{city}}
         </mat-option>
       </mat-autocomplete>
-      <mat-icon matTooltip="In welcher Stadt findet die Veranstaltung statt?" matSuffix>help_outline</mat-icon>
+      <mat-icon matTooltip="In welcher Stadt findet die Veranstaltung statt?" matSuffix>help</mat-icon>
     </mat-form-field>
     <br/>
     <button mat-button class="add-button" *ngIf="!addLocation" (click)="addLocation = !addLocation">+ Ort</button>
     <mat-form-field class="full-width" *ngIf="addLocation">
       <mat-label>Ort</mat-label>
       <input formControlName="location" matInput>
-      <mat-icon matTooltip="Wo streamst du? (bwpw in einem Badezimmer)" matSuffix>help_outline</mat-icon>
+      <mat-icon matTooltip="Wo streamst du? (bwpw in einem Badezimmer)" matSuffix>help</mat-icon>
     </mat-form-field>
 
     <br/>

@@ -11,25 +11,39 @@ body {
   font-family: 'Courier New', Courier, monospace !important
 }
 
-@media screen and (min-width: 801px) {
-  h1 {
-    font-size: 2em;
-  }
+/* xxs */
+@media screen and (max-width: 399px) {
+  h1 { font-size: 0.9em; }
 }
-@media screen and (max-width: 800px) {
-  h1 {
-    font-size: 1em;
-  }
+/* xs */
+@media screen and (min-width: 400px) and (max-width: 599px) {
+  h1 { font-size: 1.6em; }
 }
-@media screen and (max-width: 500px) {
-  h1 {
-    font-size: 0.5em;
-  }
+/* small */
+@media screen and (min-width: 600px) and (max-width: 959px) {
+  h1 { font-size: 2em; }
 }
-
+/* medium */
+@media screen and (min-width: 960px) and (max-width: 1279px) {
+  h1 { font-size: 2.3em; }
+}
+/* lg */
+@media screen and (min-width: 1280px) and (max-width: 1919px) {
+  h1 { font-size: 2.7em; }
+}
+/* xl */
+@media screen and (min-width: 1920px) and (max-width: 5000px) {
+  h1 { font-size: 3em; }
+}
 
 a {
     color: black;
+}
+
+a:hover {
+    color: #6600cc;
+    text-decoration: underline;
+
 }
 
 a.mat-flat-button {
@@ -50,12 +64,12 @@ section {
   padding-bottom: 20px;
 }
 
-h2 {
+/* h2 {
     margin: 30px;
     font-size: 2.5em;
     text-shadow: 0 0 5px white;
     z-index: 10;
-}
+} */
 
 p {
   max-width: 800px;
@@ -106,6 +120,11 @@ mat-form-field {
     text-align: center;
     margin: 20px;
     padding: 5px;
+}
+
+main {
+    margin: 0 auto;
+    padding: 16px;
 }
 
 .mat-drawer-backdrop.mat-drawer-shown {

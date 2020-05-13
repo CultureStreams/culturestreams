@@ -12,15 +12,17 @@ import { IconLogoComponent } from './components/icons/icon-logo/icon-logo.compon
 import { IconLogoOnlyComponent } from './components/icons/icon-logo-only/icon-logo-only.component';
 
 import { HelperModule } from "./modules/helper/helper.module";
-import { TextExcerptFilter } from "./pipes/text.pipe";
-import { FilterByDateRangePipe } from "./pipes/date.pipe";
+import { TextExcerptFilter, AttachStringFilter } from "./pipes/text.pipe";
+import { FilterByDateRangePipe, FilterSameDatePipe } from "./pipes/date.pipe";
 
 @NgModule({
   declarations: [
     IconLogoComponent,
     IconLogoOnlyComponent,
     TextExcerptFilter,
+    AttachStringFilter,
     FilterByDateRangePipe,
+    FilterSameDatePipe
   ],
   imports: [
     CommonModule,
@@ -42,7 +44,9 @@ import { FilterByDateRangePipe } from "./pipes/date.pipe";
     IconLogoComponent,
     IconLogoOnlyComponent,
     TextExcerptFilter,
+    AttachStringFilter,
     FilterByDateRangePipe,
+    FilterSameDatePipe
   ]
 })
 export class SharedModule { }

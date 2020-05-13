@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 // import { DatePipe } from '@angular/common';
-import { isInDateRange, isSameDate } from "./../utils/date.utils";
+import { isInDateRange } from "./../utils/date.utils";
 
 @Pipe({name: 'filterByDateRange'})
 export class FilterByDateRangePipe implements PipeTransform {
@@ -13,12 +13,15 @@ export class FilterByDateRangePipe implements PipeTransform {
     }
 }
 
-@Pipe({name: 'isNotSameDate'})
-export class FilterSameDatePipe implements PipeTransform {
-    transform(date: Date, compareWith: Date): boolean {
-      return !isSameDate(date, compareWith);
-    }
-}
+// @Pipe({name: 'dateToApiString'})
+// export class DateToApiStringPipe implements PipeTransform {
+//     transform(date: Date): string {
+//       const datepipe = new DatePipe("de");
+//       var dateString = date.toISOString();
+//       dateString = datepipe.transform(dateString, 'yyyy-MM-dd HH:mm');
+//       return dateString;
+//     }
+// }
 
 
 
