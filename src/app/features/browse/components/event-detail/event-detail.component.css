@@ -5,7 +5,7 @@
 }
 
 mat-card {
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0 auto;
     overflow: hidden;
 }
@@ -21,7 +21,7 @@ mat-card {
 }
 
 .mat-card-actions {
-    margin: 8px 0 0 16px;
+    /* margin: 8px 0 0 16px; */
     padding: 0;
 }
 
@@ -40,6 +40,10 @@ mat-card {
 a.mat-flat-button.mat-button-base {
     display: flex;
     align-items: center;
+}
+
+span.mat-button-wrapper {
+    margin: 0 auto !important;
 }
 
 p.show-more {

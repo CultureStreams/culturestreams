@@ -5,15 +5,21 @@
   src: url('assets/fonts/SueEllenFrancisco-Regular.ttf') format("truetype");
 }
 
+/* * {
+  font-family: 'Courier New', Courier, monospace !important
+} */
+
 html, body { height: 100%; }
 body {
   margin: 0;
-  font-family: 'Courier New', Courier, monospace !important
+  font-size: 14px;
 }
+
 
 /* xxs */
 @media screen and (max-width: 399px) {
   h1 { font-size: 0.9em; }
+  body { font-size: 50%;}
 }
 /* xs */
 @media screen and (min-width: 400px) and (max-width: 599px) {
@@ -48,14 +54,11 @@ a:hover {
 
 a.mat-flat-button {
   font-size: 1.1em;
-  font-family: 'Courier New', Courier, monospace !important;
   color: white;
   background: red;
 }
 
 a.mat-flat-button:hover {
-  /* font-size: 1em;
-  font-family: 'Courier New', Courier, monospace !important; */
   color: red;
   background: white;
 }
@@ -76,15 +79,13 @@ p {
 }
 
 mat-toolbar {
-    font-family: 'Courier New'!important;
     background-color:white !important;
     color: black !important;
 }
 
 button {
   color: black;
-    font-family: 'Courier New'!important;
-    font-weight: bolder;
+  font-weight: bolder;
 }
 button:hover {
     background-color: red;
@@ -92,11 +93,9 @@ button:hover {
 }
 
 mat-card {
-    font-family: 'Courier New'!important;
 }
 
 mat-form-field {
-    font-family: 'Courier New'!important;
 }
 
 .mat-button, .mat-fab, .mat-flat-button, .mat-icon-button, .mat-mini-fab, .mat-raised-button, .mat-stroked-button {

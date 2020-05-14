@@ -28,7 +28,7 @@
               <p class="show-more">
                 <button mat-flat-button *ngIf="event.description.length >= 500" (click)="show = !show">
                   <span>{{ show ? 'weniger': 'mehr' }}</span>
-                  <mat-icon color="warn" aria-hidden="false" aria-label="show more">{{ show ? 'keyboard_arrow_up': 'keyboard_arrow_down' }}</mat-icon>
+                  <mat-icon aria-hidden="false" aria-label="show more">{{ show ? 'keyboard_arrow_up': 'keyboard_arrow_down' }}</mat-icon>
                 </button>
               </p>
 
@@ -36,10 +36,10 @@
         </article>
           <mat-card-actions fxLayout.xs="column">
             <section class="event-time">
-              <mat-icon>access_time</mat-icon>
               <p>
-                  von {{event.start | date:'shortDate':'de'}}, {{event.start | date:'shortTime':'de'}} Uhr<br>
-                  bis <span *ngIf="event.end | isNotSameDate:event.start">{{event.end | date:'shortDate':'de'}}, </span>{{event.end | date:'shortTime':'de'}} Uhr
+                <mat-icon>access_time</mat-icon>
+                  von {{event.start | date:'fullDate':'de'}}, {{event.start | date:'shortTime':'de'}}
+                  <span *ngIf="event.end | isNotSameDate:event.start"><br> {{event.end | date:'shortDate':'de'}}, </span>{{event.end | date:'shortTime':'de'}} Uhr
               </p>
             </section>
               <!-- TODO jetzt live icon -->
