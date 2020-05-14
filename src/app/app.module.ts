@@ -16,8 +16,8 @@ import localeDe from '@angular/common/locales/de';
 import { LOCALE_ID } from '@angular/core';
 registerLocaleData(localeDe, 'de');
 
-import { NavComponent } from "@features/base/components/nav/nav.component";
-import { FooterComponent } from "@features/base/components/footer/footer.component";
+import { NavComponent } from "@features/home/components/nav/nav.component";
+import { FooterComponent } from "@features/home/components/footer/footer.component";
 
 @NgModule({
   declarations: [

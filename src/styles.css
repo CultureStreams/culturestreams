@@ -17,23 +17,23 @@ body {
 }
 /* xs */
 @media screen and (min-width: 400px) and (max-width: 599px) {
-  h1 { font-size: 1.6em; }
+  h1 { font-size: 1em; }
 }
 /* small */
 @media screen and (min-width: 600px) and (max-width: 959px) {
-  h1 { font-size: 2em; }
+  h1 { font-size: 1em; }
 }
 /* medium */
 @media screen and (min-width: 960px) and (max-width: 1279px) {
-  h1 { font-size: 2.3em; }
+  h1 { font-size: 1.2em; }
 }
 /* lg */
 @media screen and (min-width: 1280px) and (max-width: 1919px) {
-  h1 { font-size: 2.7em; }
+  h1 { font-size: 1.5em; }
 }
 /* xl */
 @media screen and (min-width: 1920px) and (max-width: 5000px) {
-  h1 { font-size: 3em; }
+  h1 { font-size: 2em; }
 }
 
 a {
@@ -60,9 +60,9 @@ a.mat-flat-button:hover {
   background: white;
 }
 
-section {
+/* section {
   padding-bottom: 20px;
-}
+} */
 
 /* h2 {
     margin: 30px;

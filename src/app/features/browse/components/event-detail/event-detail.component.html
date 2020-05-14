@@ -1,45 +1,52 @@
 <!-- <main class="content" fxLayout="column">
   <button mat-button fxLayoutAlign="start start" routerLink="/calendar" routerLinkActive="active">zurück</button> -->
   <mat-card *ngIf="event" fxLayoutAlign="center stretch" fxLayout.xs="column" class="event-item">
-        <img *ngIf="event.image; else elseBlock" fxFlex="30" mat-card-image [ngStyle]="{'background': 'url(' + event.image + ')'}"
+        <img *ngIf="event.image; else elseBlock" mat-card-image [ngStyle]="{'background': 'url(' + event.image + ')'}"
         style="background-size: cover;
         background-position: center;"
-        fxFlex="30" fxHide.xs>
+        fxHide.lt-md>
         <ng-template #elseBlock>
-          <img mat-card-image fxFlex="30" fxHide.xs>
+          <img mat-card-image fxHide.lt-md>
         </ng-template>
-      <section fxFlex="grow" fxLayout.xs="column" class="event-information">
+      <section fxLayout.lt-sm="column" class="event-information">
         <article fxLayout="row" fxLayout.lt-sm="column">
-          <mat-card-header>
+          <mat-card-header fxFlex="30" fxFlex.lt-md="50">
               <div mat-card-avatar [ngStyle]="{'background': 'url(' + event.image + ')'}"
               style="background-size: cover;
               background-position: center;"
-              fxHide fxShow.xs></div>
+              fxHide fxShow.lt-md></div>
               <mat-card-title *ngIf="event"><h1>{{event.name | uppercase}}</h1></mat-card-title>
               <mat-card-subtitle>
                 <span *ngIf="event.subtitle">{{event.subtitle}} | </span>
                 <span class="event-organizer">{{event.organizer.name}}</span>
               </mat-card-subtitle>
           </mat-card-header>
-          <mat-card-content fxLayout="column" fxLayout.xs="column">
+          <mat-card-content fxFlex="grow">
               <p class="event-description"
-                [innerHTML]="(show) ? event.description : event.description | slice:0:900 | attachString:'...':''">
+                [innerHTML]="(show) ? event.description : event.description | slice:0:500 | attachString:'...':''">
               </p>
-              <button mat-flat-button *ngIf="event.description.length > 900" class="show-more" (click)="show = !show">
-                <span>{{ show ? 'weniger': 'mehr' }}</span>
-                <mat-icon aria-hidden="false" aria-label="show more">{{ show ? 'keyboard_arrow_up': 'keyboard_arrow_down' }}</mat-icon>
-              </button>
+              <p class="show-more">
+                <button mat-flat-button *ngIf="event.description.length >= 500" (click)="show = !show">
+                  <span>{{ show ? 'weniger': 'mehr' }}</span>
+                  <mat-icon color="warn" aria-hidden="false" aria-label="show more">{{ show ? 'keyboard_arrow_up': 'keyboard_arrow_down' }}</mat-icon>
+                </button>
+              </p>
+
           </mat-card-content>
         </article>
-          <mat-card-actions fxLayout.xs="column" style="background-color: red;">
+          <mat-card-actions fxLayout.xs="column">
+            <section class="event-time">
+              <mat-icon>access_time</mat-icon>
+              <p>
+                  von {{event.start | date:'shortDate':'de'}}, {{event.start | date:'shortTime':'de'}} Uhr<br>
+                  bis <span *ngIf="event.end | isNotSameDate:event.start">{{event.end | date:'shortDate':'de'}}, </span>{{event.end | date:'shortTime':'de'}} Uhr
+              </p>
+            </section>
               <!-- TODO jetzt live icon -->
-            <mat-icon>access_time</mat-icon>
-            <p class="event-time">
-                von {{event.start | date:'shortDate':'de'}}, {{event.start | date:'shortTime':'de'}} Uhr<br>
-                bis <span *ngIf="event.end | isNotSameDate:event.start">{{event.end | date:'shortDate':'de'}}, </span>{{event.end | date:'shortTime':'de'}} Uhr
-            </p>
+
             <p fxFlex="grow"></p>
-            <a (click)="navigateToEvent(event)" mat-flat-button>ZUM STREAM</a>
+            <a mat-flat-button *ngIf="event" href="{{event.link}}" target="_blank" rel="noopener">ZUM STREAM<mat-icon>play_arrow</mat-icon></a>
+            <span itemprop="location" class="hidden">{{event.link}}</span>
           </mat-card-actions>
       </section>
   </mat-card>

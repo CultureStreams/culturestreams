@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { BrowseComponent } from "./components/browse.component";
+import { BrowseComponent } from "./browse.component";
 
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { EventComponent } from "./pages/event/event.component";
