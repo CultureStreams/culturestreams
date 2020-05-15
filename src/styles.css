@@ -3,16 +3,17 @@
 @font-face {
   font-family: 'sueellen';
   src: url('assets/fonts/SueEllenFrancisco-Regular.ttf') format("truetype");
-}
-
-/* * {
-  font-family: 'Courier New', Courier, monospace !important
-} */
+} 
 
 html, body { height: 100%; }
 body {
+font-family: 'Courier New', Courier, monospace !important;
   margin: 0;
   font-size: 14px;
+}
+
+h2 {
+  font-size: 3.5em;
 }
 
 
