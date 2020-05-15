@@ -14,6 +14,9 @@ import { IconLogoOnlyComponent } from './components/icons/icon-logo-only/icon-lo
 import { HelperModule } from "./modules/helper/helper.module";
 import { TextExcerptFilter, AttachStringFilter } from "./pipes/text.pipe";
 import { FilterByDateRangePipe, FilterSameDatePipe } from "./pipes/date.pipe";
+import { ImageValidationPipe } from "./pipes/image.pipe";
+
+import { ImagePreloadDirective } from "./directives/image-preload.directive";
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import { FilterByDateRangePipe, FilterSameDatePipe } from "./pipes/date.pipe";
     TextExcerptFilter,
     AttachStringFilter,
     FilterByDateRangePipe,
-    FilterSameDatePipe
+    FilterSameDatePipe,
+    ImageValidationPipe,
+    ImagePreloadDirective
   ],
   imports: [
     CommonModule,
@@ -46,7 +51,10 @@ import { FilterByDateRangePipe, FilterSameDatePipe } from "./pipes/date.pipe";
     TextExcerptFilter,
     AttachStringFilter,
     FilterByDateRangePipe,
-    FilterSameDatePipe
+    FilterSameDatePipe,
+    ImageValidationPipe,
+
+    ImagePreloadDirective
   ]
 })
 export class SharedModule { }

@@ -27,7 +27,7 @@ body {
 }
 /* small */
 @media screen and (min-width: 600px) and (max-width: 959px) {
-  h1 { font-size: 1em; }
+  h1 { font-size: 1.1em; }
 }
 /* medium */
 @media screen and (min-width: 960px) and (max-width: 1279px) {
@@ -35,11 +35,11 @@ body {
 }
 /* lg */
 @media screen and (min-width: 1280px) and (max-width: 1919px) {
-  h1 { font-size: 1.5em; }
+  h1 { font-size: 1.4em; }
 }
 /* xl */
 @media screen and (min-width: 1920px) and (max-width: 5000px) {
-  h1 { font-size: 2em; }
+  h1 { font-size: 1.5em; }
 }
 
 a {
@@ -47,7 +47,7 @@ a {
 }
 
 a:hover {
-    color: #6600cc;
+    color: red;
     text-decoration: underline;
 
 }
@@ -67,16 +67,21 @@ a.mat-flat-button:hover {
   padding-bottom: 20px;
 } */
 
-h2 {
+/* h2 {
     margin: 30px;
     font-size: 2.5em;
     text-shadow: 0 0 5px white;
     z-index: 10;
-} 
+}  */
 
 p {
   max-width: 800px;
 }
+
+p.align-right {
+  text-align: right;
+}
+
 
 mat-toolbar {
     background-color:white !important;
@@ -102,6 +107,14 @@ mat-form-field {
     font-size: 1em;
 }
 
+.mat-icon {
+    vertical-align: middle;
+}
+
+.mat-button-wrapper {
+  margin: auto 0;
+}
+
 .mat-button-focus-overlay {
   background: white !important;
   background-color: white !important;
@@ -124,6 +137,7 @@ mat-form-field {
 main {
     margin: 0 auto;
     padding: 16px;
+    min-height: 560px;
 }
 
 .mat-drawer-backdrop.mat-drawer-shown {

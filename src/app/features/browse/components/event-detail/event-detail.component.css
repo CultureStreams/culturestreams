@@ -21,7 +21,7 @@ mat-card {
     overflow: hidden;
 }
 
-.mat-card-image {
+img {
   background-image: url('/../../../../assets/img/cs-sofaherz-dunkel.png');
   background-size: cover;
   background-position: center;
