@@ -9,10 +9,12 @@ img {
     margin-bottom: 8px;
 }
 
-.mat-card-avatar {
-    height: 80px;
-    width: 80px;
-    margin-bottom: 16px;
+.event-avatar {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
 }
 
 mat-card {
@@ -21,15 +23,14 @@ mat-card {
     overflow: hidden;
 }
 
-img {
-  background-image: url('/../../../../assets/img/cs-sofaherz-dunkel.png');
-  background-size: cover;
-  background-position: center;
+.event-image {
   margin-top: -18px !important;
   margin-right: 0;
   margin-bottom: -18px;
   margin-left: -18px;
   max-width: 900px;
+  flex-shrink: 0;
+  object-fit: cover;
 }
 
 .mat-card-actions {
