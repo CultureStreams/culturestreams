@@ -54,6 +54,7 @@ export class AddEventFormComponent implements OnInit {
   public addImage : boolean = false;
   public addTag : boolean = false;
   public addArtist : boolean = false;
+  public addDonation : boolean = false;
 
   /* Organizer */
   public organizers: Organizer[];

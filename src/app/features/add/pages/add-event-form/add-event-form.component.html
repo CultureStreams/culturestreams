@@ -94,17 +94,6 @@
       <mat-icon class="label-tooltip" matTooltip="Ist dein Event kostenlos oder verlangst du eine Gebühr? (Dieses Feld muss ausgefühlt sein.)" matSuffix>help</mat-icon>
     </div>
 
-    <br/>
-
-    <mat-form-field class="full-width">
-      <mat-label>Spenden-Link (http://)</mat-label>
-      <input formControlName="donationLink" matInput>
-      <mat-icon matTooltip="Trage hier den Link zu deiner Spendenaktion ein, falls vorhanden" matSuffix>help</mat-icon>
-  </mat-form-field>
-  <br/>
-
-
-
   <br/>
 
 
@@ -196,6 +185,15 @@
       </mat-autocomplete>
       <mat-icon matTooltip="Hier kannst du dein Event mit Hilfe von bis zu 6 Tags frei beschreiben" matSuffix>help</mat-icon>
     </mat-form-field>
+
+    <br/>
+    <button mat-button class="add-button" *ngIf="!addDonation" (click)="addDonation = !addDonation">+ Spenden-Link</button>
+    <mat-form-field class="full-width" *ngIf="addDonation">
+        <mat-label>Spenden-Link (http://)</mat-label>
+        <input formControlName="donationLink" matInput>
+        <mat-icon matTooltip="Trage hier den Link zu deiner Spendenaktion ein, falls vorhanden" matSuffix>help</mat-icon>
+    </mat-form-field>
+    
 
     <br/>
     <button mat-button class="add-button" *ngIf="!addImage" (click)="addImage = !addImage">+ Bildlink</button>
