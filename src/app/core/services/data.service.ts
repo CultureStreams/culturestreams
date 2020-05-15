@@ -84,13 +84,12 @@ export class DataStore {
   }
 
   public createEvent(event: Happening): Observable<Happening>{
+    console.log('create both');
     if (event.organizer.id == 0) {
       return this.organizerHttpService.create(event.organizer)
       .pipe(
         switchMap(c => {
           event.organizer.id = c.id;
-          // TODO Reloadthis.loadAllOrganizers();
-          // TODO Reload Tags after event created
           let creatingEvent$ = this.happeningHttpService.create(event);
           this.loadAllOrganizers();
           this.loadAllTags();
