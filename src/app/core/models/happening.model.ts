@@ -17,8 +17,8 @@ export class Happening extends Resource {
   infoLink?: string;
   donationLink?: string;
   image?: string;
-  freeOfCharge?: boolean;
-  availableLiveOnly?: boolean;
+  freeOfCharge?: boolean = true;
+  availableLiveOnly?: boolean = true;
   datePublished?: Date;
   parsedDate?: Date;
   organizerId?: number;
