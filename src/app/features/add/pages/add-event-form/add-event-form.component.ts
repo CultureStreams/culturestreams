@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { FormControl, Validators, AbstractFormGroupDirective, FormGroup } from '@angular/forms';
 
-import { DataStore } from '@core/services/data.service';
+import { DataStore as Store } from '@core/services/data.service';
 
 import { Happening } from '@core/models/happening.model';
 import { Category } from '@core/models/category.model';
@@ -13,15 +13,11 @@ import { startWith, map } from 'rxjs/operators';
 
 import { Router } from '@angular/router';
 
-
 import { Tag } from '@core/models/tag.model';
 import { MatChipInputEvent, MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material';
 
 import {cities} from 'src/dummy/cities';
-import { addTimeToDate } from "@shared/utils/date.utils";
-
-import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+//import { addTimeToDate } from "@shared/filters/date.filter";
 
 //import { eventNames } from 'cluster';
 
@@ -41,7 +37,8 @@ export class AddEventFormComponent implements OnInit {
   public endDate: Date = new Date();
   public organizer: Organizer = new Organizer();
 
-  public filterTag: string = '';
+  filterTag: string = '';
+
 
   @ViewChild('auto', { read: true, static: true }) matAutocomplete: MatAutocomplete;
   visible = true;
@@ -52,12 +49,11 @@ export class AddEventFormComponent implements OnInit {
   /* booleans */
   public addLocation : boolean = false;
   public addCity : boolean = false;
-  public addSubtitle : boolean = false;
+  public addSubHeadline : boolean = false;
   public addAdditionalInformation : boolean = false;
   public addImage : boolean = false;
   public addTag : boolean = false;
   public addArtist : boolean = false;
-  public addDonationLink : boolean = false;
 
   /* Organizer */
   public organizers: Organizer[];
@@ -94,7 +90,9 @@ export class AddEventFormComponent implements OnInit {
 
   constructor(
     protected router: Router,
-    protected store : DataStore
+    // protected eventService : EventService,
+    // protected dataStore : DataStore,
+    protected store : Store
   ) {
       this.cities = cities;
     }
@@ -102,29 +100,29 @@ export class AddEventFormComponent implements OnInit {
   ngOnInit() {
 
     this.eventForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
-      streamlink: new FormControl('http://', Validators.required),
+      name: new FormControl('', [Validators.required, Validators.maxLength(80)]),
       organizer: new FormControl('', Validators.required),
       category: new FormControl('', Validators.required),
+      cities: new FormControl(''),
       startDate: new FormControl('', Validators.required),
       startTime: new FormControl('', Validators.required),
       endDate: new FormControl('', Validators.required),
       endTime: new FormControl('', Validators.required),
-      subtitle: new FormControl(''),
-      cities: new FormControl(''),
+      donationLink: new FormControl('', Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')),
+      description: new FormControl('', Validators.required),
+      streamlink: new FormControl('', [Validators.required, Validators.maxLength(250), Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
       tags: new FormControl(''),
+      subHeadline: new FormControl('', Validators.maxLength(140)),
+      additionalInformation: new FormControl('', [Validators.maxLength(250), Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
       location: new FormControl(''),
-      infoLink: new FormControl('http://'),
-      donationLink: new FormControl('http://'),
-      imageLink: new FormControl('http://')
+      imageLink: new FormControl('', [Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?'), Validators.maxLength(250)])
     });
 
     // this.store.tags$.subscribe((o) => this.alltags = o );
 
     this.store.tags$.subscribe((t) => {
         this.alltags = t;
-        // console.log(this.alltags);
+        console.log(this.alltags);
       })
 
       this.filteredTags$ = this.eventForm.controls.tags.valueChanges.pipe(
@@ -163,10 +161,9 @@ export class AddEventFormComponent implements OnInit {
 
     if (form.valid) {
       this.prepareForm();
-      console.log(JSON.stringify(this.event));
-      // this.store.createEvent(this.event)
-      // .subscribe(e => this.router.navigate(['browse/event', e.id]));
-
+      console.log(this.event);
+      this.store.createEvent(this.event)
+      .subscribe(e => this.router.navigate(['browse/event', e.id]));
       // Habe die Logik in den Datastore übernommen (@core/services/data.service.ts)
       // let organizer : Organizer = this.organizers.find(o => o.name == this.eventForm.controls.organizer.value);
       // if (organizer === undefined) {
@@ -189,7 +186,7 @@ export class AddEventFormComponent implements OnInit {
       this.prepareForm();
       console.log('not valid weil aus Gründen');
       console.log(this.eventForm);
-      console.log(JSON.stringify(this.event));
+      console.log(this.event);
     }
   }
 
@@ -318,11 +315,9 @@ export class AddEventFormComponent implements OnInit {
 
   private prepareForm() {
     let form = this.eventForm.controls;
-    this.event.start = addTimeToDate(form.startDate.value,form.startTime.value);
-    this.event.end = addTimeToDate(form.endDate.value,form.endTime.value);
-    this.eventForm.setValue({start: addTimeToDate(form.startDate.value,form.startTime.value), last: 'Drew'});
-    console.log(this.eventForm.value);
 
+    //this.event.start = addTimeToDate(form.startDate.value,form.startTime.value);
+    //this.event.end = addTimeToDate(form.endDate.value,form.endTime.value);
     // console.log(this.tags);
     // console.log(form.tags.value);
     let tags = []
@@ -349,13 +344,11 @@ export class AddEventFormComponent implements OnInit {
     this.event.category.id = form.category.value;
     this.event.link = form.streamlink.value;
     this.event.name = form.name.value;
-    this.event.subtitle = form.subtitle.value;
     this.event.description = form.description.value.replace(new RegExp('\n', 'g'), "<br />");
     this.event.image = form.imageLink.value;
-    this.event.infoLink = form.infoLink.value;
+    this.event.infoLink = form.additionalInformation.value;
     this.event.donationLink = form.donationLink.value;
     this.event.city = form.cities.value;
-    // TODO availableOnlineOnly, infoDescription,
   }
 
 }
