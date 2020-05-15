@@ -17,7 +17,7 @@ import { Tag } from '@core/models/tag.model';
 import { MatChipInputEvent, MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material';
 
 import {cities} from 'src/dummy/cities';
-//import { addTimeToDate } from "@shared/filters/date.filter";
+import { addTimeToDate } from "@shared/utils/date.utils";
 
 //import { eventNames } from 'cluster';
 
@@ -108,14 +108,14 @@ export class AddEventFormComponent implements OnInit {
       startTime: new FormControl('', Validators.required),
       endDate: new FormControl('', Validators.required),
       endTime: new FormControl('', Validators.required),
-      donationLink: new FormControl('', Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')),
+      donationLink: new FormControl('http://', Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')),
       description: new FormControl('', Validators.required),
-      streamlink: new FormControl('', [Validators.required, Validators.maxLength(250), Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
+      streamlink: new FormControl('http://', [Validators.required, Validators.maxLength(250), Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
       tags: new FormControl(''),
       subHeadline: new FormControl('', Validators.maxLength(140)),
-      additionalInformation: new FormControl('', [Validators.maxLength(250), Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
+      additionalInformation: new FormControl('http://', [Validators.maxLength(250), Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
       location: new FormControl(''),
-      imageLink: new FormControl('', [Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?'), Validators.maxLength(250)])
+      imageLink: new FormControl('http://', [Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?'), Validators.maxLength(250)])
     });
 
     // this.store.tags$.subscribe((o) => this.alltags = o );
@@ -316,8 +316,8 @@ export class AddEventFormComponent implements OnInit {
   private prepareForm() {
     let form = this.eventForm.controls;
 
-    //this.event.start = addTimeToDate(form.startDate.value,form.startTime.value);
-    //this.event.end = addTimeToDate(form.endDate.value,form.endTime.value);
+    this.event.start = addTimeToDate(form.startDate.value,form.startTime.value);
+    this.event.end = addTimeToDate(form.endDate.value,form.endTime.value);
     // console.log(this.tags);
     // console.log(form.tags.value);
     let tags = []
@@ -348,6 +348,7 @@ export class AddEventFormComponent implements OnInit {
     this.event.image = form.imageLink.value;
     this.event.infoLink = form.additionalInformation.value;
     this.event.donationLink = form.donationLink.value;
+    this.event.subtitle = form.subHeadline.value;
     this.event.city = form.cities.value;
   }
 
