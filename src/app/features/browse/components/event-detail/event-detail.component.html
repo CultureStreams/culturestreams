@@ -1,82 +1,115 @@
-<!-- <main class="content" fxLayout="column">
-  <button mat-button fxLayoutAlign="start start" routerLink="/calendar" routerLinkActive="active">zurück</button> -->
-  <mat-card *ngIf="event" fxLayoutAlign="center stretch" fxLayout.xs="column" class="event-item">
-        <img *ngIf="event.image; else elseBlock" mat-card-image [ngStyle]="{'background': 'url(' + event.image + ')'}"
+<mat-card *ngIf="event"
+fxLayout="row" fxLayout.xs="column" fxFlex="grow">
+  <!-- IMAGE -->
+    <img *ngIf="event.image; else elseBlock" mat-card-image
+    class="event-image"
+    src="{{ event.image }}"
+    alt="{{ event.name }}, Quelle: {{ event.image }}"
+    fxFlex.gt-m="30"
+    fxHide.lt-sm>
+    <ng-template #elseBlock>
+      <img mat-card-image
+      fxFill
+      fxFlex.gt-m="30"
+      fxHide.lt-sm>
+    </ng-template>
+  <!-- IMAGE END -->
+    <mat-card-header
+    fxFlex.gt-sm="30"
+    fxFlex.sm="50">
+        <div mat-card-avatar
+        [ngStyle]="{'background': 'url(' + event.image + ')'}"
         style="background-size: cover;
         background-position: center;"
-        fxHide.lt-md>
-        <ng-template #elseBlock>
-          <img mat-card-image fxHide.lt-md>
-        </ng-template>
-      <section fxLayout.lt-sm="column" class="event-information">
-        <article fxLayout="row" fxLayout.lt-sm="column">
-          <mat-card-header fxFlex="30" fxFlex.lt-md="50">
-              <div mat-card-avatar [ngStyle]="{'background': 'url(' + event.image + ')'}"
-              style="background-size: cover;
-              background-position: center;"
-              fxHide fxShow.lt-md></div>
-              <mat-card-title *ngIf="event"><h1>{{event.name | uppercase}}</h1></mat-card-title>
-              <mat-card-subtitle>
-                <span *ngIf="event.subtitle">{{event.subtitle}} | </span>
-                <span class="event-organizer">{{event.organizer.name}}</span>
-              </mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content fxFlex="grow">
-              <p class="event-description"
-                [innerHTML]="(show) ? event.description : event.description | slice:0:500 | attachString:'...':''">
-              </p>
-              <p class="show-more">
-                <button mat-flat-button *ngIf="event.description.length >= 500" (click)="show = !show">
-                  <span>{{ show ? 'weniger': 'mehr' }}</span>
-                  <mat-icon aria-hidden="false" aria-label="show more">{{ show ? 'keyboard_arrow_up': 'keyboard_arrow_down' }}</mat-icon>
-                </button>
-              </p>
-
-          </mat-card-content>
-        </article>
-          <mat-card-actions fxLayout.xs="column">
-            <section class="event-time">
-              <p>
-                <mat-icon>access_time</mat-icon>
-                  von {{event.start | date:'fullDate':'de'}}, {{event.start | date:'shortTime':'de'}}
-                  <span *ngIf="event.end | isNotSameDate:event.start"><br> {{event.end | date:'shortDate':'de'}}, </span>{{event.end | date:'shortTime':'de'}} Uhr
+        fxHide fxShow.lt-sm></div>
+        <mat-card-title *ngIf="event">
+          <h1>{{event.name | uppercase}}</h1>
+        </mat-card-title>
+        <mat-card-subtitle class="event-subtitle">
+          <span *ngIf="event.subtitle">{{event.subtitle}} | </span>
+          <span class="event-organizer">{{event.organizer.name}}</span>
+          <div class="event-attributes">
+            <a mat-icon-button
+            class="attribute-{{ hasInfoLink }}"
+            aria-label="Informationen"
+            [disabled]="hasInfoLink"
+            href="{{event.infoLink}}" target="_blank" rel="noopener">
+              <mat-icon matTooltip="{{ hasInfoLink ? 'weitere Informationen' : 'keine weiteren Infos hinterlegt' }}">link</mat-icon>
+            </a>
+            <a mat-icon-button
+            class="attribute-{{ hasDonationLink }}"
+            aria-label="Spende"
+            [disabled]="hasDonationLink"
+            href="{{event.donationLink}}" target="_blank" rel="noopener">
+              <mat-icon matTooltip="{{ hasDonationLink ? 'hier kannst Du spenden' : 'kein Spendenlink gefunden' }}">favorite</mat-icon>
+            </a>
+            <button mat-icon-button
+            disabled
+            aria-label="Verfügbarkeit"
+            class="attribute-{{ event.availableLiveOnly }}">
+              <mat-icon matTooltip="{{ event.availableLiveOnly ? 'nur live verfügbar' : 'längerfristig verfügbar' }}">hourglass_empty</mat-icon>
+            </button>
+            <button class="attribute-{{ !event.freeOfCharge }}"
+            mat-icon-button
+            disabled
+            aria-label="Kosten">
+              <mat-icon matTooltip="{{ event.freeOfCharge ? 'kostenlos' : 'kostet was' }}">euro_symbol</mat-icon>
+            </button>
+          </div>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <div class="event-information"
+    fxLayout="column">
+      <mat-card-content
+      fxFlex="grow">
+          <section *ngIf="isLongText; else isShortText" class="event-description">
+            <p [innerHTML]="(show) ? event.description : event.description | slice:0:500 | attachString:'...':''">
+            </p>
+            <p class="align-right">
+              <a (click)="show = !show" class="show-more">
+                <span>{{ show ? 'weniger anzeigen': 'weiterlesen' }}</span>
+                <mat-icon aria-hidden="false" aria-label="show more">{{ show ? 'keyboard_arrow_up': 'keyboard_arrow_down' }}</mat-icon>
+              </a>
+            </p>
+          </section>
+          <ng-template #isShortText>
+            <section class="event-description">
+              <p [innerHTML]="event.description">
               </p>
             </section>
-              <!-- TODO jetzt live icon -->
-
-            <p fxFlex="grow"></p>
-            <a mat-flat-button *ngIf="event" href="{{event.link}}" target="_blank" rel="noopener">ZUM STREAM<mat-icon>play_arrow</mat-icon></a>
-            <span itemprop="location" class="hidden">{{event.link}}</span>
-          </mat-card-actions>
-      </section>
-  </mat-card>
-<!-- </main> -->
-
-<!-- <mat-label class="event-property">Location in Nicht-Kriesen-Zeiten:</mat-label>
-<mat-label class="event-attribute">{{event.organizer.location}}</mat-label>
-<mat-label class="event-attribute" *ngIf="event">{{event.end}}</mat-label> -->
-
-<!-- <mat-card-header fxLayout="column" fxLayoutAlign="center stretch">
-  <mat-card-title><h1 class="event-title md-display-1" itemprop="name">{{event.name}}</h1></mat-card-title>
-  <mat-card-subtitle *ngIf="event.organizer" itemprop="organizer">von {{event.organizer.name}}</mat-card-subtitle>
-</mat-card-header>
-<mat-card-actions>
-  <section fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center stretch">
-    <p *ngIf="event" class="event-date"><mat-icon>date_range</mat-icon> <span itemprop="startDate">{{event.start | date:'fullDate':'de'}}</span> </p>
-    <p *ngIf="event" class="event-time"><mat-icon>access_time</mat-icon> <span itemprop="doorTime">{{event.start | date:'shortTime':'de'}}</span> bis {{event.end | date:'shortTime':'de'}} Uhr </p>
-  </section>
-  <section fxLayout="row" fxLayout.lt-md="column">
-    <a *ngIf="event" fxFlex  href="{{event.link}}" target="_blank" rel="noopener" mat-flat-button>STREAM<mat-icon>play_arrow</mat-icon></a>
-    <span itemprop="location" class="hidden">{{event.link}}</span>
-  </section>
-</mat-card-actions>
-  <mat-card-content fxLayout="row" fxLayout.lt-md="column">
-    <section>
-      <p *ngIf="event" class="event-description" itemprop="description" [innerHTML]="event.description"></p>
-      <mat-divider [inset]="true"></mat-divider>
-      <p *ngIf="event.category" class="event-category" itemprop="subjectOf">{{event.category.name}}</p>
-    </section>
-    <section>
-      <img mat-card-image src="../../../../assets/img/cs-sofaherz.jpg" alt="{{event.name}}">
-    </section>
-  </mat-card-content> -->
+          </ng-template>
+          <section class="event-time">
+            <mat-divider inset="true"></mat-divider>
+            <p *ngIf="isOneDay; else isSomeDays">
+              {{event.start | date:'fullDate':'de'}}<br>
+              <mat-icon matTooltip="Beginn"
+              aria-label="Beginn">play_arrow
+              </mat-icon>{{event.start | date:'shortTime':'de'}}
+              <mat-icon matTooltip="Ende"
+              aria-label="Ende">stop
+              </mat-icon>{{event.end | date:'shortTime':'de'}}
+            </p>
+            <ng-template #isSomeDays>
+              <p>
+                <mat-icon matTooltip="Beginn"
+                aria-label="Beginn"
+                matTooltipPosition="above">play_arrow</mat-icon>
+                {{event.start | date:'EE dd.MM., HH:mm':'de'}}<br>
+                <mat-icon matTooltip="Ende"
+                aria-label="Ende"
+                matTooltipPosition="below">stop</mat-icon>
+                {{event.end | date:'EE dd.MM., HH:mm':'de'}}
+              </p>
+            </ng-template>
+            <mat-divider inset="true"></mat-divider>
+          </section>
+      </mat-card-content>
+      <mat-card-actions
+      fxLayout="column">
+          <!-- TODO jetzt live icon -->
+        <p fxFlex="grow"></p>
+        <a mat-flat-button *ngIf="event" href="{{event.link}}" target="_blank" rel="noopener">ZUM STREAM<mat-icon>play_arrow</mat-icon></a>
+        <span itemprop="location" class="hidden">{{event.link}}</span>
+      </mat-card-actions>
+    </div>
+</mat-card>

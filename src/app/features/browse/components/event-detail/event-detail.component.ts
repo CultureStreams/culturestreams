@@ -11,6 +11,10 @@ export class EventDetailComponent implements OnInit {
   private show = false;
 
   @Input() event: Happening;
+  @Input() isOneDay: boolean;
+  @Input() isLongText: boolean;
+  @Input() hasDonationLink: boolean;
+  @Input() hasInfoLink: boolean;
 
   constructor(
   ) { }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'cs-browse',
-  templateUrl: './browse.component.html'
+  template: '<router-outlet></router-outlet>'
 })
 export class BrowseComponent implements OnInit {
 
