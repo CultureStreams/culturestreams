@@ -113,7 +113,7 @@ export class AddEventFormComponent implements OnInit {
       description: new FormControl('', Validators.required),
       streamlink: new FormControl('http://', [Validators.required, Validators.maxLength(250), Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
       tags: new FormControl(''),
-      subHeadline: new FormControl('', Validators.maxLength(140)),
+      subtitle: new FormControl('', Validators.maxLength(140)),
       additionalInformation: new FormControl('http://', [Validators.maxLength(250), Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
       location: new FormControl(''),
       imageLink: new FormControl('http://', [Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?'), Validators.maxLength(250)])
