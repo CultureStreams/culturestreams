@@ -19,8 +19,6 @@ import { MatChipInputEvent, MatAutocompleteSelectedEvent, MatAutocomplete } from
 import {cities} from 'src/dummy/cities';
 import { addTimeToDate } from "@shared/utils/date.utils";
 
-//import { eventNames } from 'cluster';
-
 @Component({
   selector: 'cs-add-event-form',
   templateUrl: './add-event-form.component.html',
@@ -38,7 +36,6 @@ export class AddEventFormComponent implements OnInit {
   public organizer: Organizer = new Organizer();
 
   filterTag: string = '';
-
 
   @ViewChild('auto', { read: true, static: true }) matAutocomplete: MatAutocomplete;
   visible = true;
@@ -83,7 +80,6 @@ export class AddEventFormComponent implements OnInit {
 
   public error = false;
 
-
   categoryControl = new FormControl('category');
   fontSizeControl = new FormControl(16, Validators.min(10));
 
@@ -91,8 +87,6 @@ export class AddEventFormComponent implements OnInit {
 
   constructor(
     protected router: Router,
-    // protected eventService : EventService,
-    // protected dataStore : DataStore,
     protected store : Store
   ) {
       this.cities = cities;
@@ -119,18 +113,16 @@ export class AddEventFormComponent implements OnInit {
       imageLink: new FormControl('http://', [Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?'), Validators.maxLength(250)])
     });
 
-    // this.store.tags$.subscribe((o) => this.alltags = o );
 
     this.store.tags$.subscribe((t) => {
         this.alltags = t;
         console.log(this.alltags);
       })
 
-      this.filteredTags$ = this.eventForm.controls.tags.valueChanges.pipe(
-        startWith(null),
-        map((tag: Tag | null) => tag ? this._filterTags(tag) : this.alltags.slice())
-      );
-
+    this.filteredTags$ = this.eventForm.controls.tags.valueChanges.pipe(
+      startWith(null),
+      map((tag: Tag | null) => tag ? this._filterTags(tag) : this.alltags.slice())
+    );
 
     this.filteredCities = this.eventForm.controls.cities.valueChanges
       .pipe(
@@ -165,29 +157,8 @@ export class AddEventFormComponent implements OnInit {
       console.log(this.event);
       this.store.createEvent(this.event)
       .subscribe(e => this.router.navigate(['browse/event', e.id]));
-      // Habe die Logik in den Datastore übernommen (@core/services/data.service.ts)
-      // let organizer : Organizer = this.organizers.find(o => o.name == this.eventForm.controls.organizer.value);
-      // if (organizer === undefined) {
-      //   organizer = new Organizer();
-      //   organizer.name = this.eventForm.controls.organizer.value;
-      // }
-      // this.event.organizer = organizer.id;
-      //
-      // if (this.event.organizer == 0) {
-      //   console.log('noorganizer');
-      //   this.eventService.addOrganizer(organizer.name).subscribe((organizer) => {
-      //     this.event.organizer = organizer.id;
-      //     this.eventService.addEvent(this.event).subscribe(e => this.router.navigate(['/event', e.id]));
-      //   });
-      // } else {
-      //   console.log('withorganizer');
-      //   this.eventService.addEvent(this.event).subscribe(e => this.router.navigate(['/event', e.id]));
-      // }
     } else {
       this.prepareForm();
-      console.log('not valid weil aus Gründen');
-      console.log(this.eventForm);
-      console.log(this.event);
     }
   }
 
@@ -288,51 +259,16 @@ export class AddEventFormComponent implements OnInit {
   // }
   /* Artist Autocomplete End _____________________________________________________ */
 
-  // private parseStartAndEnd() {
-  //   let dayTime = this.startTime.slice(-2);
-  //   let startTimeString = this.startTime.substr(0, this.startTime.length - 3);
-  //   let startMinutes = startTimeString.slice(-2);
-  //   startTimeString = startTimeString.substr(0, this.startTime.length - 6);
-  //   let startHours = parseInt(startTimeString);
-  //   if (dayTime == 'PM') {
-  //     startHours = startHours + 12;
-  //   }
-  //   this.startDate.setHours(startHours, startMinutes, 0);
-  //   let startDate = this.startDate.setHours(startHours, startMinutes);
-  //   this.event.start = new Date(startDate);
-  //
-  //   let nightTime = this.endTime.slice(-2);
-  //   let endTimeString = this.endTime.substr(0, this.endTime.length - 3);
-  //   let endMinutes = endTimeString.slice(-2);
-  //   endTimeString = endTimeString.substr(0, this.endTime.length - 6);
-  //   let endHours = parseInt(endTimeString);
-  //   if (nightTime == 'PM') {
-  //     endHours = endHours + 12;
-  //   }
-  //   this.startDate.setHours(endHours, endMinutes, 0);
-  //   let endDate = this.endDate.setHours(endHours, endMinutes);
-  //   this.event.end = new Date(endDate);
-  // }
-
   private prepareForm() {
     let form = this.eventForm.controls;
 
     this.event.start = addTimeToDate(form.startDate.value,form.startTime.value);
     this.event.end = addTimeToDate(form.endDate.value,form.endTime.value);
-    // console.log(this.tags);
-    // console.log(form.tags.value);
     let tags = []
     this.tags.forEach(function (item) {
       tags.push(item.name.toLowerCase())
     });
-    this.event.tags = tags; // ['tag1','tag2']
-    // let tagString = [];
-    // this.tags.forEach((t, i) => {
-    //   if (i !== 0) {
-    //     tagString = tagString.push(t.name);
-    //   }
-    //   tagString = tagString + t.name;
-    // });
+    this.event.tags = tags; 
 
     if (form.organizer.value.id === undefined) {
       this.event.organizer.id = 0;
@@ -349,7 +285,7 @@ export class AddEventFormComponent implements OnInit {
     this.event.image = form.imageLink.value;
     this.event.infoLink = form.additionalInformation.value;
     this.event.donationLink = form.donationLink.value;
-    this.event.subtitle = form.subHeadline.value;
+    this.event.subtitle = form.subtitle.value;
     this.event.city = form.cities.value;
   }
 
