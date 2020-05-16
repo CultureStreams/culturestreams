@@ -78,6 +78,9 @@ export class AddEventFormComponent implements OnInit {
   public tagValue = '';
   @ViewChild('tagInput', { read: ElementRef, static: false } ) tagInput: ElementRef<HTMLInputElement>;
 
+
+  @ViewChild('donationLinkInput', { read: ElementRef, static: false } ) donationLinkInput: ElementRef<HTMLInputElement>;
+
   public error = false;
 
   categoryControl = new FormControl('category');
@@ -105,7 +108,7 @@ export class AddEventFormComponent implements OnInit {
       endTime: new FormControl('', Validators.required),
       donationLink: new FormControl(''),
       description: new FormControl('', Validators.required),
-      streamlink: new FormControl('http://', [Validators.required, Validators.maxLength(250), Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
+      streamlink: new FormControl('http://', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-?=]*'), Validators.maxLength(250)]),
       tags: new FormControl(''),
       subtitle: new FormControl('', Validators.maxLength(140)),
       additionalInformation: new FormControl('', [Validators.maxLength(250)]),
@@ -160,6 +163,16 @@ export class AddEventFormComponent implements OnInit {
     } else {
       this.prepareForm();
     }
+  }
+
+  controlHttp(e) {
+    let currentLink = e.target.value;
+    if (currentLink.substring(0,11) == 'http://http') {
+      currentLink = currentLink.substring(7);
+    }
+    this.donationLinkInput.nativeElement.value = currentLink;
+    this.eventForm.controls.streamlink.setValue(currentLink);
+    console.log(this.eventForm.controls.streamlink.value);
   }
 
   /* Organizer Autocomplete */
@@ -261,6 +274,8 @@ export class AddEventFormComponent implements OnInit {
 
   private prepareForm() {
     let form = this.eventForm.controls;
+
+    console.log(this.eventForm.controls.donationLink.value);
 
     this.event.start = addTimeToDate(form.startDate.value,form.startTime.value);
     this.event.end = addTimeToDate(form.endDate.value,form.endTime.value);
