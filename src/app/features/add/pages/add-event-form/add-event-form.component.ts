@@ -349,7 +349,7 @@ export class AddEventFormComponent implements OnInit {
     this.event.image = form.imageLink.value;
     this.event.infoLink = form.additionalInformation.value;
     this.event.donationLink = form.donationLink.value;
-    this.event.subtitle = form.subHeadline.value;
+    this.event.subtitle = form.subtitle.value;
     this.event.city = form.cities.value;
   }
 
