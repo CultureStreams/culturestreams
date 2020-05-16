@@ -103,14 +103,14 @@ export class AddEventFormComponent implements OnInit {
       startTime: new FormControl('', Validators.required),
       endDate: new FormControl('', Validators.required),
       endTime: new FormControl('', Validators.required),
-      donationLink: new FormControl('http://', Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')),
+      donationLink: new FormControl(''),
       description: new FormControl('', Validators.required),
       streamlink: new FormControl('http://', [Validators.required, Validators.maxLength(250), Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
       tags: new FormControl(''),
       subtitle: new FormControl('', Validators.maxLength(140)),
-      additionalInformation: new FormControl('http://', [Validators.maxLength(250), Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]),
+      additionalInformation: new FormControl('', [Validators.maxLength(250)]),
       location: new FormControl(''),
-      imageLink: new FormControl('http://', [Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?'), Validators.maxLength(250)])
+      imageLink: new FormControl('', Validators.maxLength(250))
     });
 
 
