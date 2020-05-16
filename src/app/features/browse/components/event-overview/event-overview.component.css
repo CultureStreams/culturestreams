@@ -5,7 +5,7 @@
 .mat-card {
     margin: 5px;
     overflow: hidden;
-    cursor: initial; 
+    cursor: initial;
 }
 
 .mat-card-content {
@@ -51,14 +51,14 @@ section {
     display: inline-flex !important;
 } */
 
-.mat-card-image {
-  background-image: url('/../../../../assets/img/cs-sofaherz-dunkel.png');
-  background-size: cover;
-  background-position: center;
-  margin-top: -18px;
+.event-image {
+  margin-top: -18px !important;
+  margin-right: 0;
   margin-bottom: -18px;
   margin-left: -18px;
-  margin-right: 0;
+  max-width: 900px;
+  flex-shrink: 0;
+  object-fit: cover;
 }
 
 .mat-icon {
@@ -67,6 +67,10 @@ section {
     margin: auto;
 }
 
-.mat-card-avatar {
-    /* margin-right: 8px; */
+.event-avatar {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
 }

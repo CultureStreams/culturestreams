@@ -11,12 +11,14 @@ import {Directive, Input, HostBinding} from '@angular/core'
  export class ImagePreloadDirective {
     @Input() src:string;
     @Input() default:string;
-    @HostBinding('class') className
+    @Input() class:string;
+    @HostBinding('class') newClassName
 
     updateUrl() {
+      // console.log('update image url');
       this.src = this.default;
     }
     load(){
-      this.className = 'event-image';
+      this.newClassName = this.class;
     }
   }
