@@ -8,6 +8,10 @@
     margin: 20px;
 }
 
+.channelcontainer {
+    margin:30px;
+}
+
 a {
     text-decoration: none;
     color: black;
