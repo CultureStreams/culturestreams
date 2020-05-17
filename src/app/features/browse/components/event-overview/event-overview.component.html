@@ -26,7 +26,7 @@
           fxHide fxShow.xs>
           <mat-card-title *ngIf="event">{{event.name}}</mat-card-title>
           <mat-card-subtitle>
-            <span *ngIf="event.organizer.name">{{event.organizer.name}}</span>
+            <span *ngIf="event.organizer">{{event.organizer.name}}</span>
             <!-- <span *ngIf="event">{{event.start | date:'shortTime':'de'}} bis {{event.end | date:'shortTime':'de'}} Uhr</span> -->
             <!-- <span *ngIf="event.category"> | {{event.category.name}}</span> -->
           </mat-card-subtitle>

@@ -16,6 +16,7 @@ export class HappeningSerializer {
     happening.category = json.category;
     happening.tags = json.tags;
     happening.city = json.city;
+    happening.location = json.location;
     happening.subtitle = json.subtitle;
     happening.slug = json.slug;
     happening.infoLink = json.infoLink;
@@ -37,6 +38,7 @@ export class HappeningSerializer {
       categoryId: event.category.id,
       tags: event.tags,
       city: event.city,
+      location: event.location,
       subtitle: event.subtitle,
       slug: event.slug,
       infoLink: event.infoLink,

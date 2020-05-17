@@ -13,6 +13,7 @@ export class Happening extends Resource {
   tags: String[] = [];
   subtitle?: string;
   city?: string;
+  location?: string;
   slug?: string;
   infoLink?: string;
   donationLink?: string;

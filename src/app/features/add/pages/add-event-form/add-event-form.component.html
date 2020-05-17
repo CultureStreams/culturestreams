@@ -24,7 +24,7 @@
     <div>
       <mat-form-field class="full-width">
         <mat-label>Link zum Stream *</mat-label>
-        <input #donationLinkInput (change)="controlHttp($event)" (keyup)="controlHttp($event)" formControlName="streamlink" matInput>
+        <input formControlName="streamlink" matInput>
         <mat-icon matTooltip="Dieser Link führt im besten Fall direkt zum Stream. (Dieses Feld muss ausgefühlt sein.)" matSuffix>help</mat-icon>
       </mat-form-field>
     </div>
@@ -107,7 +107,7 @@
   </mat-form-field>
   <br/>
   <br/>
-  
+
 
     <mat-form-field class="full-width">
       <input type="text"
@@ -190,10 +190,10 @@
     <button mat-button class="add-button" *ngIf="!addDonation" (click)="addDonation = !addDonation">+ Spenden-Link</button>
     <mat-form-field class="full-width" *ngIf="addDonation">
         <mat-label>Spenden-Link (http://)</mat-label>
-        <input () formControlName="donationLink" matInput>
+        <input formControlName="donationLink" matInput>
         <mat-icon matTooltip="Trage hier den Link zu deiner Spendenaktion ein, falls vorhanden" matSuffix>help</mat-icon>
     </mat-form-field>
-    
+
 
     <br/>
     <button mat-button class="add-button" *ngIf="!addImage" (click)="addImage = !addImage">+ Bildlink</button>

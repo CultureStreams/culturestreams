@@ -283,7 +283,7 @@ export class AddEventFormComponent implements OnInit {
     this.tags.forEach(function (item) {
       tags.push(item.name.toLowerCase())
     });
-    this.event.tags = tags; 
+    this.event.tags = tags;
 
     if (form.organizer.value.id === undefined) {
       this.event.organizer.id = 0;
@@ -302,6 +302,7 @@ export class AddEventFormComponent implements OnInit {
     this.event.donationLink = form.donationLink.value;
     this.event.subtitle = form.subtitle.value;
     this.event.city = form.cities.value;
+    this.event.location = form.location.value;
   }
 
 }
