@@ -28,7 +28,7 @@ export class EventOverviewComponent implements OnInit {
 
   ngOnInit() {
   }
-  protected navigateToEvent(event) {
+  public navigateToEvent(event) {
     this.router.navigate(['browse/event', event.id]);
   }
 

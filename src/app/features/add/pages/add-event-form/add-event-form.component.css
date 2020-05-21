@@ -63,6 +63,21 @@ mat-form-field {
     padding: 20px;
 }
 
+.alert {
+    font-size:0.8em; 
+    color:red;
+    margin-top: -11px;
+    display: inline;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.p-l-20 {
+    padding-left: 20px;
+}
+
 .float {
     float: left;
 }

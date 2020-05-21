@@ -10,7 +10,7 @@ import { Channel } from '@core/models/channel.model';
 })
 export class ChannelsComponent implements OnInit {
 
-  constructor(protected store: DataStore) { }
+  constructor(public store: DataStore) { }
 
   ngOnInit() {
   }

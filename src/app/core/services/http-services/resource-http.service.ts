@@ -15,9 +15,9 @@ import { Resource } from './../../models/resource.model';
 import { map, tap } from 'rxjs/operators';
 import { addDaysToDate, dateToApiString } from "@shared/utils/date.utils";
 
-@Injectable({
+/*@Injectable({
   providedIn: 'root'
-})
+})*/
 export class ResourceHttpService <T extends Resource>{
 
   private apiv1 = environment.apiv1;

@@ -79,7 +79,7 @@ export class AddEventFormComponent implements OnInit {
   @ViewChild('tagInput', { read: ElementRef, static: false } ) tagInput: ElementRef<HTMLInputElement>;
 
 
-  @ViewChild('donationLinkInput', { read: ElementRef, static: false } ) donationLinkInput: ElementRef<HTMLInputElement>;
+  @ViewChild('streamLinkInput', { read: ElementRef, static: false } ) streamLinkInput: ElementRef<HTMLInputElement>;
 
   public error = false;
 
@@ -88,9 +88,11 @@ export class AddEventFormComponent implements OnInit {
 
   eventForm: FormGroup;
 
+  markedAsWrong: boolean = false;
+
   constructor(
     protected router: Router,
-    protected store : Store
+    public store : Store
   ) {
       this.cities = cities;
     }
@@ -108,8 +110,8 @@ export class AddEventFormComponent implements OnInit {
       endTime: new FormControl('', Validators.required),
       donationLink: new FormControl(''),
       description: new FormControl('', Validators.required),
-      streamlink: new FormControl('http://', [Validators.required, Validators.maxLength(250)]),
-      // streamlink: new FormControl('http://', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-?=]*'), Validators.maxLength(250)]),
+      //streamlink: new FormControl('http://', [Validators.required, Validators.maxLength(250)]), regex https?:\/\/(.+?)(\..+?)(\..{1,})
+      streamlink: new FormControl('http://', [Validators.required, Validators.pattern('https?:\/\/(.+?)(\..+?)(\..{1,})')]),
       tags: new FormControl(''),
       subtitle: new FormControl('', Validators.maxLength(140)),
       additionalInformation: new FormControl('', [Validators.maxLength(250)]),
@@ -120,7 +122,6 @@ export class AddEventFormComponent implements OnInit {
 
     this.store.tags$.subscribe((t) => {
         this.alltags = t;
-        console.log(this.alltags);
       })
 
     this.filteredTags$ = this.eventForm.controls.tags.valueChanges.pipe(
@@ -155,13 +156,12 @@ export class AddEventFormComponent implements OnInit {
 
 
   onSubmit(form: FormGroup) {
-
     if (form.valid) {
       this.prepareForm();
-      console.log(this.event);
       this.store.createEvent(this.event)
       .subscribe(e => this.router.navigate(['browse/event', e.id]));
     } else {
+      this.markedAsWrong = true;
       this.prepareForm();
     }
   }
@@ -171,15 +171,16 @@ export class AddEventFormComponent implements OnInit {
     if (currentLink.substring(0,11) == 'http://http') {
       currentLink = currentLink.substring(7);
     }
-    this.donationLinkInput.nativeElement.value = currentLink;
+    if (currentLink.substring(0,12) == 'https://http') {
+      currentLink = currentLink.substring(8);
+    }
+    this.streamLinkInput.nativeElement.value = currentLink;
     this.eventForm.controls.streamlink.setValue(currentLink);
-    console.log(this.eventForm.controls.streamlink.value);
   }
 
   /* Organizer Autocomplete */
 
   private _filterOrganizers(value): Organizer[] {
-    console.log(value);
     if (value.name != undefined) {
       value = value.name;
     }
@@ -275,8 +276,6 @@ export class AddEventFormComponent implements OnInit {
 
   private prepareForm() {
     let form = this.eventForm.controls;
-
-    console.log(this.eventForm.controls.donationLink.value);
 
     this.event.start = addTimeToDate(form.startDate.value,form.startTime.value);
     this.event.end = addTimeToDate(form.endDate.value,form.endTime.value);

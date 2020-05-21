@@ -6,9 +6,9 @@ import { ResourceHttpService } from './resource-http.service';
 
 import { HttpClient } from '@angular/common/http';
 
-@Injectable({
+/*@Injectable({
   providedIn: 'root'
-})
+})*/
 export class TagHttpService extends ResourceHttpService<Tag>{
 
   constructor(http: HttpClient) {

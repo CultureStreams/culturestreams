@@ -19,11 +19,11 @@ import { isSameDate } from "@shared/utils/date.utils";
 })
 export class EventComponent implements OnInit {
 
-  private event : Happening;
-  private isOneDay: boolean = false;
-  private isLongText: boolean = false;
-  private hasDonationLink: boolean = false;
-  private hasInfoLink: boolean = false;
+  public event : Happening;
+  public isOneDay: boolean = false;
+  public isLongText: boolean = false;
+  public hasDonationLink: boolean = false;
+  public hasInfoLink: boolean = false;
 
   constructor(
     protected store: DataStore,

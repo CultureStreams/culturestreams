@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 // import { DatePipe } from '@angular/common';
 import { isInDateRange } from "./../utils/date.utils";
 
-@Pipe({name: 'filterByDateRange'})
+/*@Pipe({name: 'filterByDateRange'})
 export class FilterByDateRangePipe implements PipeTransform {
     transform(items: any[],startAttr: string, endAttr: string, filterDate:Date): any {
       if (!items || !filterDate) {
@@ -11,7 +11,7 @@ export class FilterByDateRangePipe implements PipeTransform {
        items = items.filter(item => (isInDateRange(item[startAttr],item[endAttr],filterDate)));
       return items
     }
-}
+}*/
 
 // @Pipe({name: 'dateToApiString'})
 // export class DateToApiStringPipe implements PipeTransform {

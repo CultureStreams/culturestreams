@@ -7,26 +7,40 @@
         <input formControlName="name" matInput>
         <mat-icon matTooltip="Wie heißt Deine Veranstaltung? (Dieses Feld muss ausgefühlt sein.)" matSuffix>help</mat-icon>
       </mat-form-field>
-      <button *ngIf="!addSubtitle" mat-button class="add-button" (click)="addSubtitle = !addSubtitle">
+      <div *ngIf="eventForm.controls.name.invalid && (eventForm.controls.name.dirty || eventForm.controls.name.touched || markedAsWrong)" class="alert alert-danger"> 
+        <div *ngIf="eventForm.controls.name.errors.required">
+          Bitte trage einen Titel ein.
+        </div>
+      </div>
+  
+      <button *ngIf="!addSubHeadline" mat-button class="add-button" (click)="addSubHeadline = !addSubHeadline">
         <mat-icon inline=true>add</mat-icon> Untertitel
       </button>
     </div>
     <div>
-      <mat-form-field *ngIf="addSubtitle" class="full-width">
+      <mat-form-field *ngIf="addSubHeadline" class="full-width">
         <mat-label>Untertitel</mat-label>
         <input formControlName="subtitle" matInput>
         <mat-icon matTooltip="Wenn Du möchtest, kannst Du einen Untertitel hinzufügen." matSuffix>help</mat-icon>
       </mat-form-field>
-      <button *ngIf="addSubtitle" mat-button color="primary" class="add-button" (click)="addSubtitle = !addSubtitle">
+      <button *ngIf="addSubHeadline" mat-button color="primary" class="add-button" (click)="addSubHeadline = !addSubHeadline">
         <mat-icon inline=true>clear</mat-icon> entfernen
       </button>
     </div>
     <div>
       <mat-form-field class="full-width">
         <mat-label>Link zum Stream *</mat-label>
-        <input formControlName="streamlink" matInput>
+        <input #streamLinkInput formControlName="streamlink" (change)="controlHttp($event)" (keyup)="controlHttp($event)" matInput>
         <mat-icon matTooltip="Dieser Link führt im besten Fall direkt zum Stream. (Dieses Feld muss ausgefühlt sein.)" matSuffix>help</mat-icon>
       </mat-form-field>
+      <div *ngIf="eventForm.controls.streamlink.invalid && (eventForm.controls.streamlink.dirty || eventForm.controls.streamlink.touched || markedAsWrong)" class="alert alert-danger"> 
+        <div *ngIf="eventForm.controls.streamlink.errors.required">
+          Bitte trage einen Link zum Stream ein.
+        </div>
+        <div *ngIf="eventForm.controls.streamlink.errors.pattern">
+          Bitte gib eine gültige Url an. (https://...)
+        </div>
+      </div>
     </div>
     <div>
       <mat-form-field class="full-width">
@@ -35,6 +49,11 @@
           <mat-option *ngFor="let category of store.categories$ | async" value="{{ category.id }}">{{ category.name }}</mat-option>
         </mat-select>
       </mat-form-field>
+      <div *ngIf="eventForm.controls.category.invalid && (eventForm.controls.category.dirty || eventForm.controls.category.touched || markedAsWrong)" class="alert alert-danger"> 
+        <div *ngIf="eventForm.controls.category.errors.required">
+          Bitte wähle eine Kategorie aus.
+        </div>
+      </div>
     </div>
 
 
@@ -60,6 +79,23 @@
         <!-- <ngx-material-timepicker #pickerStart></ngx-material-timepicker> -->
     </mat-form-field>
   <br/>
+  <div class="half-width inline-block">
+    <div *ngIf="eventForm.controls.startDate.invalid && (eventForm.controls.startDate.dirty || eventForm.controls.startDate.touched || markedAsWrong)" class="alert alert-danger"> 
+      <div *ngIf="eventForm.controls.startDate.errors.required && !eventForm.controls.startDate.errors.matDatepickerParse">
+        Bitte wähle ein Startdatum aus.
+      </div>
+      <div *ngIf="eventForm.controls.startDate.errors.matDatepickerParse">
+        Bitte überprüfe das Format des Datum.
+      </div>
+    </div>
+  </div>
+  <div *ngIf="eventForm.controls.startTime.invalid && (eventForm.controls.startTime.dirty || eventForm.controls.startTime.touched || markedAsWrong)" class="alert alert-danger half-width p-l-20 inline-block"> 
+    <div *ngIf="eventForm.controls.startTime.errors.required">
+      Bitte wähle eine Startzeit aus.
+    </div>
+  </div>
+  <br/>
+  <br/>
   <mat-form-field class="half-width">
     <mat-label>Ende Datum *</mat-label>
     <!-- removed vor prod (keyup)="setDate($event)"  -->
@@ -71,10 +107,26 @@
     <mat-form-field class="half-width">
         <mat-label>Ende Uhrzeit *</mat-label>
         <input formControlName="endTime" matInput type="time">
-        <!-- removed vor prod (keyup)="setEndTime($event)" (selectedChanged)="onChange($event)" -->
-        <!-- <input formControlName="endTime" [ngxTimepicker]="pickerEnd" matInput>
-        <ngx-material-timepicker #pickerEnd></ngx-material-timepicker> -->
     </mat-form-field>
+    <br/>
+    <div class="half-width inline-block">
+      <div *ngIf="eventForm.controls.endDate.invalid && (eventForm.controls.endDate.dirty || eventForm.controls.endDate.touched || markedAsWrong)" class="alert alert-danger"> 
+        <div *ngIf="eventForm.controls.endDate.errors.required">
+          Bitte wähle ein Enddatum aus.
+        </div>
+      </div>
+    </div>
+    <div class="half-width inline-block">
+      <div *ngIf="eventForm.controls.endTime.invalid && (eventForm.controls.endTime.dirty || eventForm.controls.endTime.touched || markedAsWrong)" class="alert alert-danger half-width p-l-20 inline-block"> 
+        <div *ngIf="eventForm.controls.endTime.errors.required && !eventForm.controls.startDate.errors.matDatepickerParse">
+          Bitte wähle eine Endzeit.
+        </div>
+        <div *ngIf="eventForm.controls.endDate.errors.matDatepickerParse">
+          Bitte überprüfe das Format des Datum.
+        </div>
+      </div>
+    </div>
+    <br/>
 <br/>
 
     <!-- <div class="half-width inline-checkbox">
@@ -82,10 +134,8 @@
       <mat-icon class="label-tooltip" matTooltip="Wiederholt sich deine Veranstaltung regelmäßig?" matSuffix>help</mat-icon>
     </div> -->
 
-    <br>
-
     <div class="half-width float inline-checkbox">
-      <mat-checkbox [(ngModel)]="event.availableLiveOnly" [ngModelOptions]="{standalone: true}" class="label" >nur live</mat-checkbox>
+      <mat-checkbox [(ngModel)]="event.availableLiveOnly" [ngModelOptions]="{standalone: true}" class="label" >nur live verfügbar</mat-checkbox>
       <mat-icon class="label-tooltip" matTooltip="Ausgewählt: Dein Event ist nur live verfügbar und nicht nachträglich abrufbar. Nicht ausgewählt: Deinen Event kann man auch später noch streamen. (Dieses Feld muss ausgefühlt sein.)" matSuffix>help</mat-icon>
     </div>
 
@@ -100,11 +150,16 @@
   <br/>
   <mat-form-field appearance="fill" class="full-width">
     <mat-label>Beschreibung *</mat-label>
-    <textarea formControlName="description" #txtarea matInput rows="6" cols="100" [maxLength]="1300" [placeholder]="label"></textarea>
+    <textarea formControlName="description" #txtarea matInput rows="6" cols="100" [maxLength]="1300"></textarea>
     <mat-hint align="start">max. 1300 Zeichen</mat-hint>
    <mat-hint align="end">{{txtarea.value.length}} / 1300</mat-hint>
     <mat-icon matTooltip="Beschreibe kurz worum es geht." matSuffix>help</mat-icon>
   </mat-form-field>
+  <div *ngIf="eventForm.controls.description.invalid && (eventForm.controls.description.dirty || eventForm.controls.description.touched || markedAsWrong)" class="alert alert-danger"> 
+    <div *ngIf="eventForm.controls.description.errors.required">
+      Bitte wähle eine Beschreibung aus.
+    </div>
+  </div>
   <br/>
   <br/>
 
@@ -123,6 +178,11 @@
       </mat-autocomplete>
       <mat-icon matTooltip="Wer hostet die Veranstaltung?" matSuffix>help</mat-icon>
     </mat-form-field>
+    <div *ngIf="eventForm.controls.organizer.invalid && (eventForm.controls.organizer.dirty || eventForm.controls.organizer.touched || markedAsWrong)" class="alert alert-danger"> 
+      <div *ngIf="eventForm.controls.organizer.errors.required">
+        Bitte gib den/die Veranstalter:in an.
+      </div>
+    </div>
 
     <br/>
 

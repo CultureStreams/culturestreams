@@ -49,7 +49,7 @@ export class CalendarComponent implements OnInit {
 
   constructor(protected router: Router,
     // protected eventService: EventService,
-    protected store: DataStore) {
+    public store: DataStore) {
     // this.date = new Date();
     // this.date.setHours(0, 0, 0, 0);
     // console.log(this.date);
