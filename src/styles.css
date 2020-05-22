@@ -3,7 +3,7 @@
 @font-face {
   font-family: 'sueellen';
   src: url('assets/fonts/SueEllenFrancisco-Regular.ttf') format("truetype");
-} 
+}
 
 html, body { height: 100%; }
 body {
@@ -20,7 +20,7 @@ h2 {
 /* xxs */
 @media screen and (max-width: 399px) {
   h1 { font-size: 0.9em; }
-  body { font-size: 50%;}
+  body { font-size: 70%;}
 }
 /* xs */
 @media screen and (min-width: 400px) and (max-width: 599px) {
@@ -129,14 +129,14 @@ mat-form-field {
   flex: 1 1 auto;
 }
 
-.content {
+/* .content {
     text-align: center;
     margin: 20px;
     padding: 5px;
-}
+} */
 
-main {
-    margin: 0 auto;
+main, main.content {
+    margin: 70px auto 0 auto;
     padding: 16px;
     min-height: 560px;
 }

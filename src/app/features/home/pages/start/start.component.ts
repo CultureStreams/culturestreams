@@ -3,10 +3,10 @@ import { DataStore } from '@core/services/data.service';
 
 @Component({
   selector: 'cs-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  templateUrl: './start.component.html',
+  styleUrls: ['./start.component.css']
 })
-export class HomeComponent implements OnInit {
+export class StartComponent implements OnInit {
 
   constructor(protected store:DataStore) { }
 

@@ -9,13 +9,13 @@ import { isSameDate } from "@shared/utils/date.utils";
 @Component({
   selector: 'cs-event',
   template: `
-  <main class="cs-event-detail"
+  <div class="cs-event-detail"
   [event]="event"
   [isOneDay]="isOneDay"
   [isLongText]="isLongText"
   [hasDonationLink]="hasDonationLink"
   [hasInfoLink]="hasInfoLink">
-  </main>`
+  </div>`
 })
 export class EventComponent implements OnInit {
 

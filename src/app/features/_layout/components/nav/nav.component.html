@@ -21,7 +21,7 @@
       <mat-icon aria-label="Side nav toggle icon">close</mat-icon>
     </button>
     </mat-toolbar>
-    <button class="homeButton" mat-button routerLink="/home" routerLinkActive="active">
+    <button class="home-button" mat-button routerLink="/home" routerLinkActive="active">
     </button>
     <mat-list class="nav-items">
       <mat-list-item><button mat-button routerLink="/browse/events" routerLinkActive="active" (click)="drawer.toggle()">Eventkalender</button></mat-list-item>
@@ -29,13 +29,13 @@
       <mat-list-item><button mat-button routerLink="/about" routerLinkActive="active" (click)="drawer.toggle()">About</button></mat-list-item>
       <mat-list-item><button mat-button routerLink="/about/contact" routerLinkActive="active" (click)="drawer.toggle()">Kontakt</button></mat-list-item>
       <mat-list-item><button mat-button class="add-button" routerLink="/add/event" routerLinkActive="active" (click)="drawer.toggle()">Event eintragen</button></mat-list-item>
-      <mat-list-item><button mat-button class="homeButton" routerLink="/" routerLinkActive="active" (click)="drawer.toggle()"><icon-logo-only></icon-logo-only></button></mat-list-item>
+      <mat-list-item><button mat-button class="home-button" routerLink="/" routerLinkActive="active" (click)="drawer.toggle()"><icon-logo-only></icon-logo-only></button></mat-list-item>
     </mat-list>
   </mat-sidenav>
   <!-- main NAVIGATION -->
   <mat-sidenav-content>
     <mat-toolbar>
-      <button mat-button class="homeButton" routerLink="/home" routerLinkActive="active"><icon-logo-only></icon-logo-only></button>
+      <button mat-button class="home-button" routerLink="/home" routerLinkActive="active"><icon-logo-only></icon-logo-only></button>
       <div class="nav-items"
       [ngClass]="{'hidden': (isHandset$ | async)}">
         <button mat-button routerLink="/browse/events" routerLinkActive="active">Eventkalender</button>
@@ -56,6 +56,8 @@
       </button>
     </mat-toolbar>
     <!-- CONTENT -->
-    <router-outlet></router-outlet>
+    <main class="content" role="main">
+      <router-outlet></router-outlet>
+    </main>
   </mat-sidenav-content>
 </mat-sidenav-container>

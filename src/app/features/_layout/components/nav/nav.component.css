@@ -23,13 +23,13 @@
   z-index: 1;
 }
 
-.homeButton {
+.home-button {
     background-color: white !important;
     max-height: 100%;
     vertical-align: center;
 }
 
-button.homeButton:hover {
+button.home-button:hover {
     background-color: transparent !important;
     color: white;
 }
