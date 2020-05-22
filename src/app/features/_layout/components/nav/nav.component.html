@@ -34,7 +34,7 @@
   </mat-sidenav>
   <!-- main NAVIGATION -->
   <mat-sidenav-content>
-    <mat-toolbar>
+    <mat-toolbar class="main-navigation">
       <button mat-button class="home-button" routerLink="/home" routerLinkActive="active"><icon-logo-only></icon-logo-only></button>
       <div class="nav-items"
       [ngClass]="{'hidden': (isHandset$ | async)}">
