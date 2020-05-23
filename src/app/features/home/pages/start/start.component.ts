@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataStore } from '@core/services/data.service';
 
 @Component({
-  selector: 'cs-home',
+  selector: 'cs-start',
   templateUrl: './start.component.html',
   styleUrls: ['./start.component.css']
 })
