@@ -7,8 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "resolve-install": "npx npm-force-resolutions && npm install"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
