@@ -1,0 +1,22 @@
+<!-- <mat-card *ngIf="events.length" class="current-events">
+  <mat-card-title class="current-type">{{ currentType }}</mat-card-title>
+  <div *ngFor="let event of events" class="event-list">
+    {{event.name}}
+  </div>
+</mat-card> -->
+
+  <div *ngIf="events.length" class="row">
+    <div class="row__inner">
+
+      <div *ngFor="let event of events" class="tile">
+        <div class="tile__media">
+          <img class="tile__img" [defaultImage]="defaultImage" [lazyLoad]="event.image" alt=""  />
+        </div>
+        <div class="tile__details">
+          <div class="tile__title">
+            {{ event.name }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

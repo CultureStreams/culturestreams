@@ -6,6 +6,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 import { IconLogoComponent } from './components/icons/icon-logo/icon-logo.component';
 import { IconLogoOnlyComponent } from './components/icons/icon-logo-only/icon-logo-only.component';
@@ -35,7 +36,8 @@ import { ImagePreloadDirective } from "./directives/image-preload.directive";
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    HelperModule
+    HelperModule,
+    LazyLoadImageModule
   ],
   exports: [
     MaterialDesignModule,
@@ -43,6 +45,7 @@ import { ImagePreloadDirective } from "./directives/image-preload.directive";
     ReactiveFormsModule,
     FlexLayoutModule,
     HelperModule,
+    LazyLoadImageModule,
     IconLogoComponent,
     IconLogoOnlyComponent,
     TextExcerptFilter,
