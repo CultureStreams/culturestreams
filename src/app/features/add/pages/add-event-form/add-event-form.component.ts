@@ -80,6 +80,7 @@ export class AddEventFormComponent implements OnInit {
 
 
   @ViewChild('streamLinkInput', { read: ElementRef, static: false } ) streamLinkInput: ElementRef<HTMLInputElement>;
+  @ViewChild('endTimeInput', { read: ElementRef, static: false } ) endTimeInput: ElementRef<HTMLInputElement>;
 
   public error = false;
 
@@ -178,6 +179,13 @@ export class AddEventFormComponent implements OnInit {
     this.eventForm.controls.streamlink.setValue(currentLink);
   }
 
+  controlTime(e) {
+    let currentTime = e.target.value;
+    if (currentTime == '00:00') {
+      this.endTimeInput.nativeElement.value = currentTime;
+      this.eventForm.controls.endTime.setValue(currentTime);
+    }
+  }
   /* Organizer Autocomplete */
 
   private _filterOrganizers(value): Organizer[] {
