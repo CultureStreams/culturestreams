@@ -13,10 +13,6 @@ mat-form-field {
     margin: 20px;
 }
 
-.mat-card {
-    cursor: pointer !important;
-}
-
 .filterButton {
     background-color:black;
     color: white;

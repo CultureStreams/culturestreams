@@ -30,7 +30,7 @@
     <div>
       <mat-form-field class="full-width">
         <mat-label>Link zum Stream *</mat-label>
-        <input #streamLinkInput formControlName="streamlink" (change)="controlHttp($event)" (keyup)="controlHttp($event)" matInput>
+        <input #streamLinkInput formControlName="streamlink" (keyup)="controlHttp($event)" matInput>
         <mat-icon matTooltip="Dieser Link führt im besten Fall direkt zum Stream. (Dieses Feld muss ausgefühlt sein.)" matSuffix>help</mat-icon>
       </mat-form-field>
       <div *ngIf="eventForm.controls.streamlink.invalid && (eventForm.controls.streamlink.dirty || eventForm.controls.streamlink.touched || markedAsWrong)" class="alert alert-danger"> 
@@ -106,7 +106,7 @@
 </mat-form-field>
     <mat-form-field class="half-width">
         <mat-label>Ende Uhrzeit *</mat-label>
-        <input formControlName="endTime" matInput type="time">
+        <input #endTimeInput formControlName="endTime" matInput type="time" (focusout)="controlTime($event)">
     </mat-form-field>
     <br/>
     <div class="half-width inline-block">
