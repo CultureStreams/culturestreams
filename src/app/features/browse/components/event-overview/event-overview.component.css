@@ -29,9 +29,17 @@ section {
   /* margin-left: 10px; */
 }
 
-.event-time {
-    /* white-space: nowrap; */
-    padding: 8px;
+.event-date, .event-time {
+  /* padding: 5px; */
+  /* text-align: right; */
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+section.event-time {
+    text-align: center;
+    margin: 16px auto;
 }
 
 .mat-flat-button {

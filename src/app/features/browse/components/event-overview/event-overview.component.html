@@ -8,12 +8,14 @@
         <img *ngIf="event.image; else elseBlock" mat-card-image
         src="{{ event.image }}"
         default="/../../../../assets/img/cs-sofaherz-dunkel.png"
+        alt="{{ event.name }}, Quelle: {{ event.image }}"
         class="event-image"
         fxFlex="30" fxHide.xs>
         <ng-template #elseBlock>
           <img mat-card-image
           class="event-image"
           src="/../../../../assets/img/cs-sofaherz-dunkel.png"
+          alt="{{ event.name }}, Quelle: {{ event.image }}"
           fxFlex="30" fxHide.xs>
         </ng-template>
 
@@ -24,32 +26,48 @@
           src="{{ event.image }}"
           default="/../../../../assets/img/cs-sofaherz-dunkel.png"
           fxHide fxShow.xs>
-          <mat-card-title *ngIf="event">{{event.name}}</mat-card-title>
+          <mat-card-title *ngIf="event">{{event.name | uppercase}}</mat-card-title>
           <mat-card-subtitle>
-            <span *ngIf="event.organizer">{{event.organizer.name}}</span>
+            <span *ngIf="event.subtitle">{{event.subtitle}} | </span>
+            <span class="event-organizer">{{event.organizer.name}}</span>
             <!-- <span *ngIf="event">{{event.start | date:'shortTime':'de'}} bis {{event.end | date:'shortTime':'de'}} Uhr</span> -->
             <!-- <span *ngIf="event.category"> | {{event.category.name}}</span> -->
           </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <span *ngIf="event.subtitle">{{event.subtitle}}<br><br></span>
           <span *ngIf="event.description" [innerHTML]="event.description | excerpt:180"></span>
         </mat-card-content>
         <mat-card-actions fxLayout="row" fxLayout.xs="column">
-          <!-- TODO jetzt live icon -->
-          <mat-icon>access_time</mat-icon>
-          <span *ngIf="event" class="event-time" fxFlex="grow">
-            <!-- <span *ngIf="event.start == event.end ">
-              {{event.start | date:'shortDate':'de'}}, <br>
-              {{event.start | date:'shortTime':'de'}} bis {{event.end | date:'shortTime':'de'}} Uhr
-            </span>
-            <span *ngIf="event.start != event.end "> -->
-              von {{event.start | date:'shortDate':'de'}}, {{event.start | date:'shortTime':'de'}} Uhr<br>
-              bis {{event.end | date:'shortDate':'de'}}, {{event.end | date:'shortTime':'de'}} Uhr
-            <!-- </span> -->
-          </span>
+          <section class="event-time">
+            <mat-divider inset="true"></mat-divider>
+            <p *ngIf="isOneDay; else isSomeDays">
+              {{event.start | date:'fullDate':'de'}}<br>
+              <mat-icon matTooltip="Beginn"
+              aria-label="Beginn">play_arrow
+              </mat-icon>{{event.start | date:'shortTime':'de'}}
+              <mat-icon matTooltip="Ende"
+              aria-label="Ende">stop
+              </mat-icon>{{event.end | date:'shortTime':'de'}}
+            </p>
+            <ng-template #isSomeDays>
+              <p>
+                <mat-icon matTooltip="Beginn"
+                aria-label="Beginn"
+                matTooltipPosition="above">play_arrow</mat-icon>
+                {{event.start | date:'EE dd.MM., HH:mm':'de'}}<br>
+                <mat-icon matTooltip="Ende"
+                aria-label="Ende"
+                matTooltipPosition="below">stop</mat-icon>
+                {{event.end | date:'EE dd.MM., HH:mm':'de'}}
+              </p>
+            </ng-template>
+            <mat-divider inset="true"></mat-divider>
+          </section>
           <a (click)="navigateToEvent(event)" mat-flat-button>DETAILS</a>
         </mat-card-actions>
+        <!-- <section *ngIf="event.tags">
+          <p>{{event.tags}}</p>
+        </section> -->
       </section>
     </mat-card>
 <!-- </article> -->

@@ -12,6 +12,7 @@ fxLayout="row" fxLayout.xs="column" fxFlex="grow">
       <img mat-card-image
       class="event-image"
       src="/../../../../assets/img/cs-sofaherz-dunkel.png"
+      alt="{{ event.name }}, Quelle: {{ event.image }}"
       fxHide.lt-sm
       fxFlex="30">
     </ng-template>
@@ -31,20 +32,36 @@ fxLayout="row" fxLayout.xs="column" fxFlex="grow">
           <span *ngIf="event.subtitle">{{event.subtitle}} | </span>
           <span class="event-organizer">{{event.organizer.name}}</span>
           <div class="event-attributes" fxLayout="row" fxLayoutAlign="center center">
-            <a mat-icon-button
+            <a *ngIf="hasInfoLink; else noInfolink"
+            mat-icon-button
             class="attribute-{{ hasInfoLink }}"
             aria-label="Informationen"
-            [disabled]="hasInfoLink"
             href="{{event.infoLink}}" target="_blank" rel="noopener">
-              <mat-icon matTooltip="{{ hasInfoLink ? 'weitere Informationen' : 'keine weiteren Infos hinterlegt' }}">link</mat-icon>
+              <mat-icon matTooltip="weitere Informationen">link</mat-icon>
             </a>
-            <a mat-icon-button
+            <ng-template #noInfolink>
+              <button mat-icon-button
+              disabled
+              class="attribute-{{ hasInfoLink }}"
+              aria-label="Informationen">
+                <mat-icon matTooltip="keine weiteren Infos hinterlegt">link</mat-icon>
+              </button>
+            </ng-template>
+            <a *ngIf="hasDonationLink; else noDonationlink"
+            mat-icon-button
             class="attribute-{{ hasDonationLink }}"
             aria-label="Spende"
-            [disabled]="hasDonationLink"
             href="{{event.donationLink}}" target="_blank" rel="noopener">
-              <mat-icon matTooltip="{{ hasDonationLink ? 'hier kannst Du spenden' : 'kein Spendenlink gefunden' }}">favorite</mat-icon>
+              <mat-icon matTooltip="hier kannst Du spenden">favorite</mat-icon>
             </a>
+            <ng-template #noDonationlink>
+              <button mat-icon-button
+              disabled
+              class="attribute-{{ hasDonationLink }}"
+              aria-label="Spende">
+                <mat-icon matTooltip="kein Spendenlink gefunden">favorite</mat-icon>
+              </button>
+            </ng-template>
             <button mat-icon-button
             disabled
             aria-label="Verfügbarkeit"
