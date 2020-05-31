@@ -15,6 +15,7 @@ import { HelperModule } from "./modules/helper/helper.module";
 import { TextExcerptFilter, AttachStringFilter, TextLinebreakFilter } from "./pipes/text.pipe";
 import { FilterByDateRangePipe, FilterSameDatePipe } from "./pipes/date.pipe";
 import { ImageValidationPipe } from "./pipes/image.pipe";
+import { PastStillAvailablePipe, LiveNowPipe, UpcomingPipe } from "./pipes/event.pipe";
 
 import { ImagePreloadDirective } from "./directives/image-preload.directive";
 
@@ -22,12 +23,18 @@ import { ImagePreloadDirective } from "./directives/image-preload.directive";
   declarations: [
     IconLogoComponent,
     IconLogoOnlyComponent,
+
     TextExcerptFilter,
     TextLinebreakFilter,
     AttachStringFilter,
+
     FilterByDateRangePipe,
     FilterSameDatePipe,
     ImageValidationPipe,
+    PastStillAvailablePipe,
+    LiveNowPipe,
+    UpcomingPipe,
+
     ImagePreloadDirective
   ],
   imports: [
@@ -46,13 +53,19 @@ import { ImagePreloadDirective } from "./directives/image-preload.directive";
     FlexLayoutModule,
     HelperModule,
     LazyLoadImageModule,
+
     IconLogoComponent,
     IconLogoOnlyComponent,
+
     TextExcerptFilter,
     AttachStringFilter,
     FilterByDateRangePipe,
     FilterSameDatePipe,
     ImageValidationPipe,
+    PastStillAvailablePipe,
+    LiveNowPipe,
+    UpcomingPipe,
+
     TextLinebreakFilter,
     ImagePreloadDirective
   ]

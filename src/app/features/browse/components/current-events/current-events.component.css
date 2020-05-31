@@ -2,7 +2,7 @@
 /* * {
   box-sizing: border-box;
 } */
-h1,
+/* h1,
 p {
   text-align: center;
 }
@@ -10,36 +10,36 @@ p {
   width: 100%;
   max-width: 500px;
   margin: auto;
-}
-a:link,
+} */
+/* a:link,
 a:hover,
 a:active,
 a:visited {
   transition: color 150ms;
   color: #95a5a6;
   text-decoration: none;
-}
-a:hover {
+} */
+/* a:hover {
   color: #7f8c8d;
   text-decoration: underline;
-}
-.contain {
+} */
+/* .contain {
   width: 100%;
-}
+} */
 .row {
   overflow: scroll;
   width: 100%;
 }
-.row__inner {
+.row-inner {
   transition: 450ms -webkit-transform;
   transition: 450ms transform;
   transition: 450ms transform, 450ms -webkit-transform;
   font-size: 0;
   white-space: nowrap;
-  margin: 70.3125px 0;
-  padding-bottom: 10px;
+  margin: 50px 0;
+  padding: 10px 0;
 }
-.tile {
+.event-item {
   position: relative;
   display: inline-block;
   width: 250px;
@@ -51,13 +51,13 @@ a:hover {
   -webkit-transform-origin: center left;
           transform-origin: center left;
 }
-.tile__img {
+.event-image {
   width: 250px;
-  height: 140.625px;
+  height: 150px;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.tile__details {
+.event-details {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -68,15 +68,15 @@ a:hover {
   background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
   transition: 450ms opacity;
 }
-.tile__details:after,
-.tile__details:before {
+.event-details:after,
+.event-details:before {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
   display: #000;
 }
-.tile__details:after {
+.event-details:after {
   margin-top: -25px;
   margin-left: -25px;
   width: 50px;
@@ -88,7 +88,7 @@ a:hover {
   background: rgba(0,0,0,0.5);
   z-index: 1;
 }
-.tile__details:before {
+.event-details:before {
   content: '▶';
   left: 0;
   width: 100%;
@@ -98,27 +98,27 @@ a:hover {
   text-align: center;
   z-index: 2;
 }
-.tile:hover .tile__details {
+.event-item:hover .event-details {
   opacity: 1;
 }
-.tile__title {
+.event-name {
   position: absolute;
   bottom: 0;
   padding: 10px;
 }
-.row__inner:hover {
+.row-inner:hover {
   -webkit-transform: translate3d(-62.5px, 0, 0);
           transform: translate3d(-62.5px, 0, 0);
 }
-.row__inner:hover .tile {
+.row-inner:hover .event-item {
   opacity: 0.3;
 }
-.row__inner:hover .tile:hover {
+.row-inner:hover .event-item:hover {
   -webkit-transform: scale(1.5);
           transform: scale(1.5);
   opacity: 1;
 }
-.tile:hover ~ .tile {
+.event-item:hover ~ .event-item {
   -webkit-transform: translate3d(125px, 0, 0);
           transform: translate3d(125px, 0, 0);
 }
