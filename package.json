@@ -2,7 +2,6 @@
   "name": "culture-streaming-app",
   "version": "0.0.0",
   "scripts": {
-    "preinstall": "npx npm-force-resolutions",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
