@@ -6,6 +6,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 import { IconLogoComponent } from './components/icons/icon-logo/icon-logo.component';
 import { IconLogoOnlyComponent } from './components/icons/icon-logo-only/icon-logo-only.component';
@@ -14,6 +15,7 @@ import { HelperModule } from "./modules/helper/helper.module";
 import { TextExcerptFilter, AttachStringFilter, TextLinebreakFilter } from "./pipes/text.pipe";
 import { FilterByDateRangePipe, FilterSameDatePipe } from "./pipes/date.pipe";
 import { ImageValidationPipe } from "./pipes/image.pipe";
+import { PastStillAvailablePipe, LiveNowPipe, UpcomingPipe } from "./pipes/event.pipe";
 
 import { ImagePreloadDirective } from "./directives/image-preload.directive";
 
@@ -21,12 +23,18 @@ import { ImagePreloadDirective } from "./directives/image-preload.directive";
   declarations: [
     IconLogoComponent,
     IconLogoOnlyComponent,
+
     TextExcerptFilter,
     TextLinebreakFilter,
     AttachStringFilter,
+
     FilterByDateRangePipe,
     FilterSameDatePipe,
     ImageValidationPipe,
+    PastStillAvailablePipe,
+    LiveNowPipe,
+    UpcomingPipe,
+
     ImagePreloadDirective
   ],
   imports: [
@@ -35,7 +43,8 @@ import { ImagePreloadDirective } from "./directives/image-preload.directive";
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    HelperModule
+    HelperModule,
+    LazyLoadImageModule
   ],
   exports: [
     MaterialDesignModule,
@@ -43,13 +52,20 @@ import { ImagePreloadDirective } from "./directives/image-preload.directive";
     ReactiveFormsModule,
     FlexLayoutModule,
     HelperModule,
+    LazyLoadImageModule,
+
     IconLogoComponent,
     IconLogoOnlyComponent,
+
     TextExcerptFilter,
     AttachStringFilter,
     FilterByDateRangePipe,
     FilterSameDatePipe,
     ImageValidationPipe,
+    PastStillAvailablePipe,
+    LiveNowPipe,
+    UpcomingPipe,
+
     TextLinebreakFilter,
     ImagePreloadDirective
   ]

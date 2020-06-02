@@ -1,4 +1,6 @@
 @import '~@angular/material/theming';
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
 
 $custom-typography: mat-typography-config($font-family: '"Courier New", Courier, monospace;');
 @include mat-core($custom-typography);
@@ -7,3 +9,111 @@ $custom-typography: mat-typography-config($font-family: '"Courier New", Courier,
 // $custom-accent: mat-palette($mat-amber);
 // $custom-theme: mat-light-theme($custom-primary, $custom-accent);
 // @include angular-material-theme($custom-theme);
+
+$cs-brand: (
+  50 : #ffe0e4,
+  100 : #ffb3ba,
+  200 : #ff808d,
+  300 : #ff4d5f,
+  400 : #ff263c,
+  500 : #ff001a,
+  600 : #ff0017,
+  700 : #ff0013,
+  800 : #ff000f,
+  900 : #ff0008,
+  A100 : #ffffff,
+  A200 : #fff2f2,
+  A400 : #ffbfc0,
+  A700 : #ffa6a6,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #ffffff,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+  )
+);
+
+$cs-indigo: (
+    50 : #eae1ef,
+    100 : #c9b4d8,
+    200 : #a682be,
+    300 : #824fa3,
+    400 : #672a90,
+    500 : #4c047c,
+    600 : #450374,
+    700 : #3c0369,
+    800 : #33025f,
+    900 : #24014c,
+    A100 : #ae80ff,
+    A200 : #8e4dff,
+    A400 : #6e1aff,
+    A700 : #5e00ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$cs-yellow: (
+    50 : #fffae0,
+    100 : #fff3b3,
+    200 : #ffeb80,
+    300 : #ffe34d,
+    400 : #ffdd26,
+    500 : #ffd700,
+    600 : #ffd300,
+    700 : #ffcd00,
+    800 : #ffc700,
+    900 : #ffbe00,
+    A100 : #ffffff,
+    A200 : #fffbf2,
+    A400 : #ffecbf,
+    A700 : #ffe5a6,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+// mandatory stuff for theming
+$cs-palette-primary: mat-palette($cs-brand);
+$cs-palette-accent:  mat-palette($cs-yellow);
+$cs-palette-warn:  mat-palette($cs-indigo);
+
+// include the custom theme components into a theme object
+$cs-theme: mat-light-theme($cs-palette-primary, $cs-palette-accent, $cs-palette-warn);
+@include angular-material-theme($cs-theme);

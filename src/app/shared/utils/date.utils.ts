@@ -30,6 +30,15 @@ export function compareDates(date1:Date, date2:Date) {
   if (d1 < d2) return -1;
 }
 
+export function compareDatetimes(date1:Date, date2:Date) {
+  let d1 = new Date(date1);
+  let d2 = new Date(date2);
+  let same = d1.getTime() === d2.getTime();
+  if (same) return 0;
+  if (d1 > d2) return 1;
+  if (d1 < d2) return -1;
+}
+
 export function isSameDate(date1:Date, date2:Date): boolean {
   let d1 = new Date(date1);
   let d2 = new Date(date2);
@@ -42,10 +51,20 @@ export function isSameDate(date1:Date, date2:Date): boolean {
 export function isInDateRange(start:Date, end:Date, date:Date) {
   let newStart = new Date(start);
   let newEnd = new Date(end);
+  let compareDate = new Date(date);
   newStart.setHours(0, 0, 0, 0);
   newEnd.setHours(0, 0, 0, 0);
-  return (newStart.getTime() <= date.getTime() && newEnd.getTime() >= date.getTime())
+  compareDate.setHours(0, 0, 0, 0)
+  return (newStart.getTime() <= compareDate.getTime() && newEnd.getTime() >= compareDate.getTime())
 }
+
+export function dateisInDatetimeRange(date:Date, start:Date, end:Date) {
+  let newStart = new Date(start);
+  let newEnd = new Date(end);
+  let compareDate = new Date(date);
+  return (newStart.getTime() <= compareDate.getTime() && newEnd.getTime() >= compareDate.getTime())
+}
+
 
 export function dateToApiString(date: Date): string {
       const datepipe = new DatePipe("de");

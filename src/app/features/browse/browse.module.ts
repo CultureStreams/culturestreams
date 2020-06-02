@@ -7,12 +7,14 @@ import { EventDetailComponent } from "./components/event-detail/event-detail.com
 import { EventOverviewComponent } from "./components/event-overview/event-overview.component";
 
 import { SharedModule } from "@shared/shared.module";
+// import { CurrentEventsComponent } from './components/current-events/current-events.component';
 
 @NgModule({
   declarations: [
     browseRoutingComponents,
     EventDetailComponent,
-    EventOverviewComponent
+    EventOverviewComponent,
+    // CurrentEventsComponent
   ],
   imports: [
     CommonModule,
@@ -20,6 +22,7 @@ import { SharedModule } from "@shared/shared.module";
     SharedModule
   ],
   exports:[
+    // CurrentEventsComponent
   ]
 })
 export class BrowseModule { }

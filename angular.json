@@ -26,6 +26,7 @@
             ],
             "styles": [
               "node_modules/minireset.css/minireset.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/fonts/material-design-icons/material-icons.css",
               "src/styles.css",
               "src/theme.scss"

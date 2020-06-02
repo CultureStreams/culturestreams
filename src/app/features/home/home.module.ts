@@ -5,11 +5,13 @@ import { HomeRoutingModule, homeRoutingComponents } from './home.routing';
 
 import { SharedModule } from "@shared/shared.module";
 import { ImprintComponent } from './pages/imprint/imprint.component';
+import { CurrentEventsComponent } from './../browse/components/current-events/current-events.component';
 
 @NgModule({
   declarations: [
     homeRoutingComponents,
-    ImprintComponent
+    ImprintComponent,
+    CurrentEventsComponent
   ],
   imports: [
     CommonModule,

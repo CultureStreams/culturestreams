@@ -6,6 +6,7 @@ import { Organizer } from '@core/models/organizer.model';
 import { Happening } from '@core/models/happening.model';
 
 import { Router } from '@angular/router';
+import { isSameDate } from "@shared/utils/date.utils";
 
 @Component({
   selector: 'cs-event-overview',
@@ -15,6 +16,7 @@ import { Router } from '@angular/router';
 export class EventOverviewComponent implements OnInit {
 
   @Input() event: Happening;
+  public isOneDay: boolean = false;
 
   // protected organizers: Organizer[] = [];
   // protected date: Date;
@@ -27,6 +29,9 @@ export class EventOverviewComponent implements OnInit {
    }
 
   ngOnInit() {
+    if (isSameDate(this.event.start, this.event.end)) {
+      this.isOneDay = true;
+    }
   }
   public navigateToEvent(event) {
     this.router.navigate(['browse/event', event.id]);
