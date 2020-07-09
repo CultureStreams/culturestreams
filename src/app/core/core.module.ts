@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 // registerLocaleData(localeDe, 'de');
 
 import { DataStore } from '@core/services/data.service';
+import { TagHttpService } from './services/http-services/tag-http.service';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { DataStore } from '@core/services/data.service';
   ],
   providers: [
     // { provide: LOCALE_ID, useValue: 'de' },
+    TagHttpService,
     DataStore,
   ],
 })
