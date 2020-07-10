@@ -795,7 +795,7 @@
                     // First, check the cache to see if there is already a copy of this resource.
                     const alreadyCached = (yield cache.match(req)) !== undefined;
                     // If the resource is in the cache already, it can be skipped.
-                    console.log(alreadyCached);
+                    console.log
                     if (alreadyCached) {
                         return;
                     }
