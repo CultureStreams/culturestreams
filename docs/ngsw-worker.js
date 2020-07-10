@@ -129,15 +129,9 @@
             this.table = table;
             this.cache = cache;
             this.adapter = adapter;
-            console.log(table);
-            console.log(cache);
-            console.log(adapter);
             console.log('cachetable');
         }
-        request(key) { 
-            console.log(key);
-            return this.adapter.newRequest('/' + key); 
-        }
+        request(key) { return this.adapter.newRequest('/' + key); }
         'delete'(key) { return this.cache.delete(this.request(key)); }
         keys() {
             return this.cache.keys().then(requests => requests.map(req => req.url.substr(1)));
@@ -151,7 +145,6 @@
             });
         }
         write(key, value) {
-            console.log(key);
             return this.cache.put(this.request(key), this.adapter.newResponse(JSON.stringify(value)));
         }
     }
@@ -790,12 +783,10 @@
                     // Wait on all previous operations to complete.
                     yield previous;
                     // Construct the Request for this url.
-                    console.log(url);
                     const req = this.adapter.newRequest(url);
                     // First, check the cache to see if there is already a copy of this resource.
                     const alreadyCached = (yield cache.match(req)) !== undefined;
                     // If the resource is in the cache already, it can be skipped.
-                    console.log
                     if (alreadyCached) {
                         return;
                     }
@@ -1394,13 +1385,9 @@
             // created for it, of a type that depends on the configuration mode.
             this.assetGroups = (manifest.assetGroups || []).map(config => {
                 console.log('assetgroups werden registriert');
-                console.log(manifest.assetGroups);
                 // Every asset group has a cache that's prefixed by the manifest hash and the name of the
                 // group.
-                console.log(adapter);
                 const prefix = `${adapter.cacheNamePrefix}:${this.manifestHash}:assets`;
-                console.log(prefix);
-                console.log(this.hashTable);
                 // Check the caching mode, which determines when resources will be fetched/updated.
                 switch (config.installMode) {
                     case 'prefetch':
@@ -1719,7 +1706,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ 'Content-Type': 'text/plain' }
     class IdleScheduler {
         constructor(adapter, threshold, debug) {
             console.log('scheduler');
-            console.log(adapter);
+            console.log(adapter)
             this.adapter = adapter;
             this.threshold = threshold;
             this.debug = debug;
