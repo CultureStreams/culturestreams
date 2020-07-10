@@ -18,8 +18,12 @@
         constructor(scope) {
             // Suffixing `ngsw` with the baseHref to avoid clash of cache names
             // for SWs with different scopes on the same domain.
+            console.log('adapterconstructor');
+            console.log(scope);
+            console.log(baseHref);
             const baseHref = this.parseUrl(scope.registration.scope).path;
             this.cacheNamePrefix = 'ngsw:' + baseHref;
+            console.log(this.cacheNamePrefix);
         }
         /**
          * Wrapper around the `Request` constructor.
@@ -93,6 +97,7 @@
             this.scope = scope;
             this.adapter = adapter;
             this.tables = new Map();
+            console.log('adapterconstructor');
         }
         'delete'(name) {
             if (this.tables.has(name)) {
@@ -120,6 +125,7 @@
             this.table = table;
             this.cache = cache;
             this.adapter = adapter;
+            console.log('cachetable');
         }
         request(key) { return this.adapter.newRequest('/' + key); }
         'delete'(key) { return this.cache.delete(this.request(key)); }
@@ -337,6 +343,7 @@
             this.hashes = hashes;
             this.db = db;
             this.prefix = prefix;
+            console.log('assetgroup');
             /**
              * A deduplication cache, to make sure the SW never makes two network requests
              * for the same resource at once. Managed by `fetchAndCacheOnce`.
@@ -1013,6 +1020,8 @@
             this.config = config;
             this.db = db;
             this.prefix = prefix;
+
+            console.log('datagroup');
             /**
              * Tracks the LRU state of resources in this cache.
              */
@@ -1352,6 +1361,8 @@
             this.idle = idle;
             this.manifest = manifest;
             this.manifestHash = manifestHash;
+            console.log('app');
+            console.log(scope);
             /**
              * A Map of absolute URL paths (/foo.txt) to the known hash of their
              * contents (if available).
@@ -1369,6 +1380,7 @@
             // instance
             // created for it, of a type that depends on the configuration mode.
             this.assetGroups = (manifest.assetGroups || []).map(config => {
+                console.log('assetgroups werden registriert');
                 // Every asset group has a cache that's prefixed by the manifest hash and the name of the
                 // group.
                 const prefix = `${adapter.cacheNamePrefix}:${this.manifestHash}:assets`;
@@ -1590,6 +1602,7 @@
         constructor(driver, adapter) {
             this.driver = driver;
             this.adapter = adapter;
+            console.log('debughandler');
             // There are two debug log message arrays. debugLogA records new debugging messages.
             // Once it reaches DEBUG_LOG_BUFFER_SIZE, the array is moved to debugLogB and a new
             // array is assigned to debugLogA. This ensures that insertion to the debug log is
@@ -1686,6 +1699,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ 'Content-Type': 'text/plain' }
     };
     class IdleScheduler {
         constructor(adapter, threshold, debug) {
+            console.log('scheduler');
             this.adapter = adapter;
             this.threshold = threshold;
             this.debug = debug;
@@ -1810,6 +1824,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ 'Content-Type': 'text/plain' }
     })(DriverReadyState || (DriverReadyState = {}));
     class Driver {
         constructor(scope, adapter, db) {
+            console.log('driver');
             // Set up all the event handlers that the SW needs.
             this.scope = scope;
             this.adapter = adapter;
@@ -2731,3 +2746,4 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ 'Content-Type': 'text/plain' }
     const driver = new Driver(scope, adapter, new CacheDatabase(scope, adapter));
 
 }());
+
