@@ -43,8 +43,7 @@ import { ImagePreloadDirective } from "./directives/image-preload.directive";
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    HelperModule,
-    LazyLoadImageModule
+    HelperModule
   ],
   exports: [
     MaterialDesignModule,

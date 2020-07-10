@@ -30,7 +30,7 @@ import { FooterComponent } from "@features/_layout/components/footer/footer.comp
     SharedModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production, registrationStrategy: 'registerImmediately' }),
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'de' }
