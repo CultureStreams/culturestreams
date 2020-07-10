@@ -18,7 +18,7 @@
         constructor(scope) {
             // Suffixing `ngsw` with the baseHref to avoid clash of cache names
             // for SWs with different scopes on the same domain.
-            console.log('adapterconstructor');
+            console.log('adapterconstructorESSS');
             console.log(scope);
             console.log(baseHref);
             const baseHref = this.parseUrl(scope.registration.scope).path;
