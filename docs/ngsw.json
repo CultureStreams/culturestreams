@@ -1,29 +1,24 @@
 {
   "configVersion": 1,
-  "timestamp": 1594380107888,
-  "index": "/",
+  "timestamp": 1594380951497,
+  "index": "/culturestreams/",
   "assetGroups": [
     {
       "name": "app",
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "/",
-        "/culturestreams/3rdpartylicenses.txt",
         "/culturestreams/4-es5.70647d01cecb9e74ee68.js",
         "/culturestreams/5-es2015.d3cc524652d1fa27b48b.js",
         "/culturestreams/5-es5.5b9148176a30d3c6bd0c.js",
         "/culturestreams/6-es2015.7275208b5d90ec91cc17.js",
         "/culturestreams/6-es5.63fb21daf6188f1713e5.js",
         "/culturestreams/7-es2015.59e4d69cbadff0a19c1e.js",
-        "/culturestreams/SueEllenFrancisco-Regular.af453ddd2dec974ffa5e.ttf",
         "/culturestreams/common-es2015.c65cf785b14b80b9baa8.js",
         "/culturestreams/common-es5.580b9432ea32a9ad124d.js",
         "/culturestreams/index.html",
         "/culturestreams/main-es2015.52a5784a40c6436efb40.js",
         "/culturestreams/main-es5.28167cd017a172faa1ac.js",
-        "/culturestreams/manifest.webmanifest",
-        "/culturestreams/material-icons-v50.0509ab09c1b0d2200a41.woff2",
         "/culturestreams/polyfills-es2015.2a8a5da053b423a2d9be.js",
         "/culturestreams/polyfills-es5.b8294845c3127d637abe.js",
         "/culturestreams/runtime-es2015.96f0343815043b8167e8.js",
@@ -37,6 +32,7 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
+        "/culturestreams/SueEllenFrancisco-Regular.af453ddd2dec974ffa5e.ttf",
         "/culturestreams/assets/favicon.ico",
         "/culturestreams/assets/fonts/SueEllenFrancisco-Regular.ttf",
         "/culturestreams/assets/fonts/material-design-icons/material-icons-v50.woff2",
@@ -57,15 +53,14 @@
         "/culturestreams/assets/pdf/Datenschutz.pdf",
         "/culturestreams/assets/pdf/Impressum.pdf",
         "/culturestreams/assets/svg/logo-culturestreams-only.svg",
-        "/culturestreams/assets/svg/logo-culturestreams.svg"
+        "/culturestreams/assets/svg/logo-culturestreams.svg",
+        "/culturestreams/material-icons-v50.0509ab09c1b0d2200a41.woff2"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
-    "/": "05c6b92ad7232c81aa4b6866cf683207db4024e7",
-    "/culturestreams/3rdpartylicenses.txt": "05c6b92ad7232c81aa4b6866cf683207db40a4e7",
     "/culturestreams/4-es5.70647d01cecb9e74ee68.js": "d6d57a10b1c273be22d6d592dfd8050ef54a45f3",
     "/culturestreams/5-es2015.d3cc524652d1fa27b48b.js": "e5ca03d6ed9119128fdf1016567d49c9a5cf1822",
     "/culturestreams/5-es5.5b9148176a30d3c6bd0c.js": "fbe233d181db392a8b58befe3734fe689185b3dd",
@@ -99,7 +94,6 @@
     "/culturestreams/index.html": "21a36667a6ccbcf833f8e11d6051cb7c7411ae6a",
     "/culturestreams/main-es2015.52a5784a40c6436efb40.js": "b6e6de75268f90aacc66dc7b1e5e2f1b26f6c9bd",
     "/culturestreams/main-es5.28167cd017a172faa1ac.js": "56fee9072836f444ac006411292d5936c678f965",
-    "/culturestreams/manifest.webmanifest": "621a85ccd9908fbe6b15574a033f56f8b0480bb0",
     "/culturestreams/material-icons-v50.0509ab09c1b0d2200a41.woff2": "308ee3580a4a34bd230025d460762d53b5344efc",
     "/culturestreams/polyfills-es2015.2a8a5da053b423a2d9be.js": "6253e458300af60bdc69d422ace8da1d9bc01c4e",
     "/culturestreams/polyfills-es5.b8294845c3127d637abe.js": "085d1a27fa11b9039f65a4dea16a8acd600f835f",
