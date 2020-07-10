@@ -8,6 +8,7 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
+        "/",
         "/culturestreams/4-es5.70647d01cecb9e74ee68.js",
         "/culturestreams/5-es2015.d3cc524652d1fa27b48b.js",
         "/culturestreams/5-es5.5b9148176a30d3c6bd0c.js",
