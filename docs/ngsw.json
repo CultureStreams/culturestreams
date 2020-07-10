@@ -1,20 +1,19 @@
 {
   "configVersion": 1,
-  "timestamp": 1594378921852,
-  "index": "/",
+  "timestamp": 1594385222314,
+  "index": "/culturestreams/",
   "assetGroups": [
     {
       "name": "app",
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "/",
         "/culturestreams/4-es5.70647d01cecb9e74ee68.js",
         "/culturestreams/5-es2015.d3cc524652d1fa27b48b.js",
         "/culturestreams/5-es5.5b9148176a30d3c6bd0c.js",
         "/culturestreams/6-es2015.7275208b5d90ec91cc17.js",
-        "/culturestreams/6-es5.02e451f8324ba9b1a8e7.js",
-        "/culturestreams/7-es2015.04443e33eaef626cd4c5.js",
+        "/culturestreams/6-es5.63fb21daf6188f1713e5.js",
+        "/culturestreams/7-es2015.59e4d69cbadff0a19c1e.js",
         "/culturestreams/common-es2015.c65cf785b14b80b9baa8.js",
         "/culturestreams/common-es5.580b9432ea32a9ad124d.js",
         "/culturestreams/index.html",
@@ -22,14 +21,14 @@
         "/culturestreams/main-es5.28167cd017a172faa1ac.js",
         "/culturestreams/polyfills-es2015.2a8a5da053b423a2d9be.js",
         "/culturestreams/polyfills-es5.b8294845c3127d637abe.js",
-        "/culturestreams/runtime-es2015.4451a8c9720619912039.js",
-        "/culturestreams/runtime-es5.fd3e064984ef9d2e5cac.js",
+        "/culturestreams/runtime-es2015.96f0343815043b8167e8.js",
+        "/culturestreams/runtime-es5.6c38781ed14be85d2716.js",
         "/culturestreams/styles.2559889cccec7f0b37ce.css"
       ],
       "patterns": []
     },
     {
-      "name": "assetsO",
+      "name": "assets",
       "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
@@ -66,8 +65,8 @@
     "/culturestreams/5-es2015.d3cc524652d1fa27b48b.js": "e5ca03d6ed9119128fdf1016567d49c9a5cf1822",
     "/culturestreams/5-es5.5b9148176a30d3c6bd0c.js": "fbe233d181db392a8b58befe3734fe689185b3dd",
     "/culturestreams/6-es2015.7275208b5d90ec91cc17.js": "984937de54e264a5dc01b919a55a29ee9b455135",
-    "/culturestreams/6-es5.02e451f8324ba9b1a8e7.js": "9b7251f2ba4f4104a077cc946af46f178863aa8a",
-    "/culturestreams/7-es2015.04443e33eaef626cd4c5.js": "eb8c5df0faf22e2b7b5965f4eab1708e9ef85ff0",
+    "/culturestreams/6-es5.63fb21daf6188f1713e5.js": "a86dafe33c723d4d8f6c4efb12fa07fef92f3174",
+    "/culturestreams/7-es2015.59e4d69cbadff0a19c1e.js": "4eb2450f066f6bba6ea9f9bee92f4e9d63f6d403",
     "/culturestreams/SueEllenFrancisco-Regular.af453ddd2dec974ffa5e.ttf": "7b5a11b76ce73497ccece018063c864b23473544",
     "/culturestreams/assets/favicon.ico": "1c6c3da9c3166b1aa191baf886412140013b4f27",
     "/culturestreams/assets/fonts/SueEllenFrancisco-Regular.ttf": "7b5a11b76ce73497ccece018063c864b23473544",
@@ -92,14 +91,14 @@
     "/culturestreams/assets/svg/logo-culturestreams.svg": "cd95f1b25858f01e6440849ce4ac9200347b3781",
     "/culturestreams/common-es2015.c65cf785b14b80b9baa8.js": "04bd2bf1bb1b4fe43f211ccbe340b51ce74104ad",
     "/culturestreams/common-es5.580b9432ea32a9ad124d.js": "6c92c585a2aaaa4958419612242d0d554dc7f570",
-    "/culturestreams/index.html": "c042c1bd03565fb8bca7a990e10feb67d97f7ac9",
+    "/culturestreams/index.html": "21a36667a6ccbcf833f8e11d6051cb7c7411ae6a",
     "/culturestreams/main-es2015.52a5784a40c6436efb40.js": "b6e6de75268f90aacc66dc7b1e5e2f1b26f6c9bd",
     "/culturestreams/main-es5.28167cd017a172faa1ac.js": "56fee9072836f444ac006411292d5936c678f965",
     "/culturestreams/material-icons-v50.0509ab09c1b0d2200a41.woff2": "308ee3580a4a34bd230025d460762d53b5344efc",
     "/culturestreams/polyfills-es2015.2a8a5da053b423a2d9be.js": "6253e458300af60bdc69d422ace8da1d9bc01c4e",
     "/culturestreams/polyfills-es5.b8294845c3127d637abe.js": "085d1a27fa11b9039f65a4dea16a8acd600f835f",
-    "/culturestreams/runtime-es2015.4451a8c9720619912039.js": "ccab103002a26d483d5769e5341c53b7b81bd4a5",
-    "/culturestreams/runtime-es5.fd3e064984ef9d2e5cac.js": "cb8e80b1303c504888e0eb29d23915f0bd8c3ca3",
+    "/culturestreams/runtime-es2015.96f0343815043b8167e8.js": "827d2acd51a4c19aec60af104d8a9c489f30c821",
+    "/culturestreams/runtime-es5.6c38781ed14be85d2716.js": "171f0de5101a401b844c93d3c3c0c8a5ff474593",
     "/culturestreams/styles.2559889cccec7f0b37ce.css": "c15b7b6b99540c822be4e771b8ac2eac5567e85f"
   },
   "navigationUrls": [
